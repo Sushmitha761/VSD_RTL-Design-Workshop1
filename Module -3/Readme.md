@@ -92,7 +92,7 @@ The asynchronous-set D flip-flop coding style was studied and its operation was 
 **Figure 2: Simulation waveform of the asynchronous-set D flip-flop.**
 
 ## 1.3 Synchronous Reset D Flip-Flop
-![Uploading image.png…]()
+<img width="958" height="930" alt="image" src="https://github.com/user-attachments/assets/8f4b97c9-c88d-440a-811a-5effe2722544" />
 
 
 ### Verilog Code
@@ -163,8 +163,9 @@ The flip-flop RTL design was successfully synthesized and mapped to cells from t
 
 ### Screenshot
 1.
+![Uploading image.png…]()
 
-<img width="1920" height="1060" alt="image" src="https://github.com/user-attachments/assets/c7dd00e7-431a-4e01-9c0a-02c694824c63" />
+
 
 2.
 
