@@ -72,7 +72,8 @@ The Yosys command used for flattening is:
 flatten
 ```
 ## Example:
-<img width="958" height="930" alt="image" src="https://github.com/user-attachments/assets/06290664-e5b0-444a-b186-ff3c5c5adcc6" />
+<img width="1920" height="940" alt="image" src="https://github.com/user-attachments/assets/e871ebf7-df81-4cc5-8a70-8ab30b743fd7" />
+
 
 ## 2.3 Comparison
 
