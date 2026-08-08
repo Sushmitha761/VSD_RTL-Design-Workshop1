@@ -232,11 +232,8 @@ abc -liberty /address/to/your/sky130/file/sky130_fd_sc_hd__tt_025C_1v80.lib
 
 ### View Netlist
 
-```bash
-show
-```
+<img width="1920" height="940" alt="image" src="https://github.com/user-attachments/assets/139a5faa-a0bc-4dec-8c0c-2db7b7a00ed7" />
 
-<img width="1920" height="1060" alt="image" src="https://github.com/user-attachments/assets/1985d3c9-9700-4d73-b43b-d77bba4cd549" />
 
 
 **Figure 4: Synthesized gate-level representation.**
