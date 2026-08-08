@@ -176,9 +176,8 @@ iverilog dff_asyncres.v tb_dff_asyncres.v
 
 ### View Waveform
 
-```bash
-gtkwave tb_dff_asyncres.vcd
-```
+<img width="1920" height="940" alt="image" src="https://github.com/user-attachments/assets/5248402a-1979-4f13-841b-ada51cfececd" />
+
 
 <img width="1920" height="1060" alt="image" src="https://github.com/user-attachments/assets/db8f2d80-1ed7-4673-aa5b-c5a2a87f0651" />
 
