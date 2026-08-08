@@ -163,13 +163,13 @@ The flip-flop RTL design was successfully synthesized and mapped to cells from t
 
 ### Screenshot
 1.
-![Uploading image.png…]()
+<img width="1920" height="940" alt="image" src="https://github.com/user-attachments/assets/1a92a124-9cf9-4275-8844-ab966031dac3" />
 
 
 
 2.
 
-<img width="1920" height="1060" alt="image" src="https://github.com/user-attachments/assets/3a9381f5-aa1c-4690-9588-d593cbf90254" />
+![Uploading image.png…]()
 
 **Figure 4: Synthesized gate-level representation of the flip-flop design.**
 
