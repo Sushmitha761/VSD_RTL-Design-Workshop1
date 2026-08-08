@@ -25,6 +25,7 @@ The name of the library gives information about its operating conditions:
 - `1v80` – Supply voltage of 1.8 V
 
 ## 1.3 Exploring the `.lib` File
+<img width="905" height="930" alt="image" src="https://github.com/user-attachments/assets/d2c23027-a636-4889-be1f-f40682e3b6e1" />
 
 
 
