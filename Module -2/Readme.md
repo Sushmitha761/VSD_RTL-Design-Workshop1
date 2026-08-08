@@ -176,10 +176,8 @@ iverilog dff_asyncres.v tb_dff_asyncres.v
 
 ### View Waveform
 
-<img width="1920" height="940" alt="image" src="https://github.com/user-attachments/assets/5248402a-1979-4f13-841b-ada51cfececd" />
+<img width="958" height="930" alt="image" src="https://github.com/user-attachments/assets/01bf892a-cb0b-488e-a21c-fa58dae27d03" />
 
-
-<img width="1920" height="1060" alt="image" src="https://github.com/user-attachments/assets/db8f2d80-1ed7-4673-aa5b-c5a2a87f0651" />
 
 
 **Figure 3: D flip-flop simulation waveform in GTKWave.**
