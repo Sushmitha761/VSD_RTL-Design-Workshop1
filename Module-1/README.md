@@ -110,32 +110,7 @@ The generated waveform is opened using GTKWave for verification.
 
 ## Verilog Design
 
-```verilog
-module good_mux (
-    input i0,
-    input i1,
-    input sel,
-    output reg y
-);
-
-always @(*)
-begin
-    if (sel)
-        y <= i1;
-    else
-        y <= i0;
-end
-
-endmodule
-```
-
-## Working Principle
-
-### Inputs
-
-- **i0** – First input
-- **i1** – Second input
-- **sel** – Selection signal
+<img width="1919" height="1079" alt="Screenshot 2026-08-07 001016" src="https://github.com/user-attachments/assets/c131d315-49ef-4659-96ca-952cc505569f" />
 
 ### Output
 
