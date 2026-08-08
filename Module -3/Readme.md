@@ -54,6 +54,7 @@ The asynchronous-reset D flip-flop was successfully simulated. The waveform show
 
 ### Screenshot
 
+<img width="1920" height="940" alt="image" src="https://github.com/user-attachments/assets/9a2b6311-461e-406f-8ce8-f8bc057beeaa" />
 
 
 **Figure 1: Simulation waveform of the asynchronous-reset D flip-flop.**
