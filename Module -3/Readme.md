@@ -233,7 +233,8 @@ The `mul2` design was synthesized successfully. Yosys optimized the multiplicati
 
 ### Screenshot
 
-<img width="1920" height="1060" alt="image" src="https://github.com/user-attachments/assets/f4868a05-ee64-4828-ab42-1584cc58abea" />
+![Uploading image.png…]()
+
 
 **Figure 5: Yosys synthesis and optimization result for `mul2`.**
 
