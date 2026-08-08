@@ -53,9 +53,8 @@ The SKY130 `.lib` file was successfully opened and its library and operating-con
 
 ## 2.1 Hierarchical Synthesis
 
-Hierarchical synthesis preserves the module structure of the RTL design. This makes the design easier to organize, understand, and debug.
+<img width="1920" height="940" alt="image" src="https://github.com/user-attachments/assets/3cd1a458-0349-418c-a81f-62eaa8fd3f01" />
 
-<img width="1920" height="1060" alt="image" src="https://github.com/user-attachments/assets/8381f04c-4502-4746-a5da-d0a1653a9ad8" />
 
 **Figure 2: Hierarchical synthesized design.**
 
