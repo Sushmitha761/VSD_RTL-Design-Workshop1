@@ -169,7 +169,7 @@ The flip-flop RTL design was successfully synthesized and mapped to cells from t
 
 2.
 
-![Uploading image.png…]()
+<img width="1920" height="940" alt="image" src="https://github.com/user-attachments/assets/44a40a78-b3ff-494f-b4cb-209d7b88611e" />
 
 **Figure 4: Synthesized gate-level representation of the flip-flop design.**
 
@@ -294,7 +294,8 @@ The `mult8` design was synthesized and optimized successfully. The generated net
 
 **Figure 6: Yosys synthesis and optimization result for `mult8`.**
 
----
+![Uploading image.png…]()
+
 
 ## 2.3 Generated Netlist
 
