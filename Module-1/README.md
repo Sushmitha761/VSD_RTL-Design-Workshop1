@@ -171,6 +171,7 @@ abc -liberty /home/vsduser/VLSI/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_f
 ### Step 6: View the Gate-Level Netlist
 
 <img width="1910" height="1063" alt="Screenshot 2026-08-07 004123" src="https://github.com/user-attachments/assets/a15f2da4-f928-4168-9835-5cf9980ee945" />
+<img width="1920" height="940" alt="image" src="https://github.com/user-attachments/assets/eb2c4e3f-6509-4d49-a5b9-f99d53a4de1c" />
 
 
 ## Result
