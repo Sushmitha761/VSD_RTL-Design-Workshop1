@@ -58,7 +58,7 @@ The asynchronous-reset D flip-flop was successfully simulated. The waveform show
 
 **Figure 1: Simulation waveform of the asynchronous-reset D flip-flop.**
 
----
+
 
 ## 1.2 Asynchronous Set D Flip-Flop
 
@@ -86,13 +86,11 @@ The asynchronous-set D flip-flop coding style was studied and its operation was 
 
 ### Screenshot
 
-<img width="958" height="930" alt="image" src="https://github.com/user-attachments/assets/23870b33-a8ce-44a7-9b99-7da4ab27a9a6" />
 
 **Figure 2: Simulation waveform of the asynchronous-set D flip-flop.**
 
 ## 1.3 Synchronous Reset D Flip-Flop
 
-A synchronous reset affects the output only at the active edge of the clock.
 
 ### Verilog Code
 
