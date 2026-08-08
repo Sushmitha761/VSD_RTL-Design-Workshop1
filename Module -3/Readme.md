@@ -353,3 +353,16 @@ The following results were obtained from the experiment:
 # 4. Conclusion
 
 The experiment provided practical understanding of flip-flop coding styles, synthesis, and RTL optimization. The flip-flop designs were simulated and synthesized, while arithmetic operations were optimized using Yosys. The resulting waveforms, synthesized circuits, and netlists helped in understanding the conversion of RTL code into hardware.
+
+
+
+
+
+
+
+## Submitted By
+
+# NAME:   K.Sushmitha
+# ROLL NO: 25EG504G07
+# SECTION: ECE-G
+# DEPARTMENT: Electronics And Communication Engineering
