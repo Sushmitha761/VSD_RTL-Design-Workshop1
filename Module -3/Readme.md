@@ -86,6 +86,7 @@ When `async_set` is active, `q` becomes `1`. When the set signal is inactive, th
 The asynchronous-set D flip-flop coding style was studied and its operation was understood.
 
 ### Screenshot
+<img width="1920" height="940" alt="image" src="https://github.com/user-attachments/assets/25eb7fa4-4e2d-4af1-a5d4-47f3116ae37b" />
 
 
 **Figure 2: Simulation waveform of the asynchronous-set D flip-flop.**
