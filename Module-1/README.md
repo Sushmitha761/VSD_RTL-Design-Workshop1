@@ -104,8 +104,7 @@ The generated waveform is opened using GTKWave for verification.
 ---
 ## GTKWave Output
 
-<img width="1913" height="1193" alt="Screenshot 2026-08-06 203754" src="https://github.com/user-attachments/assets/3bc7bf8b-a318-479c-8340-4fa626f98754" />
-
+<img width="1767" height="1079" alt="Screenshot 2026-08-06 233041" src="https://github.com/user-attachments/assets/e33dd6a1-0f38-40f7-9a9e-ae06f873ade3" />
 
 # 4️ Multiplexer Design Explanation
 
