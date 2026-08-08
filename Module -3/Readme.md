@@ -90,6 +90,7 @@ The asynchronous-set D flip-flop coding style was studied and its operation was 
 **Figure 2: Simulation waveform of the asynchronous-set D flip-flop.**
 
 ## 1.3 Synchronous Reset D Flip-Flop
+![Uploading image.png…]()
 
 
 ### Verilog Code
