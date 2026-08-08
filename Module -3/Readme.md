@@ -233,7 +233,7 @@ The `mul2` design was synthesized successfully. Yosys optimized the multiplicati
 
 ### Screenshot
 
-![Uploading image.png…]()
+<img width="1920" height="940" alt="image" src="https://github.com/user-attachments/assets/dcd49638-ecd9-426b-8202-46d0f8045fde" />
 
 
 **Figure 5: Yosys synthesis and optimization result for `mul2`.**
@@ -333,7 +333,8 @@ The synthesized Verilog netlists were generated successfully and examined to und
 
 **Figure 7: Generated synthesized Verilog netlist.**
 
----
+![Uploading image.png…]()
+
 
 # 3. Overall Results
 
