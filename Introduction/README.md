@@ -1,5 +1,6 @@
 Introduction
 
+
 1. What is Verilog?
 
 Verilog is a Hardware Description Language (HDL) used to describe, design, and verify digital electronic circuits.
@@ -14,6 +15,7 @@ Registers
 Processors and other digital systems
 
 Verilog code can be simulated and synthesized to verify the behavior and implementation of a digital circuit.
+
 
 2. What is RTL?
 
@@ -34,6 +36,8 @@ Specification
   Synthesis
       ↓
 Gate-Level Design
+
+
 3. What is a Design File?
 
 A design file contains the Verilog code that describes the hardware circuit we want to implement.
@@ -45,6 +49,8 @@ Example:
 good_mux.v
 
 The design file contains the required hardware module, its inputs, outputs, and the logic used to implement its functionality.
+
+
 
 4. What is a Testbench?
 
@@ -66,6 +72,8 @@ tb_good_mux.v     → Testbench
 
 The testbench does not represent physical hardware. It is mainly used for simulation and verification.
 
+
+
 5. Why is Icarus Verilog Used?
 
 Icarus Verilog is an open-source Verilog simulator.
@@ -86,6 +94,8 @@ Icarus Verilog
 Simulation
      ↓
 Output
+
+
 6. Why is GTKWave Used?
 
 GTKWave is a waveform viewer used to visualize simulation results.
@@ -99,6 +109,7 @@ Input B ────┤ → GTKWave → Waveform
 Output Y ───┘
 
 Using GTKWave, we can verify whether the output of the design is correct for different input combinations.
+
 
 7. Why is Yosys Used?
 
@@ -117,6 +128,7 @@ Synthesis
 Logic Representation
 
 Yosys can also provide information about the synthesized design, such as the number and type of logic cells used.
+
 
 8. Simulation → Synthesis Flow
 
@@ -144,6 +156,8 @@ Simulation is mainly used to check whether the design behaves correctly.
 
 Synthesis converts the verified RTL design into a hardware-oriented representation.
 
+
+
 9. Practical Workflow
 
 The practical workflow followed during the RTL design process is:
@@ -165,6 +179,8 @@ The practical workflow followed during the RTL design process is:
 8. Analyze the Synthesis Results
 
 This workflow is repeated for different digital designs throughout the workshop.
+
+
 
 10. Understanding the Output
 
