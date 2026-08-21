@@ -99,11 +99,10 @@ always @(posedge clk or posedge reset) begin
 end
 ```
 
-**svg**
+
 
 Even without a final `else`, this does **not** infer a latch — the circuit is **sequential**, not combinational. `count` is stored in a flip-flop, which naturally holds its value when `enable` is inactive. This is the intended behavior of a flip-flop, not an unintended latch.
 
----
 
 ## Labs 1–2: Incomplete IF Statements
 
