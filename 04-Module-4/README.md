@@ -1,4 +1,4 @@
-# Day 4 – Gate-Level Simulation (GLS) and Verilog Coding Practices
+# Module-4 – Gate-Level Simulation (GLS) and Verilog Coding Practices
 
 
 This document covers Gate-Level Simulation (GLS), the importance of correct sensitivity lists, blocking vs. non-blocking assignments, and a lab demonstrating a common blocking-assignment caveat.
