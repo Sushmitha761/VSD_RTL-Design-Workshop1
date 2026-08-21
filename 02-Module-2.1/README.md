@@ -1,4 +1,4 @@
-# Module-3: Various Flip-Flop Coding Styles and Interesting Optimization – Part 1
+# Module-2.1: Various Flip-Flop Coding Styles and Interesting Optimization – Part 1
 
 ## Objectives
 
