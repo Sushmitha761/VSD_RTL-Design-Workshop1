@@ -184,7 +184,8 @@ A flip-flop whose output always remained at logic `1` was synthesized. Since the
 
 **Figure 4: Constant Register Optimization**
 <img width="1600" height="783" alt="WhatsApp Image 2026-08-19 at 10 34 05 PM" src="https://github.com/user-attachments/assets/b224cd42-59c0-4a0f-ad34-f737bca1ce6b" />
-
+<img width="367" height="225" alt="Screenshot 2026-08-17 185602" src="https://github.com/user-attachments/assets/61bc3dc4-5d79-481b-88d2-472bf0d3d6c6" />
+<img width="1876" height="1048" alt="Screenshot 2026-08-17 173149" src="https://github.com/user-attachments/assets/88d75e37-1a80-4e91-9264-954b11077289" />
 
 
 Since the register output always remains at logic '1', Yosys replaces the flip-flop with constant logic, reducing hardware complexity.
@@ -197,9 +198,6 @@ The waveform confirms that the optimized circuit produces the expected output be
 
 **Figure 6: Final Optimized Netlist**
 <img width="958" height="930" alt="WhatsApp Image 2026-08-19 at 10 35 54 PM" src="https://github.com/user-attachments/assets/f63c3218-6ede-4728-ad55-395061554640" />
-<img width="1876" height="1048" alt="Screenshot 2026-08-17 173149" src="https://github.com/user-attachments/assets/5f4cc2ae-f2ba-4721-8eae-8b5ab667a0d9" />
-<img width="367" height="225" alt="Screenshot 2026-08-17 185602" src="https://github.com/user-attachments/assets/cd81bddd-cdf7-4ca2-86a9-32865e1db770" />
-
 
 
 The final synthesized netlist reflects the cumulative effect of multiple optimization passes performed by Yosys.
@@ -263,4 +261,3 @@ This netlist demonstrates additional logic simplifications performed by Yosys.
 * [ ] Consider retiming for pipeline stages with unbalanced propagation delays.
 * [ ] Compare pre- and post-optimization netlists/schematics to confirm functional equivalence.
 
-svg
