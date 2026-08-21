@@ -58,7 +58,7 @@ A design file generally contains:
 
 
 
- 4. What is a Testbench
+# 4. What is a Testbench
 
 A "testbench" is a Verilog program used to verify the functionality of a design.
 
@@ -71,7 +71,7 @@ tb_good_mux.v    → Testbench
 A testbench is mainly used for "simulation and verification"" and does not represent the actual hardware circuit.
 
 
- 5. Why is Icarus Verilog Used
+# 5. Why is Icarus Verilog Used
 
 "Icarus Verilog" is an open-source Verilog simulator.
 
@@ -93,7 +93,7 @@ Simulation
 Simulation Output
 
 
- 6. Why is GTKWave Used
+# 6. Why is GTKWave Used
 
 "GTKWave" is a waveform viewer used to visualize simulation results.
 It displays how signals change with respect to time.
@@ -111,7 +111,7 @@ Output Y ─────────
 GTKWave helps verify whether the output of the design is correct for different input combinations.
 
 
- 7. Why is Yosys Used
+# 7. Why is Yosys Used
 
 "Yosys" is an open-source RTL synthesis tool.
 
@@ -130,7 +130,7 @@ Synthesized Logic
 Yosys can also provide information about the synthesized design, including the logic cells used in the implementation.
 
 
- 8. Simulation → Synthesis Flow
+# 8. Simulation → Synthesis Flow
 
 The overall RTL design flow used in this workshop is:
        RTL Design
@@ -160,7 +160,7 @@ Simulation is used to verify whether the RTL design behaves according to the exp
 Synthesis converts the verified RTL description into a hardware-oriented logic representation.
 
 
- 9. Practical Workflow
+# 9. Practical Workflow
 
 The practical workflow followed during the workshop is:
 
@@ -183,7 +183,7 @@ Analyze Results
 This process is followed for the different RTL designs covered in the workshop.
 
 
- 10. Understanding the Output
+# 10. Understanding the Output
 
 The design output can be verified at different stages.
 
