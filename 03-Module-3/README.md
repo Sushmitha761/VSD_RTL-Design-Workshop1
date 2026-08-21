@@ -75,6 +75,8 @@ Constant propagation replaces signals that always carry a fixed logic value **di
 * Decreases hardware utilization.
 * Improves timing.
 * Lowers power consumption.
+* 
+Constant Propagation :
 
 <img width="958" height="930" alt="WhatsApp Image 2026-08-19 at 10 58 36 PM" src="https://github.com/user-attachments/assets/77683c62-e04e-458f-8c54-2708b4b0f71c" />
 
@@ -91,7 +93,8 @@ If a signal or output is never used by the remaining circuit, the synthesis tool
 
 This demonstrates that synthesis tools generate hardware only for logic that actually contributes to the final outputs.
 
-**Figure 2: Logic Simplification after Optimization**
+Logic Simplification after Optimization**
+
 <img width="1600" height="783" alt="WhatsApp Image 2026-08-19 at 11 01 43 PM" src="https://github.com/user-attachments/assets/88ba4878-3a2b-430a-b592-00f6c10cb36e" />
 
 
@@ -194,6 +197,9 @@ The waveform confirms that the optimized circuit produces the expected output be
 
 **Figure 6: Final Optimized Netlist**
 <img width="958" height="930" alt="WhatsApp Image 2026-08-19 at 10 35 54 PM" src="https://github.com/user-attachments/assets/f63c3218-6ede-4728-ad55-395061554640" />
+<img width="1876" height="1048" alt="Screenshot 2026-08-17 173149" src="https://github.com/user-attachments/assets/5f4cc2ae-f2ba-4721-8eae-8b5ab667a0d9" />
+<img width="367" height="225" alt="Screenshot 2026-08-17 185602" src="https://github.com/user-attachments/assets/cd81bddd-cdf7-4ca2-86a9-32865e1db770" />
+
 
 
 The final synthesized netlist reflects the cumulative effect of multiple optimization passes performed by Yosys.
