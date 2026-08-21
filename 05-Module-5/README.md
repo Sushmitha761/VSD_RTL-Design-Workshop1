@@ -183,7 +183,7 @@ always @(*) begin
 end
 ```
 
-**svg**
+
 
 | **`sel`** | **Output**                      |
 | --------- | ------------------------------- |
@@ -233,6 +233,7 @@ end
 **Synthesized Netlist**
 
 <img width="1600" height="883" alt="WhatsApp Image 2026-08-21 at 9 04 28 PM" src="https://github.com/user-attachments/assets/358d4d59-43bc-4c64-8e98-f5236c6e40ee" />
+<img width="958" height="930" alt="image" src="https://github.com/user-attachments/assets/5b2290b2-eaf0-452e-a809-2b6e2ae827e4" />
 
 
 
@@ -359,9 +360,9 @@ end
 
 // Equivalent ternary form
 assign y = sel ? i1 : i0;
-```
 
-*
+<img width="958" height="930" alt="image" src="https://github.com/user-attachments/assets/bd874716-1686-4b19-821b-262c4f4a46aa" />
+
 
 For a **4:1 MUX**, a procedural `for` loop compares the select signal against each input index, avoiding repetitive `case` items. The same approach applies to **demultiplexers**: initialize all outputs to zero, then use the loop index to activate only the selected output line.
 
@@ -438,6 +439,7 @@ Same functionality as Lab 8, implemented with a loop instead of manual `case` it
 **Waveform**
 <img width="1600" height="883" alt="WhatsApp Image 2026-08-21 at 9 05 15 PM" src="https://github.com/user-attachments/assets/941cd304-106f-4de4-8f97-33f01ba130f2" />
 
+<img width="958" height="930" alt="image" src="https://github.com/user-attachments/assets/9fe6cd2c-d32c-4c0b-8661-c02015be3d6a" />
 
 
 **Learning Outcome:** Procedural loops improve scalability and readability without changing synthesized hardware.
