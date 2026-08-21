@@ -216,12 +216,14 @@ end
 **Waveform**
 
 
-<img width="958" height="930" alt="WhatsApp Image 2026-08-19 at 11 50 41 PM" src="https://github.com/user-attachments/assets/8dccf042-d0af-47b4-a1e1-10c0fba137ba" />
+
 
 **Synthesized Netlist**
 
 
-<img width="958" height="930" alt="WhatsApp Image 2026-08-19 at 11 50 27 PM" src="https://github.com/user-attachments/assets/4a9c917b-55f2-4b5f-8b0e-d3988cccd898" />
+<img width="958" height="930" alt="image" src="https://github.com/user-attachments/assets/d8a16a58-1128-42aa-885e-5c8d1736b3f0" />
+
+
 
 **Learning Outcome:** A `default` branch guarantees every input value is covered, eliminating latch inference.
 
