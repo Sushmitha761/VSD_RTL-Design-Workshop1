@@ -2,7 +2,7 @@
 
 This section provides the basic concepts and tools required to understand the VSD RTL Design Workshop. It introduces Verilog, RTL design, testbenches, simulation, synthesis, and the tools used during the practical sessions.
 
- 1. What is Verilog
+# 1. What is Verilog
 
 Verilog is a **Hardware Description Language (HDL)** used to describe, design, and verify digital electronic circuits.
 
@@ -18,7 +18,7 @@ Verilog can be used to represent different types of digital hardware, such as:
 Verilog designs can be simulated to verify their functionality and synthesized to obtain a hardware-oriented implementation.
 
 
-2. What is RTL
+# 2. What is RTL
 
 RTL stands for Register Transfer Level.
 
@@ -39,7 +39,7 @@ Synthesis
 Gate-Level Design
 
 
-3. What is a Design File
+# 3. What is a Design File
 
 A **design file** contains the Verilog code that describes the hardware circuit to be implemented.
 
