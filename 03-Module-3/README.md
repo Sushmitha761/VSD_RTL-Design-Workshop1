@@ -5,18 +5,17 @@
 This document covers the optimization techniques applied during logic synthesis — for both combinational and sequential circuits — along with the corresponding lab exercises performed in Yosys.
 
 ## Table of Contents
-1. Introduction
-2. Combinational Logic Optimization
-3. Sequential Logic Optimization
-4. Constant Propagation
-5. Unused Output Optimization
-6. State Optimization
-7. Logic Cloning
-8. Retiming
-9. Optimization Passes Performed in Yosys
-10. Laboratory Exercises
-11. Key Learning Outcomes
-
+1. [Introduction](#introduction)
+2. [Combinational Logic Optimization](#combinational-logic-optimization)
+3. [Sequential Logic Optimization](#sequential-logic-optimization)
+4. [Constant Propagation](#constant-propagation)
+5. [Unused Output Optimization](#unused-output-optimization)
+6. [State Optimization](#state-optimization)
+7. [Logic Cloning](#logic-cloning)
+8. [Retiming](#retiming)
+9. [Optimization Passes Performed in Yosys](#optimization-passes-performed-in-yosys)
+10. [Laboratory Exercises](#laboratory-exercises)
+11. [Key Learning Outcomes](#key-learning-outcomes)
 
 ## Introduction
 
