@@ -1,7 +1,7 @@
 Introduction
 
 
-1. What is Verilog?
+1. What is Verilog
 
 Verilog is a Hardware Description Language (HDL) used to describe, design, and verify digital electronic circuits.
 
@@ -17,7 +17,7 @@ Processors and other digital systems
 Verilog code can be simulated and synthesized to verify the behavior and implementation of a digital circuit.
 
 
-2. What is RTL?
+2. What is RTL
 
 RTL stands for Register Transfer Level.
 
@@ -38,7 +38,7 @@ Specification
 Gate-Level Design
 
 
-3. What is a Design File?
+3. What is a Design File
 
 A design file contains the Verilog code that describes the hardware circuit we want to implement.
 
@@ -52,10 +52,9 @@ The design file contains the required hardware module, its inputs, outputs, and 
 
 
 
-4. What is a Testbench?
+4. What is a Testbench
 
 A testbench is a Verilog program used to verify the functionality of a design.
-
 It provides different input combinations to the design and observes the corresponding outputs.
 
 A testbench generally contains:
@@ -74,7 +73,7 @@ The testbench does not represent physical hardware. It is mainly used for simula
 
 
 
-5. Why is Icarus Verilog Used?
+5. Why is Icarus Verilog Used
 
 Icarus Verilog is an open-source Verilog simulator.
 
@@ -96,7 +95,7 @@ Simulation
 Output
 
 
-6. Why is GTKWave Used?
+6. Why is GTKWave Used
 
 GTKWave is a waveform viewer used to visualize simulation results.
 
@@ -111,7 +110,7 @@ Output Y ───┘
 Using GTKWave, we can verify whether the output of the design is correct for different input combinations.
 
 
-7. Why is Yosys Used?
+7. Why is Yosys Used
 
 Yosys is an open-source synthesis tool.
 
