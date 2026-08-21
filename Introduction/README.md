@@ -1,209 +1,212 @@
-Introduction
+ Introduction
 
+This section provides the basic concepts and tools required to understand the VSD RTL Design Workshop. It introduces Verilog, RTL design, testbenches, simulation, synthesis, and the tools used during the practical sessions.
 
-1. What is Verilog
+ 1. What is Verilog
 
-Verilog is a Hardware Description Language (HDL) used to describe, design, and verify digital electronic circuits.
+Verilog is a **Hardware Description Language (HDL)** used to describe, design, and verify digital electronic circuits.
 
-It allows designers to represent digital hardware such as:
+Verilog can be used to represent different types of digital hardware, such as:
 
-Logic gates
-Multiplexers
-Flip-flops
-Counters
-Registers
-Processors and other digital systems
+* Logic gates
+* Multiplexers
+* Flip-flops
+* Counters
+* Registers
+* Digital systems
 
-Verilog code can be simulated and synthesized to verify the behavior and implementation of a digital circuit.
+Verilog designs can be simulated to verify their functionality and synthesized to obtain a hardware-oriented implementation.
 
 
 2. What is RTL
 
 RTL stands for Register Transfer Level.
 
-RTL describes how data moves between registers and how the data is processed using combinational and sequential logic.
+RTL describes how data is transferred between registers and how the data is processed using combinational and sequential logic.
 
-RTL design is an important stage in digital IC design because it provides a hardware-level description of the required functionality.
+RTL design is an important stage in digital IC design because it represents the required hardware functionality before synthesis.
 
-A typical RTL design flow is:
+ Basic RTL Design Flow
 
 Specification
-      ↓
-    RTL Design
-      ↓
-  Simulation
-      ↓
-  Synthesis
-      ↓
+     ↓
+RTL Design
+     ↓
+Simulation
+     ↓
+Synthesis
+     ↓
 Gate-Level Design
 
 
 3. What is a Design File
 
-A design file contains the Verilog code that describes the hardware circuit we want to implement.
+A **design file** contains the Verilog code that describes the hardware circuit to be implemented.
 
-Verilog design files normally use the .v extension.
+Verilog design files normally use the `.v` extension.
 
 Example:
-
 good_mux.v
 
-The design file contains the required hardware module, its inputs, outputs, and the logic used to implement its functionality.
+A design file generally contains:
+
+* Module declaration
+* Input ports
+* Output ports
+* Internal logic
+* Hardware functionality
 
 
 
-4. What is a Testbench
+ 4. What is a Testbench
 
-A testbench is a Verilog program used to verify the functionality of a design.
-It provides different input combinations to the design and observes the corresponding outputs.
+A "testbench" is a Verilog program used to verify the functionality of a design.
 
-A testbench generally contains:
-
-Input stimulus
-Design Under Test (DUT)
-Output monitoring
-Simulation control
+It provides different input combinations to the Design Under Test (DUT) and observes the corresponding outputs.
 
 Example:
+good_mux.v       → Design
+tb_good_mux.v    → Testbench
 
-good_mux.v        → Design
-tb_good_mux.v     → Testbench
-
-The testbench does not represent physical hardware. It is mainly used for simulation and verification.
-
+A testbench is mainly used for "simulation and verification"" and does not represent the actual hardware circuit.
 
 
-5. Why is Icarus Verilog Used
+ 5. Why is Icarus Verilog Used
 
-Icarus Verilog is an open-source Verilog simulator.
+"Icarus Verilog" is an open-source Verilog simulator.
 
 It is used to:
 
-Compile Verilog source files
-Run simulations
-Verify the functional behavior of RTL designs
-Generate simulation output files
+* Compile Verilog source files
+* Run simulations
+* Verify RTL functionality
+* Generate simulation output
 
-A basic simulation flow is:
+Basic flow:
 
-Verilog Code
-     ↓
+Verilog Design
+      ↓
 Icarus Verilog
-     ↓
+      ↓
 Simulation
-     ↓
-Output
+      ↓
+Simulation Output
 
 
-6. Why is GTKWave Used
+ 6. Why is GTKWave Used
 
-GTKWave is a waveform viewer used to visualize simulation results.
-
-It helps us observe how signals change with respect to time.
+"GTKWave" is a waveform viewer used to visualize simulation results.
+It displays how signals change with respect to time.
 
 For example:
+Input A  ────────┐
+Input B  ────────┤
+                 ↓
+              GTKWave
+                 ↓
+             Waveform
+                 ↓
+Output Y ─────────
 
-Input A ────┐
-Input B ────┤ → GTKWave → Waveform
-Output Y ───┘
-
-Using GTKWave, we can verify whether the output of the design is correct for different input combinations.
+GTKWave helps verify whether the output of the design is correct for different input combinations.
 
 
-7. Why is Yosys Used
+ 7. Why is Yosys Used
 
-Yosys is an open-source synthesis tool.
+"Yosys" is an open-source RTL synthesis tool.
 
-It converts the RTL description written in Verilog into a synthesized representation of hardware logic.
+It converts a Verilog RTL design into a synthesized representation of hardware logic.
 
-The basic process is:
+Basic flow:
 
 RTL Verilog
      ↓
    Yosys
      ↓
-Synthesis
+  Synthesis
      ↓
-Logic Representation
+Synthesized Logic
 
-Yosys can also provide information about the synthesized design, such as the number and type of logic cells used.
+Yosys can also provide information about the synthesized design, including the logic cells used in the implementation.
 
 
-8. Simulation → Synthesis Flow
+ 8. Simulation → Synthesis Flow
 
-The overall RTL design flow used in this workshop can be represented as:
-
-        RTL Design
+The overall RTL design flow used in this workshop is:
+       RTL Design
             ↓
         Testbench
             ↓
-    Icarus Verilog
+     Icarus Verilog
             ↓
          Simulation
             ↓
          GTKWave
             ↓
-      Functional Verification
+    Functional Verification
             ↓
-          Yosys
+           Yosys
             ↓
-        Synthesis
+         Synthesis
             ↓
-    Synthesized Logic
+     Synthesized Logic
 
-Simulation is mainly used to check whether the design behaves correctly.
+ Simulation:
 
-Synthesis converts the verified RTL design into a hardware-oriented representation.
+Simulation is used to verify whether the RTL design behaves according to the expected functionality.
 
+ Synthesis:
 
-
-9. Practical Workflow
-
-The practical workflow followed during the RTL design process is:
-
-1. Write the RTL Design
-          ↓
-2. Write the Testbench
-          ↓
-3. Compile the Design
-          ↓
-4. Run the Simulation
-          ↓
-5. View the Waveform
-          ↓
-6. Verify the Output
-          ↓
-7. Perform Synthesis
-          ↓
-8. Analyze the Synthesis Results
-
-This workflow is repeated for different digital designs throughout the workshop.
+Synthesis converts the verified RTL description into a hardware-oriented logic representation.
 
 
+ 9. Practical Workflow
 
-10. Understanding the Output
+The practical workflow followed during the workshop is:
 
-The output of the design can be checked at different stages.
+Write RTL Design
+       ↓
+Write Testbench
+       ↓
+Compile
+       ↓
+Run Simulation
+       ↓
+View Waveform
+       ↓
+Verify Output
+       ↓
+Perform Synthesis
+       ↓
+Analyze Results
 
-Simulation Output
+This process is followed for the different RTL designs covered in the workshop.
+
+
+ 10. Understanding the Output
+
+The design output can be verified at different stages.
+
+ Simulation Output:
 
 Simulation results can be observed through:
 
-Terminal output
-Waveform viewer
-Signal transitions
-Waveform Output
+* Terminal output
+* Signal values
+* Waveform representation
 
-GTKWave displays signals such as:
+ Waveform Output:
+GTKWave can be used to observe signals such as:
 
-Input A
-Input B
-Output Y
-Clock
-Reset
+* Inputs
+* Outputs
+* Clock
+* Reset
+* Internal signals
+The waveform helps verify the functional behavior of the design.
 
-The waveform helps verify whether the circuit is functioning according to the expected behavior.
+ Synthesis Output
 
-Synthesis Output
+Yosys provides information about the synthesized RTL design and the resulting logic structure.
 
-Yosys provides synthesis information about the RTL design and its resulting logic structure.
+
