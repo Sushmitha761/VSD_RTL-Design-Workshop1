@@ -83,7 +83,7 @@ end
 
 ## Inferred Latches
 
-[svg](https://github.com/manisha-gundlapally/VSD-RTL-Design-Workshop/tree/main/Day5#inferred-latches)
+
 
 A **latch** is a level-sensitive storage element that retains its previous value until reassigned. During synthesis, if an RTL description does not specify the output for every possible input condition, the tool automatically inserts a latch to preserve the previous value — this is called an **inferred latch**.
 
@@ -91,7 +91,6 @@ In combinational logic, outputs should depend only on current inputs. Unintentio
 
 ### Why the Counter Does Not Infer a Latch
 
-[svg](https://github.com/manisha-gundlapally/VSD-RTL-Design-Workshop/tree/main/Day5#why-the-counter-does-not-infer-a-latch)
 
 ```verilog
 always @(posedge clk or posedge reset) begin
