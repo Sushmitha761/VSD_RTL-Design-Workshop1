@@ -6,15 +6,14 @@ This document covers Gate-Level Simulation (GLS), the importance of correct sens
 
 
 ## Table of Contents:
-
-. Gate-Level Simulation (GLS)
-. R TL Simulation vs Gate-Level Simulation
-. Missing Sensitivity List
-. Blocking vs Non-Blocking Assignments
-. Why Non-Blocking Assignments are Used for Flip-Flops
-. Lab: Caveat of Blocking Assignments (blocking_caveat.v)
-. Interview Point
-. Key Takeaways
+1. Gate-Level Simulation (GLS)
+2. RTL Simulation vs Gate-Level Simulation
+3. Missing Sensitivity List
+4. Blocking vs Non-Blocking Assignments
+5. Why Non-Blocking Assignments are Used for Flip-Flops
+6. Lab: Caveat of Blocking Assignments (`blocking_caveat.v`)
+7. Interview Point
+8. Key Takeaways
 
 ## Gate-Level Simulation (GLS)
 
