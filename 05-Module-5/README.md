@@ -1,4 +1,4 @@
-# Day 5 – IF-ELSE, CASE, and Looping Constructs
+# Module-5: IF-ELSE, CASE, and Looping Constructs
 
 
 This document covers correct and incorrect RTL coding styles in Verilog, with a focus on **priority logic**, **selection logic**, **inferred latches**, and **looping constructs** (procedural vs. generate). Each lab includes the RTL code, observed behavior, waveform, synthesized netlist, and key learning outcomes.
