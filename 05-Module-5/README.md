@@ -114,6 +114,7 @@ Even without a final `else`, this does **not** infer a latch — the circuit is 
 always @(*) begin
   if (i0) y = i1;
 end
+```
 
 
 `y` is only assigned when `i0` is high. When `i0` is low, no assignment occurs, so synthesis infers a **D-latch** to hold the previous value.
@@ -124,15 +125,15 @@ end
 | `i0 = 0`      | No assignment → previous value retained (latch) |
 
 **Waveform**
-
-<img width="958" height="930" alt="WhatsApp Image 2026-08-19 at 11 49 23 PM" src="https://github.com/user-attachments/assets/45720d47-7b4b-4a38-9617-e1e7ed64c8b2" />
+<img width="1600" height="883" alt="WhatsApp Image 2026-08-21 at 9 03 30 PM" src="https://github.com/user-attachments/assets/4729f15b-fe93-44d6-9b4d-9ca404c778d7" />
 
 
 **Synthesized Netlist**
-<img width="958" height="930" alt="WhatsApp Image 2026-08-19 at 11 49 49 PM" src="https://github.com/user-attachments/assets/81c25cd2-e0d4-48ee-a0b7-def872f4aa28" />
+
+<img width="958" height="930" alt="WhatsApp Image 2026-08-19 at 11 49 49 PM" src="https://github.com/user-attachments/assets/0e80027e-0f8d-480c-b78a-d2c7215aba91" />
 
 
-**Learning Outcome:** Every output in a combinational `always @(*)` block must be assigned for all input conditions.
+
 
 ### Lab 2: Incomplete IF-ELSE Statement (`incomp_if2.v`)
 
