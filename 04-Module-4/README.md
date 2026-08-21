@@ -59,7 +59,6 @@ An `always` block describing combinational logic should respond to **every** inp
 ## Incorrect Example
 
 
- verilog
 always @(sel)
 begin
     if (sel)
@@ -67,8 +66,6 @@ begin
     else
         y = i0;
 end
-
-
 
 Here, changes to `i0` or `i1` do not trigger the `always` block because only `sel` is listed in the sensitivity list. This creates a **simulation mismatch** with the actual combinational hardware.
 
