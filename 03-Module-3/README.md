@@ -25,6 +25,9 @@ This document covers the optimization techniques applied during logic synthesis 
 Digital circuit optimization is an important stage of the synthesis process. After converting RTL into logic gates, the synthesis tool analyzes the circuit to remove unnecessary logic, simplify Boolean expressions, and generate an implementation that consumes less area while preserving the required functionality. This session explored the optimization techniques Yosys applies to both combinational and sequential circuits.
 
 
+<img width="765" height="1280" alt="WhatsApp Image 2026-08-21 at 7 56 17 PM" src="https://github.com/user-attachments/assets/28444317-c329-4051-a3bb-ae408cb923ae" />
+
+
 ## Combinational Logic Optimization
 
 
@@ -54,7 +57,8 @@ Sequential optimization applies to circuits containing memory elements such as f
 * Eliminating unreachable logic.
 * Improving timing while maintaining functional equivalence.
 
-**Figure 3: Sequential Optimization of D Flip-Flop**
+
+<img width="1600" height="783" alt="WhatsApp Image 2026-08-19 at 10 35 19 PM" src="https://github.com/user-attachments/assets/172c1ac6-d1a6-40d0-ad0b-fba0ee65031a" />
 
 
 ## The synthesized circuit removes unnecessary sequential logic while preserving the behavior of the original design.
@@ -72,7 +76,8 @@ Constant propagation replaces signals that always carry a fixed logic value **di
 * Improves timing.
 * Lowers power consumption.
 
-**Figure 1: Constant Propagation Example**
+<img width="958" height="930" alt="WhatsApp Image 2026-08-19 at 10 58 36 PM" src="https://github.com/user-attachments/assets/77683c62-e04e-458f-8c54-2708b4b0f71c" />
+
 
 
 The synthesized netlist shows that constant-valued signals are propagated through the logic, allowing unnecessary gates to be removed during optimization.
@@ -87,6 +92,7 @@ If a signal or output is never used by the remaining circuit, the synthesis tool
 This demonstrates that synthesis tools generate hardware only for logic that actually contributes to the final outputs.
 
 **Figure 2: Logic Simplification after Optimization**
+<img width="1600" height="783" alt="WhatsApp Image 2026-08-19 at 11 01 43 PM" src="https://github.com/user-attachments/assets/88ba4878-3a2b-430a-b592-00f6c10cb36e" />
 
 
 The optimized netlist contains fewer logic gates while maintaining the same functionality as the original RTL design.
@@ -174,16 +180,20 @@ A D flip-flop with an asynchronous reset and constant assignment was synthesized
 A flip-flop whose output always remained at logic `1` was synthesized. Since the register never changed state, Yosys optimized the circuit by removing unnecessary sequential elements and replacing them with constant logic wherever applicable.
 
 **Figure 4: Constant Register Optimization**
+<img width="1600" height="783" alt="WhatsApp Image 2026-08-19 at 10 34 05 PM" src="https://github.com/user-attachments/assets/b224cd42-59c0-4a0f-ad34-f737bca1ce6b" />
+
 
 
 Since the register output always remains at logic '1', Yosys replaces the flip-flop with constant logic, reducing hardware complexity.
 
 **Figure 5: Waveform Verification**
+<img width="1600" height="783" alt="WhatsApp Image 2026-08-19 at 10 49 17 PM" src="https://github.com/user-attachments/assets/b1d30ce5-4fb4-4a39-8b24-e87bb74afc00" />
 
 
 The waveform confirms that the optimized circuit produces the expected output behavior after synthesis.
 
 **Figure 6: Final Optimized Netlist**
+<img width="958" height="930" alt="WhatsApp Image 2026-08-19 at 10 35 54 PM" src="https://github.com/user-attachments/assets/f63c3218-6ede-4728-ad55-395061554640" />
 
 
 The final synthesized netlist reflects the cumulative effect of multiple optimization passes performed by Yosys.
@@ -192,12 +202,14 @@ The final synthesized netlist reflects the cumulative effect of multiple optimiz
 
 
 **Figure 7: Optimization Check 1**
+<img width="1600" height="783" alt="WhatsApp Image 2026-08-19 at 10 31 15 PM" src="https://github.com/user-attachments/assets/487feb3c-9077-4c42-9544-6f8daa880b99" />
 
 
 The generated netlist confirms that unnecessary logic has been removed.
 
 
 **Figure 8: Optimization Check 2**
+<img width="1600" height="783" alt="WhatsApp Image 2026-08-19 at 10 32 19 PM" src="https://github.com/user-attachments/assets/7286e498-33e1-4092-b715-1cfdeccfc372" />
 
 
 The optimized circuit preserves the original functionality while reducing hardware.
@@ -206,15 +218,12 @@ The optimized circuit preserves the original functionality while reducing hardwa
 
 **Figure 9: Optimization Check 3**
 
+<img width="958" height="930" alt="WhatsApp Image 2026-08-19 at 10 45 33 PM" src="https://github.com/user-attachments/assets/aff13f42-666c-427f-88b3-d90bd7843371" />
 
 This netlist demonstrates additional logic simplifications performed by Yosys.
 
 
 
-**Figure 10: Optimization Check 4**
-
-
-The final optimization result shows the cumulative effect of constant propagation, Boolean simplification, and dead logic removal.
 
 | **Lab** | **Focus**                      | **Key Result**                                            |
 | ------- | ------------------------------ | --------------------------------------------------------- |
