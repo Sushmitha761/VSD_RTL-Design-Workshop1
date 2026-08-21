@@ -138,7 +138,8 @@ Using blocking assignments inside sequential logic can introduce incorrect order
 
 # Netlist:
 
-<img width="1600" height="783" alt="WhatsApp Image 2026-08-19 at 11 19 02 PM" src="https://github.com/user-attachments/assets/92e4131c-98c7-4552-80b1-889c4c248fe7" />
+<img width="958" height="930" alt="WhatsApp Image 2026-08-19 at 11 40 51 PM" src="https://github.com/user-attachments/assets/09896b63-8ae2-4553-b6dd-dea4b386f799" />
+
 
 
 This lab demonstrates how improper use of blocking assignments can produce **incorrect RTL simulation results**, even though the synthesized hardware behaves correctly.
