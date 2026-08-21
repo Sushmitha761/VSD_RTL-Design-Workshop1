@@ -1,4 +1,4 @@
-# Day 3 – Combinational and Sequential Logic Optimization
+# Module-3 – Combinational and Sequential Logic Optimization
 
 
 
