@@ -361,6 +361,7 @@ always @(*) begin
     1'b1 : y = i1;
   endcase
 end
+```
 
 // Equivalent ternary form
 assign y = sel ? i1 : i0;
