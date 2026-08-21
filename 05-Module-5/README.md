@@ -31,7 +31,7 @@ else if (condition2) statement2;
 else statement3;
 ```
 
-**svg**
+
 
 **Priority order:**
 
