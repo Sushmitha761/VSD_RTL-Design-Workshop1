@@ -5,7 +5,15 @@ This document covers correct and incorrect RTL coding styles in Verilog, with a 
 
 
 ## Table of Contents
-
+1. RTL Coding Styles: IF-ELSE and CASE Statements
+2. Inferred Latches
+3. Labs 1–2: Incomplete IF Statements
+4. Labs 3–5: CASE Statements
+5. Lab 6: Overlapping CASE Statements
+6. Redundancy Optimization During Synthesis
+7. Looping Constructs in Verilog
+8. Labs 7–10: Loop-Based MUX, DEMUX, and RCA
+9. Overall Summary
 
 ## RTL Coding Styles: IF-ELSE and CASE Statements
 
