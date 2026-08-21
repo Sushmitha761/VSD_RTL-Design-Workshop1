@@ -5,15 +5,19 @@ This document covers correct and incorrect RTL coding styles in Verilog, with a 
 
 
 ## Table of Contents
-1.RTL Coding Styles: IF-ELSE and CASE Statements
-2.Inferred Latches
-3.Labs 1–2: Incomplete IF Statements
-4.Labs 3–5: CASE Statements
-5.Lab 6: Overlapping CASE Statements
-6.Redundancy Optimization During Synthesis
-7.Looping Constructs in Verilog
-8.Labs 7–10: Loop-Based MUX, DEMUX, and RCA
-9.Overall Summary
+## Table of Contents
+
+1. [Introduction](#introduction)
+2. [Combinational Logic Optimization](#combinational-logic-optimization)
+3. [Sequential Logic Optimization](#sequential-logic-optimization)
+4. [Constant Propagation](#constant-propagation)
+5. [Unused Output Optimization](#unused-output-optimization)
+6. [State Optimization](#state-optimization)
+7. [Logic Cloning](#logic-cloning)
+8. [Retiming](#retiming)
+9. [Optimization Passes Performed in Yosys](#optimization-passes-performed-in-yosys)
+10. [Laboratory Exercises](#laboratory-exercises)
+11. [Key Learning Outcomes](#key-learning-outcomes)
 
 
 
