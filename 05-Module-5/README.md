@@ -452,6 +452,7 @@ Automatically instantiates one Full Adder per bit using a `generate` loop, with 
 
 **Waveform**
 <img width="1920" height="940" alt="image" src="https://github.com/user-attachments/assets/5d880d26-3a70-4268-8416-e301d1923077" />
+**Netlist**
 
 <img width="958" height="930" alt="image" src="https://github.com/user-attachments/assets/3a098bb6-6e46-472e-8f06-c60b9b649364" />
 
