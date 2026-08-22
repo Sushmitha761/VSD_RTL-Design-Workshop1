@@ -356,13 +356,3 @@ The experiment provided practical understanding of flip-flop coding styles, synt
 
 
 
-
-
-
-
-## Submitted By
-
-# NAME:   K.Sushmitha
-# ROLL NO: 25EG504G07
-# SECTION: ECE-G
-# DEPARTMENT: Electronics And Communication Engineering
