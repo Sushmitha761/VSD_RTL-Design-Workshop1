@@ -92,6 +92,7 @@ Clock jitter represents variations in the timing of clock edges, while clock unc
 
 For post-synthesis timing analysis, OpenSTA is configured using the synthesized Verilog netlist, appropriate Liberty timing libraries, and SDC constraints. The clock is defined and timing reports are generated to analyse setup and hold slack, arrival time, required time, and critical paths.
 <img width="1917" height="1077" alt="Screenshot 2026-09-20 232019" src="https://github.com/user-attachments/assets/03ea1174-608f-4a5c-9171-d8832a3f31e5" />
+<img width="1915" height="1041" alt="image" src="https://github.com/user-attachments/assets/7aba134c-6eff-440c-a731-079364aa26e4" />
 <img width="960" height="1043" alt="Screenshot 2026-09-20 231835" src="https://github.com/user-attachments/assets/97c6e1fc-939f-4a2b-9335-794383f86dfd" />
 <img width="957" height="1070" alt="Screenshot 2026-09-20 210838" src="https://github.com/user-attachments/assets/ac1dc6ae-397e-40f1-a601-c6534325b004" />
 <img width="1917" height="1075" alt="Screenshot 2026-09-20 192346" src="https://github.com/user-attachments/assets/49b5c1eb-433a-4032-97af-4b15ccc49642" />
