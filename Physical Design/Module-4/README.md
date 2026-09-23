@@ -1,4 +1,5 @@
-# Module-4 Pre-Layout Timing Analysis and Importance of a Good Clock Tree
+# Module-4
+## Pre-Layout Timing Analysis and Importance of a Good Clock Tree
 
 Pre-layout timing analysis is performed before the actual clock tree and routing are implemented. It is used to check whether the synthesized design can meet the required timing constraints. A good clock tree is important because the clock must reach all sequential elements with controlled latency, skew, transition, and load. Poor clock distribution can cause setup and hold timing violations.
 
