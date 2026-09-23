@@ -15,7 +15,9 @@ The CMOS inverter was simulated using **Ngspice** to understand its electrical b
 ### IO Placer Revision
 
 IO placement determines where the input and output pins of a cell or design are physically positioned. The placement of the pins was studied to understand how proper pin positioning helps in routing and standard-cell integration during physical design.
-1. 
+
+1. file:///home/vsduser/Pictures/Screenshot%20from%202026-09-08%2021-04-26.png
+
 ### SPICE Deck Creation for CMOS Inverter
 
 A SPICE deck contains the circuit description, transistor models, input signals, simulation commands, and required parameters. A SPICE deck was created for the CMOS inverter so that its electrical behaviour could be simulated using Ngspice.
