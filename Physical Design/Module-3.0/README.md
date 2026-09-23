@@ -155,7 +155,7 @@ A CMOS inverter was physically implemented using the Sky130 layers in Magic. PMO
 
 The inverter layout was arranged as a standard cell with proper dimensions, input/output pins, and power connections. The layout structure was designed so that it can be used as a reusable cell in a digital design.
 
-<img width="1916" height="1078" alt="Screenshot 2026-09-23 204844" src="https://github.com/user-attachments/assets/be3a814f-4f36-4af9-be97-47c9b6703123" />
+
 
 <img width="1917" height="1072" alt="Screenshot 2026-09-23 204917" src="https://github.com/user-attachments/assets/6f8a2db6-ce3a-41ef-ba9a-ded6f472813a" />
 
@@ -173,14 +173,12 @@ The extracted circuit can then be simulated using Ngspice to verify whether the 
 2 .<img width="1917" height="1078" alt="Screenshot 2026-09-23 204812" src="https://github.com/user-attachments/assets/a1400243-b840-4dda-91d9-e35876f45881" />
 
 
-3 .<img width="1917" height="1075" alt="Screenshot 2026-09-23 204835" src="https://github.com/user-attachments/assets/9721e4f1-d199-45d5-a665-bab6f42b89d2" />
+3. <img width="1917" height="1078" alt="Screenshot 2026-09-23 204738" src="https://github.com/user-attachments/assets/21bfeada-bb92-425d-96ab-cf62c1e07781" />
 
-4. <img width="1917" height="1078" alt="Screenshot 2026-09-23 204738" src="https://github.com/user-attachments/assets/21bfeada-bb92-425d-96ab-cf62c1e07781" />
-
-5 .<img width="1908" height="1078" alt="Screenshot 2026-09-23 204656" src="https://github.com/user-attachments/assets/9a4824d9-5aab-412a-99f1-290836707ea7" />
+4 .<img width="1908" height="1078" alt="Screenshot 2026-09-23 204656" src="https://github.com/user-attachments/assets/9a4824d9-5aab-412a-99f1-290836707ea7" />
 
 
-6 .<img width="1916" height="1075" alt="Screenshot 2026-09-23 204801" src="https://github.com/user-attachments/assets/cf2a5a79-c1ef-488b-b326-815d3a150ba5" />
+5 .<img width="1916" height="1075" alt="Screenshot 2026-09-23 204801" src="https://github.com/user-attachments/assets/cf2a5a79-c1ef-488b-b326-815d3a150ba5" />
 
 
 
@@ -312,3 +310,6 @@ The practical work provided hands-on experience in:
 * Technology-rule debugging
 
 The final outcome is a clear understanding of how a **CMOS circuit is transformed into a verified physical standard cell and prepared for integration into an ASIC physical-design flow**.
+
+<img width="1312" height="1199" alt="ChatGPT Image Sep 23, 2026, 09_59_28 PM" src="https://github.com/user-attachments/assets/82571838-5c43-4cae-9c08-b990d23a7fe5" />
+
