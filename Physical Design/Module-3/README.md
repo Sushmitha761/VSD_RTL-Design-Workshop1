@@ -1,4 +1,4 @@
-## Physical Design – Magic Layout, Ngspice and Sky130
+## Module-3  Physical Design – Magic Layout, Ngspice and Sky130
 
 This module focuses on the practical implementation of CMOS standard cells using **Magic, Ngspice, and the Sky130 PDK**. The experiments cover circuit simulation, CMOS fabrication concepts, physical layout creation, SPICE extraction, characterization, technology files, and DRC verification.
 
