@@ -1,4 +1,5 @@
-# Final Steps for P&R Labs Using TritonRoute and OpenSTA
+# Module-5
+## Final Steps for P&R Labs Using TritonRoute and OpenSTA
 
 The final stage of the Physical Design flow mainly focuses on routing, Power Distribution Network generation, Design Rule Check, TritonRoute detailed routing, and post-route timing analysis using OpenSTA. At this stage, the placed design is converted into a completely connected physical layout. The final layout is then checked for physical design-rule violations and timing issues before generating the final GDSII file.
 
