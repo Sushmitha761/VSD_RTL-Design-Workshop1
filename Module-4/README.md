@@ -10,6 +10,8 @@ Standard-cell timing is represented using delay tables, where cell delay depends
 
 After synthesis, the design contains gate-level connectivity. For physical implementation, this logical information must be mapped to physical routing resources such as cell pins, routing layers, metal directions, and routing tracks. This information is required for the placement and routing stages.
 <img width="1917" height="1078" alt="Screenshot 2026-09-20 184956" src="https://github.com/user-attachments/assets/99f28e70-2f58-49cd-997b-ababe2c40f51" />
+<img width="558" height="482" alt="Screenshot 2026-09-23 230825" src="https://github.com/user-attachments/assets/6b8baa76-1ab4-403a-92de-60426afee112" />
+
 <img width="1917" height="1075" alt="Screenshot 2026-09-23 204835" src="https://github.com/user-attachments/assets/3573c313-40c8-475b-9a01-c5c1f3a174b9" />
 
 
@@ -18,6 +20,7 @@ After synthesis, the design contains gate-level connectivity. For physical imple
 A standard-cell layout created using Magic contains detailed geometric information. Physical-design tools use LEF (Library Exchange Format) as the physical abstract of the cell. The cell dimensions, pin locations, routing layers, and obstructions are extracted from the layout and represented in the LEF file. This LEF is then used during placement and routing.
 <img width="1916" height="1078" alt="Screenshot 2026-09-23 204844" src="https://github.com/user-attachments/assets/e93bd32c-2894-4d85-887f-dfd9cc25bae3" />
 <img width="558" height="482" alt="Screenshot 2026-09-23 230825" src="https://github.com/user-attachm
+
 <img width="1917" height="1072" alt="Screenshot 2026-09-20 190253" src="https://github.com/user-attachments/assets/d6f9be97-f6dd-4eb9-96a3-5e35894321b9" />
 
 ## Introduction to Liberty Files
@@ -190,6 +193,7 @@ Final Timing Verification
 # Key Learning Outcomes
 
 This module provided practical understanding of LEF, Liberty files, delay tables, synthesis timing optimization, setup and hold analysis, clock jitter and uncertainty, OpenSTA, timing ECO, Clock Tree Synthesis using TritonCTS, H-tree clock distribution, clock buffering, crosstalk, clock shielding, clock skew, clock latency, and real-clock timing analysis. It also demonstrated how logical design information, standard-cell physical information, timing libraries, synthesis, CTS, and Static Timing Analysis are connected in a complete ASIC physical-design flow.
-![Uploading image.png…]()
 
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/f23347bf-a805-4837-8e12-1f9a05c0c0fc" />
 
