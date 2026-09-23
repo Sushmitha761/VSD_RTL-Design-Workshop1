@@ -25,7 +25,6 @@ Lee's algorithm is a grid-based maze-routing algorithm used to find a valid rout
 
 <img width="1693" height="685" alt="Screenshot 2026-09-24 012443" src="https://github.com/user-attachments/assets/9bc8bbec-dd48-4b78-b469-2396e41b4984" />
 
-<img width="1727" height="701" alt="Screenshot 2026-09-24 012517" src="https://github.com/user-attachments/assets/89a78176-09da-4c6c-96bc-8f4850d60bfe" />
 
 ## Design Rule Check
 
