@@ -58,7 +58,7 @@ Static simulation was used to study the DC voltage transfer characteristics of t
 
 The steps required to create a custom or cloned VSD standard cell were studied. This includes creating the layout, extracting the circuit, verifying the layout, and preparing the cell for use in a digital physical-design environment.
 
-<img width="1153" height="486" alt="Screenshot 2026-09-23 211904" src="https://github.com/user-attachments/assets/c5f3a385-16c0-47aa-a023-de4a0206cfe3" />
+
 
 <img width="1917" height="1077" alt="Screenshot 2026-09-23 204539" src="https://github.com/user-attachments/assets/94060bbe-b200-4d6f-90dc-7a0d39495d18" />
 
