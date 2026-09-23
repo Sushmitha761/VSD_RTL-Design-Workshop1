@@ -145,4 +145,7 @@ These labs provide practical understanding of how a synthesized digital design i
 
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/345233d4-3def-48b8-9ff3-25fcb4f900e6" />
 
+# Author
+## Sushmitha Konda
 
+## GitHub: https://github.com/Sushmitha761
