@@ -43,6 +43,7 @@ Lab	Topic
 SKY_L1	Lab steps to build Power Distribution Network
 SKY_L2	From power straps to standard-cell power
 SKY_L3	Basics of global and detailed routing and configuring TritonRoute
+
 ## 2.1 Power Distribution Network
 The Power Distribution Network (PDN) distributes supply power and ground throughout the physical design.
 
@@ -97,29 +98,6 @@ Detailed Routing
      ↓
 Physical Wires & Vias
 
-## Figure 1: Timing report showing a setup slack violation and OpenROAD routing activity
-
-![Uploading 1.jpeg…]()
-
-
-
-
-
-## Figure 2: OpenROAD detailed-routing initialization, LEF/DEF reading and design information
-
-
-
-
-
-## Figure 3: Track assignment and routing guide processing
-
-
-
-## Figure 4: Detailed-routing optimization iterations and violation reduction
-
-
-
-## Figure 5: Final detailed-routing summary with wire length, vias, runtime and routing statistics
 
 
 
@@ -166,42 +144,8 @@ The main purpose of TritonRoute is to create complete physical connectivity for 
 <img width="1297" height="695" alt="Screenshot 2026-09-24 013126" src="https://github.com/user-attachments/assets/a8fc78b6-0aed-486d-ae70-73e742cc326b" />
 
 
-## Final Files After Routing
-After successful detailed routing, several physical-design files are generated for further analysis and verification.
-
-Typical post-route information includes:
-
-#. Routed DEF
-#. Routed netlist
-#. Routing information
-#. Physical connectivity 
-#. Reports
-#. DRC-related information
-#. Final routing database/files
-#. These files represent the physical implementation after the routing stage.
-## Figure 1: Routing complete after OpenSTA run, RC extraction and timing analysis
 
 
-
-## Figure 2: 35-fastroute.guide routing guide file contents
-
-
-
-## Figure 3: SPEF_EXTRACTOR GitHub repository clone and files
-
-
-
-## Routing Topology Algorithm and Final GDS
-![Uploading 9.jpeg…]()
-
-## Figure 4: OpenLane temp directory lo routing-related intermediate files
-![Uploading 10.jpeg…]()
-
-## Figure 5: Final results/routing directory with DEF, SPEF and routed design files
-![Uploading 11.jpeg…]()
-
-## Figure 7: Openlane_synthesis_and_routing_results
-![Uploading 12.jpeg…]()
 
 Routing topology defines how the different sections of a net are connected in the physical layout. After detailed routing, the design contains the final metal and via geometries required for physical verification. Once routing and verification are completed, the physical database can be used to generate the final GDSII layout. The GDSII file represents the final physical layout that can be used in the ASIC fabrication flow.
 
