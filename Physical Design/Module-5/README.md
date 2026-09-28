@@ -101,15 +101,21 @@ Physical Wires & Vias
 
 
 
+
+
 ## Figure 2: OpenROAD detailed-routing initialization, LEF/DEF reading and design information
+
 
 
 
 ## Figure 3: Track assignment and routing guide processing
 
+
 ## Figure 4: Detailed-routing optimization iterations and violation reduction
 
+
 ## Figure 5: Final detailed-routing summary with wire length, vias, runtime and routing statistics
+
 
 ## Lab Steps to Build Power Distribution Network
 
@@ -168,13 +174,28 @@ Typical post-route information includes:
 #. Final routing database/files
 #. These files represent the physical implementation after the routing stage.
 ## Figure 1: Routing complete after OpenSTA run, RC extraction and timing analysis
+
+
 ## Figure 2: 35-fastroute.guide routing guide file contents
+
+
 ## Figure 3: SPEF_EXTRACTOR GitHub repository clone and files
+
+
 ## Routing Topology Algorithm and Final GDS
+![Uploading 9.jpeg…]()
+
 ## Figure 4: OpenLane tmp directory lo routing-related intermediate files
+![Uploading 10.jpeg…]()
+
 ## Figure 5: Final results/routing directory with DEF, SPEF and routed design files
+![Uploading 11.jpeg…]()
+
 ## Figure 6: spef_extraction_setup_and_results
+![Uploading 12.jpeg…]()
+
 ## Figure 7: openlane_synthesis_and_routing_results
+![Uploading 12.jpeg…]()
 
 Routing topology defines how the different sections of a net are connected in the physical layout. After detailed routing, the design contains the final metal and via geometries required for physical verification. Once routing and verification are completed, the physical database can be used to generate the final GDSII layout. The GDSII file represents the final physical layout that can be used in the ASIC fabrication flow.
 
