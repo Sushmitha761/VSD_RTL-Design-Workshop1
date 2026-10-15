@@ -29,7 +29,6 @@ This project focuses on understanding the RTL-to-GDSII physical design flow usin
 | Timing Analysis | OpenSTA |
 | Main Objective | RTL-to-GDSII implementation and timing analysis |
 
-## 4. Design Architecture
 
 ### 4.1 RVMYTH Processor
 
@@ -66,12 +65,45 @@ The physical design flow consists of the following stages:
 6. Global routing and detailed routing
 7. Static Timing Analysis (STA)
 8. Final report review
+   ## Figure 1:
+<img width="1600" height="901" alt="WhatsApp Image 2026-10-12 at 12 15 15 AM" src="https://github.com/user-attachments/assets/46f6ab2f-546b-48af-adc7-1727b25b9d02" />
+<img width="1600" height="899" alt="WhatsApp Image 2026-10-12 at 12 15 24 AM" src="https://github.com/user-attachments/assets/39b54387-e9d8-4ff8-b352-01369d3ba668" />
+<img width="1600" height="899" alt="WhatsApp Image 2026-10-12 at 12 15 32 AM" src="https://github.com/user-attachments/assets/603655fe-250f-4594-a7d6-74bf30ec0b9a" />
+<img width="1600" height="897" alt="WhatsApp Image 2026-10-12 at 12 15 43 AM" src="https://github.com/user-attachments/assets/bc947fa8-fb71-4885-87bf-473003502343" />
+<img width="1600" height="900" alt="WhatsApp Image 2026-10-12 at 12 15 53 AM" src="https://github.com/user-attachments/assets/dbe2a8e8-313f-4181-b42c-86bea658aa3c" />
+<img width="1600" height="899" alt="image" src="https://github.com/user-attachments/assets/1e7d4ce5-811d-4e9a-820d-c64892372742" />
+<img width="1600" height="903" alt="image" src="https://github.com/user-attachments/assets/f5684d5a-46a0-4788-980e-5a39c453c7ec" />
+<img width="1600" height="899" alt="image" src="https://github.com/user-attachments/assets/e43c83d2-ec57-480e-9044-87e62fb6e89f" />
+<img width="1600" height="898" alt="image" src="https://github.com/user-attachments/assets/ff4c7717-d2c6-4d00-b7b8-82418396f2ff" />
+<img width="1600" height="899" alt="image" src="https://github.com/user-attachments/assets/782bbccc-1765-4cb9-82cb-c94c301f4699" />
 
 
+## Figure1: Synthesis
 
+<img width="1600" height="899" alt="WhatsApp Image 2026-10-12 at 12 17 45 AM" src="https://github.com/user-attachments/assets/2f555ea5-a914-4b2c-84e2-b51e435727ba" />
 
+# figure2: Floorplan
 
+<img width="1600" height="899" alt="image" src="https://github.com/user-attachments/assets/ddc6d0a3-b255-4b18-9766-f04d1e06f4da" />
+<img width="1600" height="899" alt="image" src="https://github.com/user-attachments/assets/e440d0c7-a59e-49ed-b577-af2a9184e67b" />
+<img width="1600" height="899" alt="image" src="https://github.com/user-attachments/assets/daf63ecd-fd6c-4308-9fff-4076ba16adb3" />
+<img width="1600" height="899" alt="image" src="https://github.com/user-attachments/assets/4fedb320-dcca-4729-bd90-ed13a31b72a2" />
 
+<img width="1600" height="912" alt="image" src="https://github.com/user-attachments/assets/fb9c9aaa-fef4-4a3c-96cb-495c45b18f04" />
+
+<img width="1600" height="899" alt="image" src="https://github.com/user-attachments/assets/092964d4-af6b-41bc-a0a8-9f51ef13d742" />
+
+<img width="1600" height="899" alt="image" src="https://github.com/user-attachments/assets/f45fc6a4-0ce7-4220-bd29-0c19fd7478e7" />
+
+## Cts(Clock tree Synthesis):
+
+<img width="1600" height="899" alt="image" src="https://github.com/user-attachments/assets/3fb00cfc-a16c-434c-a0ac-bdb066768785" />
+
+<img width="1600" height="899" alt="image" src="https://github.com/user-attachments/assets/5e2d4e6a-6241-40df-9086-8ab1a8c44afc" />
+
+<img width="1600" height="898" alt="image" src="https://github.com/user-attachments/assets/27b48c46-6c9c-416e-81ce-012e5faf017b" />
+
+<img width="1600" height="899" alt="image" src="https://github.com/user-attachments/assets/d1089f0d-37b7-4b40-8550-e11a3c345c36" />
 
 
 
@@ -92,7 +124,7 @@ The design configuration includes:
 - `lib/` — timing library files
 - `gds/` — supplied layout data, where applicable
 - `macro.cfg` and `macro.tcl` — macro-related configuration, where required by the flow
-
+ ## STA
 The source-file paths, platform settings, timing constraints, and required library files must be consistent with the selected flow configuration.
 
 Non-negative hold slack indicates that the reported check meets its hold requirement.
@@ -106,14 +138,20 @@ WNS represents the worst slack among the relevant analyzed timing paths. Its int
 Total Negative Slack (TNS)
 
 TNS represents the accumulated negative slack for the relevant timing paths. A zero TNS generally indicates that no negative slack was accumulated for the reported path group and timing check.
+## Figure:
+<img width="1600" height="900" alt="WhatsApp Image 2026-10-10 at 11 29 45 PM" src="https://github.com/user-attachments/assets/d996748d-5fb4-481a-bc19-84c87c51d2d8" />
 
-7.3 PVT Corners
+
+
+
+
+## PVT Corners
 
 PVT stands for Process, Voltage, and Temperature.
 
 Different process models, supply voltages, and temperatures affect cell and interconnect delays. Multi-corner timing analysis helps identify the conditions under which setup or hold timing becomes critical.
 
-7.4 STA Procedure
+## STA Procedure
 
 Identify the implementation stage being analyzed.
 
@@ -133,7 +171,7 @@ Review WNS, TNS, critical paths, and electrical violations.
 
 Save the reports and record the implementation stage.
 
-7.5 Illustrative OpenROAD Tcl Commands
+## Illustrative OpenROAD Tcl Commands
 
 The following commands show the general analysis pattern. Paths must match the actual run directory and implementation stage.
 
@@ -146,171 +184,20 @@ report_checks -path_delay min
 
 These commands alone do not guarantee complete multi-corner analysis. The appropriate timing libraries, parasitics, and corner-specific settings must also be loaded. Use the actual run configuration when reproducing the results.
 
-8. Multi-Corner Timing Results
+## 8. Multi-Corner Timing Results
+<img width="720" height="514" alt="WhatsApp Image 2026-10-10 at 11 42 29 PM (2)" src="https://github.com/user-attachments/assets/73710fa5-27bf-499e-ae2e-3f7c08b74e53" />
 
-The following values are transcribed from the supplied timing evidence. Slack values are in nanoseconds (ns).
 
-Assessment details
+## STA results
 
-Item
+<img width="720" height="436" alt="WhatsApp Image 2026-10-10 at 11 42 29 PM (1)" src="https://github.com/user-attachments/assets/b347d10e-2d7a-4ff5-a546-d888e1df962a" />
 
-Details
 
-Assessment Date
-
-10/10/2026
-
-Design
-
-VSDBabySoC
-
-Top Module
-
-vsdbabysoc
-
-## Physical Design / Timing Tool
-
-OpenROAD GUI / OpenROAD-flow-scripts
-
-Technology
-
-SkyWater SKY130 HD
-
-PVT Timing Corners
-
-16
-
-8.1 Setup and Hold Slack
-
-PVT Corner
-
-Setup Slack (ns)
-
-Hold Slack (ns)
-
-ff_100C_1v65
-
-8.15
-
-0.25
-
-ff_100C_1v95
-
-9.03
-
-0.20
-
-ff_n40C_1v56
-
-6.91
-
-0.29
-
-ff_n40C_1v65
-
-7.62
-
-0.25
-
-ff_n40C_1v76
-
-8.24
-
-0.23
-
-ff_n40C_1v95
-
-8.94
-
-0.19
-
-ss_100C_1v40
-
--2.72
-
-0.89
-
-ss_100C_1v60
-
-2.10
-
-0.63
-
-ss_n40C_1v28
-
--29.05
-
-1.68
-
-ss_n40C_1v35
-
--15.57
-
-1.25
-
-ss_n40C_1v40
-
--9.98
-
-1.05
-
-ss_n40C_1v44
-
--6.71
-
-0.94
-
-ss_n40C_1v60
-
-0.43
-
-0.63
-
-ss_n40C_1v76
-
-3.73
-
-0.48
-
-tt_025C_1v80
-
-7.13
-
-0.31
-
-tt_100C_1v80
-
-7.26
-
-0.31
 
 ## 8.2 Setup Timing Observations
 
 Five corners show negative setup slack.
 
-PVT Corner
-
-Setup Slack (ns)
-
-ss_n40C_1v28
-
--29.05
-
-ss_n40C_1v35
-
--15.57
-
-ss_n40C_1v40
-
--9.98
-
-ss_n40C_1v44
-
--6.71
-
-ss_100C_1v40
-
--2.72
 
 The most severe reported setup result is -29.05 ns at ss_n40C_1v28. This corner should be investigated first by inspecting its critical timing paths.
 
@@ -332,13 +219,17 @@ The supplied results indicate that setup timing is the primary concern in the fi
 
 The supplied graphs compare setup and hold slack across the 16 PVT corners.
 
-Figure 1: Hold slack versus PVT corners.
+## Figure 1:
+<img width="1600" height="866" alt="WhatsApp Image 2026-10-10 at 11 28 05 PM" src="https://github.com/user-attachments/assets/5633cef3-5739-427d-952d-63d2d09d93cd" />
 
-Figure 2: Worst setup slack versus PVT corners.
 
-Figure 3: Terminal output showing setup and hold slack values for the supplied corner reports.
+## Figure 2: 
+<img width="1600" height="866" alt="WhatsApp Image 2026-10-10 at 11 28 27 PM" src="https://github.com/user-attachments/assets/34ed7d24-0955-4274-8179-087dd14c5899" />
 
-Figure 4: OpenROAD GUI showing the routed VSDBabySoC layout and timing-report interface.
+
+## Figure 3: Terminal output showing setup and hold slack values for the supplied corner reports.
+
+## Figure 4: OpenROAD GUI showing the routed VSDBabySoC layout and timing-report interface.
 
 Include the corresponding graphs and screenshots in the repository if they are available. Do not label a layout as post-route unless routing completion is confirmed by the run evidence.
 
@@ -413,6 +304,28 @@ Read the first meaningful error in the tool log.
 Correct the identified configuration issue and rerun the affected stage.
 
 Confirm completion using the generated logs and output files.
+
+## figure: congestion error
+<img width="1600" height="899" alt="image" src="https://github.com/user-attachments/assets/31914c45-f6b6-45ad-b316-0492f486fc6e" />
+
+<img width="1600" height="899" alt="image" src="https://github.com/user-attachments/assets/447afb40-d9f5-4b47-8641-c7234cb9992d" />
+
+<img width="940" height="977" alt="image" src="https://github.com/user-attachments/assets/cdbcd5b5-3c77-49e6-abbe-3342011d09ba" />
+
+<img width="1600" height="460" alt="image" src="https://github.com/user-attachments/assets/5a0b6775-ca1c-4773-9dc9-0d8142b26cf2" />
+
+
+## Finally I solved this through this for global routing before actual routing
+<img width="1600" height="894" alt="image" src="https://github.com/user-attachments/assets/267b6b2b-947d-4cc2-8ef7-e93633851f54" />
+and using this file also
+<img width="1600" height="620" alt="image" src="https://github.com/user-attachments/assets/6d49a017-77ee-4951-90d3-ceec17a8b65a" />
+
+<img width="1600" height="893" alt="image" src="https://github.com/user-attachments/assets/da2bd5cd-85ac-4b60-ada4-639a0de5eebb" />
+## Finally: Routing 
+<img width="987" height="646" alt="image" src="https://github.com/user-attachments/assets/b56a73e6-e15a-477e-8b67-0e95c2b719f3" />
+# After that Sta:
+<img width="720" height="436" alt="WhatsApp Image 2026-10-10 at 11 42 29 PM (1)" src="https://github.com/user-attachments/assets/a059e5c8-9c5c-4a7f-bd4c-ba7b921bce7c" />
+
 
 ## conclusion
 
