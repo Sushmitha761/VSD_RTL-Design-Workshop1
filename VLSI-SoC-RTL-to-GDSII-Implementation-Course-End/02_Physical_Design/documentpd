@@ -2,10 +2,10 @@
 
 ## 1. Objectives
 
-- Understand the ASIC Physical Design flow.
-- Study logic synthesis and technology mapping.
+- **Understand the ASIC Physical Design flow.**
+- **Study logic synthesis and technology mapping.**
 - Understand floorplanning, placement, Clock Tree Synthesis (CTS), and routing.
-- Perform Static Timing Analysis (STA) using OpenSTA.
+- Perform **Static Timing Analysis (STA)** using OpenSTA.
 - Analyze setup/hold timing, slack, and Total Negative Slack (TNS).
 - Document tools, commands, and implementation results.
 
@@ -20,7 +20,7 @@
 
 ## 3. Tools and Technologies
 
-| Tool | Purpose |
+| **Tool** | **Purpose** |
 |---|---|
 | Icarus Verilog | RTL simulation |
 | GTKWave | Waveform analysis |
@@ -48,120 +48,18 @@
 
 The following values are the currently reported results. Verify them against the archived STA log before final submission.
 
-| Parameter | Reported Result |
+| **Parameter** | **Reported Result** |
 |---|---:|
-| `din` to `detected` maximum-path slack | +7.69 ns |
+| `din` to `detected` maximum-path slack | **+7.69 ns** |
 | Maximum-path data arrival time | 1.11 ns |
 | Maximum-path required time | 8.80 ns |
 | Example reset recovery slack | +8.99 ns |
 | Example reset removal slack | +0.52 ns |
 | Example register-to-register minimum-path slack | +0.27 ns |
-| Total Negative Slack (TNS) | 0.00 ns |
+| Total Negative Slack (TNS) | **0.00 ns** |
 
 ## 6. Observations
 
-- The reported maximum-delay input-to-output path has positive slack of 7.69 ns.
-- The reported TNS is 0.00 ns for the analyzed maximum-delay report.
-- The example minimum-delay path has positive slack of 0.27 ns.
-- Results depend on the netlist, SDC constraints, library corner, and analysis settings.
-- These results alone do not confirm post-route timing closure.
+- The reported maximum-delay input-to-output path has positive slack of **7.69 ns**.
+- The reported T
 
-## 7. Timing Concepts
-
-- **Setup Time:** Minimum time data must remain stable before the active clock edge.
-- **Hold Time:** Minimum time data must remain stable after the active clock edge.
-- **Slack:** Timing margin for a particular timing check.
-- **TNS:** Total accumulated negative slack in the reported analysis.
-- **Recovery and Removal:** Timing checks associated with asynchronous control signals.
-
-## 8. Tools and Commands
-
-### Check installed tools
-
-```bash
-iverilog -V
-yosys -V
-openroad -version
-sta -version
-magic --version
-```
-
-### Navigate to the Sequence Detector directory
-
-```bash
-cd ~/Desktop/sequence_detector_101011
-pwd
-ls -la
-find . -maxdepth 3 -type f | sort
-```
-
-### Start OpenLane interactively
-
-```bash
-cd ~/Desktop/work/tools/openlane_working_dir/openlane
-./flow.tcl -interactive
-```
-
-After checking the design configuration, source files, PDK, and constraints, the applicable interactive stages include:
-
-```text
-run_synthesis
-run_floorplan
-run_placement
-run_cts
-run_routing
-```
-
-### OpenSTA timing analysis
-
-Run this only after confirming that the script references the correct netlist, libraries, and constraints.
-
-```bash
-cd ~/Desktop/sequence_detector_101011
-mkdir -p reports
-sta -exit sta.tcl 2>&1 | tee reports/sta.log
-```
-
-### Inspect timing reports
-
-```bash
-grep -Ei "slack|tns|arrival time|required time" reports/sta.log
-```
-
-### Find physical-design artifacts
-
-```bash
-find . -type f \( -name "*.spef" -o -name "*.sdf" -o -name "*.def" -o -name "*.gds" \)
-```
-
-### Launch Magic
-
-```bash
-magic -T ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech
-```
-
-Verify the technology-file path in your local installation before running the command.
-
-## 9. STA Artifacts
-
-The `STA/` directory contains:
-
-- `sta.tcl` — Tcl script used for timing analysis.
-- `sta.log` — Saved output from an STA run.
-
-Keep the script and log together. Where available, also preserve the exact netlist, SDC constraints, libraries, and corner details so the analysis can be reproduced.
-
-## 10. Conclusion and Future Work
-
-This documentation records the ASIC Physical Design methodology and the available STA results for the Sequence Detector using the SKY130HD standard-cell library and OpenSTA.
-
-Future work includes verifying the complete physical-design flow, analyzing placement and routing congestion, generating parasitic extraction data, and performing post-route STA. Timing closure should be claimed only when supported by the corresponding reports.
-
-## 11. Submission Checklist
-
-- Include RTL source and testbench files in `01_RTL_Documentation/`.
-- Include synthesis netlists and reports where available.
-- Keep `STA/sta.tcl` and `STA/sta.log` in `02_Physical_Design/STA/`.
-- Add genuine screenshots of completed flow stages and timing reports.
-- Verify all reported timing values against the actual log.
-- Do not claim routing, extraction, or post-route timing closure without supporting artifacts.
