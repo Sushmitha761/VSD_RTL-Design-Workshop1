@@ -1,0 +1,37 @@
+SEQUENCE DETECTOR (101011) - PROJECT SUMMARY
+============================================
+
+Design:
+- Architecture: Mealy Finite State Machine (FSM)
+- Target sequence: 101011
+- Technology: SkyWater SKY130 HD standard cells
+
+Functional Verification:
+- RTL simulation: Passed
+- Gate-level simulation: Passed
+
+Synthesis:
+- Tool: Yosys 0.29
+- Mapped standard-cell count: 17
+- Flip-flop count: 3
+- Estimated cell area: 155.1488 um^2
+
+Timing Analysis:
+- Tool: OpenSTA 2.4.0
+- Clock period: 10 ns
+- Clock uncertainty: 0.2 ns
+- Worst reported slack: +7.69 ns
+- Total negative slack (TNS): 0.00 ns
+- Reported hold slack: +0.27 ns
+- Reported recovery slack: +8.99 ns
+- Reported removal slack: +0.52 ns
+
+Scope:
+- Pre-layout timing analysis
+- Ideal clock network
+- Placement and routing parasitics not included
+
+Reports:
+- reports/sky130_mapping.log
+- reports/sta.log
+- reports/sta.tcl
