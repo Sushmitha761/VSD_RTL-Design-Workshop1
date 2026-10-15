@@ -105,6 +105,10 @@ The physical design flow consists of the following stages:
 
 <img width="1600" height="899" alt="image" src="https://github.com/user-attachments/assets/d1089f0d-37b7-4b40-8550-e11a3c345c36" />
 
+## Routing:
+<img width="923" height="636" alt="image" src="https://github.com/user-attachments/assets/3f8b73d8-0e90-46b6-9e73-4cce138bfe70" />
+
+<img width="987" height="646" alt="image" src="https://github.com/user-attachments/assets/c8f51cd5-531c-4d14-b475-899b32e96673" />
 
 
   
