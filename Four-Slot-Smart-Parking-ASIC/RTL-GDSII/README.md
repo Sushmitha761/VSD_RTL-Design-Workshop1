@@ -1656,6 +1656,7 @@ OpenLane Interactive Mode Commands
 
 OpenLane interactive mode allows individual stages of the ASIC implementation flow to be executed and inspected separately.
 
+```
 1. Start OpenLane Interactive Mode
 
 cd ~/Desktop/work/tools/openlane_working_dir/openlane
@@ -1680,7 +1681,7 @@ run_magic
 run_magic_drc
 run_lvs
 run_antenna_check
-
+```
 5. Exit Interactive Mode
 
 exit
