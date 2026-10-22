@@ -1472,6 +1472,13 @@ To compare the waveforms:
 4. Check whether entry and exit boundary conditions behave as expected.
 5. Investigate any unexpected logical differences.
 
+## Waveforms
+
+<img width="1857" height="363" alt="Screenshot 2026-10-21 131138" src="https://github.com/user-attachments/assets/0d359b3b-78c7-4971-803c-e0ad26f63189" />
+
+   
+
+<img width="720" height="1280" alt="WhatsApp Image 2026-10-22 at 9 04 14 PM" src="https://github.com/user-attachments/assets/d0515fd0-e278-419a-8dbe-d849083ab244" />
 
 
 
@@ -1575,6 +1582,8 @@ The OpenLane flow can perform technology mapping as part of its synthesis stage.
 
 <img width="887" height="126" alt="Screenshot 2026-10-21 142217" src="https://github.com/user-attachments/assets/dc1e5900-1606-4567-b095-25494a98ada7" />
 
+## ---------------------------------------------------------------------------------------------##
+
 
 ## Physical Design from Netlist to GDSII
 
@@ -1641,4 +1650,40 @@ The generated reports can be used to evaluate:
 
 <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/464b7cfa-4f5b-4fbe-8a71-4ebaef1fb4bc" />
 
+## Build OpenRoad/ Openlane container
+
+OpenLane Interactive Mode Commands
+
+OpenLane interactive mode allows individual stages of the ASIC implementation flow to be executed and inspected separately.
+
+1. Start OpenLane Interactive Mode
+
+cd ~/Desktop/work/tools/openlane_working_dir/openlane
+./flow.tcl -interactive
+
+2. Load OpenLane and Prepare the Design
+
+package require openlane 0.9
+prep -design smart_parking
+
+3. Run Individual Flow Stages
+
+run_synthesis
+run_floorplan
+run_placement
+run_cts
+run_routing
+
+4. Run Physical Verification
+
+run_magic
+run_magic_drc
+run_lvs
+run_antenna_check
+
+5. Exit Interactive Mode
+
+exit
+
+<img width="1917" height="1078" alt="Screenshot 2026-10-21 171216" src="https://github.com/user-attachments/assets/ce58ca4b-cc74-4688-9fea-7633b2077a53" />
 
