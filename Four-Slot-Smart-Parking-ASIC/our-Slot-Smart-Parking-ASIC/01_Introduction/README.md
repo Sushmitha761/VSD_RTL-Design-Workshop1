@@ -1,4 +1,5 @@
-<img width="891" height="760" alt="image" src="https://github.com/user-attachments/assets/2d2cc305-31bd-4330-9567-a60df317db15" /># 🚗 Four-Slot Smart Parking Occupancy and Gate Controller ASIC
+# 🚗 Four-Slot Smart Parking Occupancy and Gate Controller ASIC
+
 <img width="1456" height="816" alt="image" src="https://github.com/user-attachments/assets/0b605fa7-92c7-44af-b23f-8e2f2e51951c" />
 
 <p align="center">
@@ -210,18 +211,25 @@ The project outcomes include:
 ### 🔴 Before: Parking Availability Is Unclear
 ![Parking availability problem](https://placehold.co/800x350/fce7e7/991b1b?text=Problem%3A+Unclear+Parking+Availability)
 
+<img width="644" height="340" alt="image" src="https://github.com/user-attachments/assets/84f6c013-99bf-48e8-8301-a44d7c8a1e40" />
+
+
 Manual parking management can make it difficult to identify available spaces and manage vehicle entry efficiently.
 
 ### 🟢 After: Digital Parking Occupancy Control
 ![Smart parking solution](https://placehold.co/800x350/dcfce7/166534?text=Solution%3A+Four-Slot+Occupancy+Controller)
 
+<img width="1190" height="720" alt="image" src="https://github.com/user-attachments/assets/6e4221c5-1d92-4e5a-98e4-6e07d5b9b5cf" />
+
+
 The Verilog-based controller tracks occupancy across four parking slots and generates status outputs, helping demonstrate a structured digital approach to parking management.
 
 ### ⚙️ Engineering Outcome
-![ASIC implementation outcome](physical_design/images/routing.png)
+
 
 The design is simulated, synthesized, and evaluated through the SKY130 ASIC flow, including physical design and static timing analysis.
 
+<img width="893" height="768" alt="image" src="https://github.com/user-attachments/assets/91f9e122-2cf8-4a38-aa17-26b9e7974102" />
 
  
 
