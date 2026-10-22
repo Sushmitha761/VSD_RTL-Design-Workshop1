@@ -1,4 +1,4 @@
-# 🚗 Four-Slot Smart Parking Occupancy and Gate Controller ASIC
+<img width="2560" height="1920" alt="image" src="https://github.com/user-attachments/assets/cb234a5e-640f-4a0f-bfcb-87646a159e6f" /># 🚗 Four-Slot Smart Parking Occupancy and Gate Controller ASIC
 <img width="1456" height="816" alt="image" src="https://github.com/user-attachments/assets/0b605fa7-92c7-44af-b23f-8e2f2e51951c" />
 
 <p align="center">
@@ -144,5 +144,10 @@ flowchart LR
     H --> I[Multi-Corner STA]
     I --> J[GDSII Output]
 ```
+<img width="2560" height="1920" alt="image" src="https://github.com/user-attachments/assets/888b0f4f-ddee-4493-8d0f-7c24ba4c9c26" />
+
+
+
+
 
 
