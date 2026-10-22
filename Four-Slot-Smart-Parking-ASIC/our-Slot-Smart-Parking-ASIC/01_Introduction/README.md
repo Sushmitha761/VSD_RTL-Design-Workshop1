@@ -2,7 +2,7 @@
 <img width="1456" height="816" alt="image" src="https://github.com/user-attachments/assets/0b605fa7-92c7-44af-b23f-8e2f2e51951c" />
 
 <p align="center">
-  <b>A Verilog-Based Digital Controller Implemented Using the SKY130 ASIC Design Flow</b>
+  <b> ##A Verilog-Based Digital Controller Implemented Using the SKY130 ASIC Design Flow</b>
 </p>
 
 <p align="center">
