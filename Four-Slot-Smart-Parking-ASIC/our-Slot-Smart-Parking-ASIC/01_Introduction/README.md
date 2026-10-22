@@ -2,7 +2,7 @@
 <img width="1456" height="816" alt="image" src="https://github.com/user-attachments/assets/0b605fa7-92c7-44af-b23f-8e2f2e51951c" />
 
 <p align="center">
-  <b> ##A Verilog-Based Digital Controller Implemented Using the SKY130 ASIC Design Flow</b>
+  <b> ## A Verilog-Based Digital Controller Implemented Using the SKY130 ASIC Design Flow</b>
 </p>
 
 <p align="center">
@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/Flow-RTL--to--GDSII-purple">
 </p>
 
-## 1.1 INTRODUCTION
+##  INTRODUCTION
 
 Parking management is an important challenge in places such as offices, apartments, shopping centres, and educational institutions. Manual parking management can cause confusion about available spaces and delay vehicle entry.
 
@@ -36,13 +36,13 @@ The design is verified through simulation and taken through an open-source ASIC 
 - **When:** The controller processes entry and exit requests according to its clocked RTL logic.
 - **Who:** VLSI students, digital-design engineers, and parking-system designers.
 
-## 1.2 PROBLEM STATEMENT
+## PROBLEM STATEMENT
 
 Manual parking management makes it difficult to track available spaces consistently. A digital controller is needed to maintain the occupancy count, identify full and empty conditions, and generate appropriate control outputs.
 
 The objective is to implement and verify a compact RTL design that handles these operations and can be evaluated through an ASIC implementation flow.
 
-## 1.3 OBJECTIVES
+##  OBJECTIVES
 
 - Design the parking controller using Verilog HDL.
 - Track occupancy across four parking slots.
@@ -53,7 +53,7 @@ The objective is to implement and verify a compact RTL design that handles these
 - Evaluate timing across TT, SS, and FF process corners.
 - Document physical-design results and generated layout files.
 
-## 2.1 SYSTEM OVERVIEW
+## SYSTEM OVERVIEW
 
 The controller accepts a clock, reset, entry request, and exit request. Its internal logic updates the occupancy state and produces the configured status outputs.
 
@@ -70,7 +70,7 @@ The controller accepts a clock, reset, entry request, and exit request. Its inte
 
 > Confirm these signal names and behaviours against your final RTL before submission. Include `warning` only if it exists in your module.
 
-## 2.2 BLOCK DIAGRAM
+##  BLOCK DIAGRAM
 
 ```mermaid
 flowchart TD
@@ -92,7 +92,7 @@ flowchart TD
     style E fill:#fef3c7,stroke:#d97706,color:#111827
 ```
 
-## 2.3 FLOWCHART
+## FLOWCHART
 
 ```mermaid
 flowchart TD
@@ -116,7 +116,7 @@ flowchart TD
 
 *The diagrams describe the intended operation. Adjust request priority and simultaneous entry/exit behaviour to match the implemented RTL.*
 
-## 2.4 ALGORITHM
+## ALGORITHM
 
 1. Wait for the active clock edge.
 2. Initialize the occupancy state when reset is asserted.
@@ -127,7 +127,7 @@ flowchart TD
 7. Generate `full`, `empty`, `slot_count`, and `gate_open`.
 8. Repeat for subsequent clock cycles.
 
-## 2.5 SYSTEM ARCHITECTURE
+## SYSTEM ARCHITECTURE
 
 The design is organized into input handling, occupancy-control logic, status generation, and output logic. The RTL is then synthesized into standard cells and evaluated through physical design and static timing analysis.
 
