@@ -146,6 +146,74 @@ flowchart LR
 ```
 <img width="2560" height="1920" alt="image" src="https://github.com/user-attachments/assets/888b0f4f-ddee-4493-8d0f-7c24ba4c9c26" />
 
+# 🚗 Why I Chose This Project
+
+## Four-Slot Smart Parking Occupancy and Gate Controller ASIC
+
+<p align="center">
+  <img src="https://placehold.co/800x300/e8f3ff/163b65?text=Smart+Parking+System" alt="Smart Parking System Concept" width="800">
+</p>
+
+## 1. Why I Chose This Project
+
+I chose the **Four-Slot Smart Parking Occupancy and Gate Controller ASIC** because I wanted to work on a real-world problem while gaining practical experience in VLSI design and ASIC implementation.
+
+Parking management can become difficult when the availability of parking spaces is not monitored properly. My project demonstrates how digital logic can track occupancy, process vehicle entry and exit requests, and generate parking-status and gate-control outputs.
+
+I also selected this project because it allows me to explore the complete digital ASIC workflow, from Verilog RTL design and functional verification to synthesis, physical design, and static timing analysis using the SKY130 HD standard-cell library.
+
+## 2. What Makes This Project Valuable?
+
+| Area | What I Learn |
+|---|---|
+| 🌍 Real-world application | Understanding parking occupancy management |
+| 💻 RTL design | Writing digital logic using Verilog HDL |
+| 🧪 Verification | Testing functionality using simulation and testbenches |
+| 🔧 ASIC synthesis | Converting RTL into a technology-mapped netlist |
+| 🏗️ Physical design | Understanding floorplanning, placement, clock-tree synthesis, and routing |
+| ⏱️ Timing analysis | Evaluating timing across TT, SS, and FF corners |
+| 🎯 Career development | Building practical skills relevant to entry-level VLSI roles |
+
+## 3. Project Design and Implementation
+
+The controller accepts clock, reset, entry, and exit signals. It tracks the occupancy count and generates outputs such as `slot_count`, `full`, `empty`, and `gate_open`, according to the implemented RTL.
+
+```mermaid
+flowchart TD
+    A[Clock and Reset] --> C[Parking Controller RTL]
+    B[Entry and Exit Requests] --> C
+    C --> D[Occupancy Tracking]
+    D --> E[Status and Gate Logic]
+    E --> F[Parking Status Outputs]
+
+    style C fill:#dbeafe,stroke:#2563eb,color:#111827
+    style D fill:#dcfce7,stroke:#16a34a,color:#111827
+    style E fill:#fef3c7,stroke:#d97706,color:#111827
+```
+
+## 4. Why This Project Is Suitable for VLSI Learning
+
+This project provides a practical opportunity to understand how a digital design moves through an ASIC implementation flow.
+
+```mermaid
+flowchart LR
+    A[Verilog RTL] --> B[Functional Simulation]
+    B --> C[Logic Synthesis]
+    C --> D[SKY130 HD Mapping]
+    D --> E[Physical Design]
+    E --> F[Static Timing Analysis]
+    F --> G[GDSII Layout]
+
+    style A fill:#dbeafe,stroke:#2563eb,color:#111827
+    style E fill:#dcfce7,stroke:#16a34a,color:#111827
+    style G fill:#fef3c7,stroke:#d97706,color:#111827
+```
+
+## 5. My Main Goal
+
+My goal is to develop a functional digital controller, verify its behaviour, understand the ASIC implementation stages, and evaluate its timing performance. Through this project, I aim to strengthen my understanding of RTL design and physical design while building a project that I can explain confidently during technical interviews.
+
+**Note:** This project implements the digital controller. Physical parking sensors, a gate motor, and external monitoring hardware require additional integration unless implemented separately.
 
 
 
