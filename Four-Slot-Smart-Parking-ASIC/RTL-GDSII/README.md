@@ -1,4 +1,4 @@
-# Four-Slot Smart Parking Occupancy and Gate Controller ASIC
+<img width="1917" height="1078" alt="Screenshot 2026-10-21 125706" src="https://github.com/user-attachments/assets/a2b3209e-f3e1-43cf-aace-df599ccf2aec" /><img width="1917" height="1078" alt="Screenshot 2026-10-21 125706" src="https://github.com/user-attachments/assets/d5e7fb4a-240a-46ae-ac8d-dd2c394a6e72" /># Four-Slot Smart Parking Occupancy and Gate Controller ASIC
 
 ## 1. Introduction
 
@@ -919,7 +919,7 @@ module tb_parking_controller;
 endmodule
 ```
 
-## Explanation :
+## Explanation for codes :
 
 he Four-Slot Smart Parking Occupancy and Gate Controller is a digital hardware design implemented using Verilog HDL. It monitors parking occupancy, controls entry and exit requests, and generates status signals to indicate whether the parking area is empty, nearly full, or completely full.
 
@@ -1032,11 +1032,11 @@ The `always @(posedge clk or posedge reset)` block describes the sequential beha
 
 The asynchronous active-high reset clears the occupancy counter and closes the gate indication immediately when reset is asserted. Otherwise, the counter and gate-control register update in response to the clock and input requests.
 
-### 5.4 Nonblocking Assignments
+### 5.4  Nonblocking Assignments
 
 The `<=` operator is used for register assignments. Nonblocking assignments are appropriate for modeling clocked sequential logic in Verilog.
 
-## 6. Testbench Overview
+## Testbench Overview
 
 - **Testbench File:** `testbench/tb_parking_controller.v`
 - **Testbench Module:** `tb_parking_controller`
@@ -1045,61 +1045,61 @@ The testbench verifies the parking controller by applying input sequences and ob
 
 The testbench does not represent physical parking hardware. It is a simulation environment used to verify the digital RTL.
 
-## 7. Testbench Code Explanation
+## 6. Testbench Code Explanation
 
-### 7.1 Timescale Directive
+### 6.1 Timescale Directive
 
 The directive `` `timescale 1ns/1ps `` specifies a simulation time unit of one nanosecond and a time precision of one picosecond.
 
-### 7.2 Signal Declaration
+### 6.2 Signal Declaration
 
 The testbench declares `clk`, `reset`, `entry`, and `exit` as registers because the testbench drives these signals.
 
 The outputs of the design are declared as wires because they are driven by the instantiated module.
 
-### 7.3 Design Instantiation
+### 6.3 Design Instantiation
 
 The `parking_controller` module is instantiated as `dut`, meaning Design Under Test.
 
 The instance connects the testbench signals to the corresponding RTL inputs and outputs.
 
-### 7.4 Clock Generation
+### 6.4 Clock Generation
 
 The statement `always #5 clk = ~clk;` toggles the clock every five nanoseconds, producing a clock period of ten nanoseconds.
 
-### 7.5 Waveform Generation
+### 6.5 Waveform Generation
 
 The `$dumpfile` and `$dumpvars` system tasks generate a VCD waveform file named `parking_rtl.vcd`.
 
 This file can be opened in GTKWave to inspect the clock, reset, entry, exit, occupancy count, warning, full, empty, and gate-open signals over simulation time.
 
-### 7.6 Reset Test
+### 6.6 Reset Test
 
 The testbench initially asserts reset and initializes the input signals. After ten nanoseconds, reset is deasserted so that normal operation can begin.
 
-### 7.7 Vehicle Entry Test
+### 6.7 Vehicle Entry Test
 
 The testbench applies four entry requests to increase occupancy from zero to four. It displays the occupancy and status outputs for inspection.
 
-### 7.8 Entry When Full
+### 6.8 Entry When Full
 
 After the occupancy reaches four, the testbench applies another entry request. The expected behavior is that occupancy remains four and the full indicator remains high.
 
-### 7.9 Vehicle Exit Test
+### 6.9 Vehicle Exit Test
 
 The testbench applies an exit request. The expected behavior is that occupancy decreases from four to three, the full indicator becomes low, and the warning indicator remains high.
 
-### 7.10 Exit When Empty
+### 6.10 Exit When Empty
 
 The testbench applies additional exit requests. The expected behavior is that the occupancy count never becomes negative and remains zero once the parking area is empty.
 
-### 7.11 Simulation Completion
+### 6.11 Simulation Completion
 
 The `$display` statements print selected output values to the simulator console. The `$finish` statement terminates the simulation.
 
 The testbench currently uses printed output rather than automatic assertions, so the results must be inspected to confirm the expected behavior.
 
-## 8. Functional Verification Plan
+## Functional Verification Plan
 
 | Test Case | Expected Behavior |
 |---|---|
@@ -1114,3 +1114,450 @@ The testbench currently uses printed output rather than automatic assertions, so
 | Empty indication | Empty is high only at occupancy zero |
 | Simultaneous entry and exit | Neither request is accepted; occupancy holds |
 
+
+## RTL Simulation and Waveform Generation
+
+###  Objective
+
+RTL simulation verifies the functional behavior of the `parking_controller` design before synthesis and physical implementation. GTKWave is used to visualize the input and output signals during simulation.
+
+### Commands to Run RTL Simulation
+
+Navigate to the project directory:
+
+```bash
+cd ~/Desktop/four_slot_smart_parking
+```
+
+Compile the RTL design and testbench:
+
+```bash
+iverilog -g2012 -o rtl_sim.vvp \
+  rtl/parking_controller.v \
+  tb/tb_parking_controller.v
+```
+
+Run the simulation:
+
+```bash
+vvp rtl_sim.vvp
+```
+
+Open the generated waveform:
+
+```bash
+gtkwave parking_rtl.vcd
+```
+
+###  Waveform File Generation
+
+The testbench generates the waveform file using the following Verilog system tasks:
+
+```verilog
+$dumpfile("parking_rtl.vcd");
+$dumpvars(0, tb_parking_controller);
+```
+
+The `parking_rtl.vcd` file stores the signal transitions recorded during simulation.
+
+### Signals Observed in GTKWave
+
+| Signal | Description |
+|---|---|
+| `clk` | Clock signal |
+| `reset` | Resets the controller |
+| `entry` | Indicates a vehicle entry request |
+| `exit` | Indicates a vehicle exit request |
+| `slot_count` | Tracks the number of occupied slots |
+| `warning` | Becomes high when three or more slots are occupied |
+| `full` | Becomes high when all four slots are occupied |
+| `empty` | Becomes high when no slots are occupied |
+| `gate_open` | Indicates an accepted entry or exit operation |
+
+### Simulation Behavior
+
+- Reset initializes the slot count to zero and closes the gate.
+- Accepted entry requests increment the slot count.
+- Accepted exit requests decrement the slot count.
+- The slot count remains between zero and four.
+- The warning signal becomes high when the count reaches three.
+- The full signal becomes high at four occupied slots.
+- The empty signal becomes high when the count is zero.
+- Invalid entry and exit requests do not change the slot count.
+
+###  Verification Result
+
+After running the simulation, inspect the console output and GTKWave waveform to verify the controller's behavior. Record the final verification result only after confirming that the observed signals match the expected behavior.
+
+##  Waveform:
+
+<img width="1917" height="1078" alt="Screenshot 2026-10-21 125706" src="https://github.com/user-attachments/assets/45eabd81-ba1a-4a07-a238-3d4456c01f58" />
+
+<img width="720" height="953" alt="Screenshot 2026-10-21 131153" src="https://github.com/user-attachments/assets/94261bec-aef2-43eb-ac93-6db39223c04c" />
+
+<img width="1856" height="798" alt="Screenshot 2026-10-21 131115" src="https://github.com/user-attachments/assets/9cb4a1cc-e53d-47e0-9dcb-2db678cbfa1c" />
+
+<img width="1857" height="363" alt="Screenshot 2026-10-21 131138" src="https://github.com/user-attachments/assets/96d67dfa-22cf-4b33-8c3e-6f0c80d20e25" />
+
+
+<img width="1917" height="1077" alt="Screenshot 2026-10-21 140101" src="https://github.com/user-attachments/assets/1f8d9ca6-336a-43c3-9f87-19c3648c5fc0" />
+
+
+## RTL Synthesis Using Yosys
+
+### Introduction
+
+RTL synthesis is the process of converting a Verilog RTL description into a gate-level representation of a digital circuit. In this project, Yosys is used to analyze and synthesize the `parking_controller` module.
+
+The synthesis process identifies sequential elements, combinational logic, arithmetic operations, and control conditions described in the RTL. It also provides statistics about the resulting logic structure.
+
+###  Synthesis Objectives
+
+- Read and analyze the Verilog RTL source.
+- Check the design hierarchy and top module.
+- Convert procedural blocks into internal logic.
+- Optimize the synthesized logic.
+- Check for structural problems.
+- Generate synthesis statistics.
+
+###  RTL Source File
+
+The RTL source file is:
+
+```text
+rtl/parking_controller.v
+```
+
+The top module is `parking_controller`.
+
+###  Running Yosys
+
+From the project root directory, start Yosys:
+
+```bash
+yosys
+```
+
+Execute the following commands inside the Yosys prompt:
+
+```tcl
+read_verilog rtl/parking_controller.v
+hierarchy -check -top parking_controller
+proc
+opt
+check
+stat
+```
+
+### Synthesis Command Explanation
+
+| Command | Purpose |
+|---|---|
+| `read_verilog` | Reads the Verilog RTL source file |
+| `hierarchy -check -top parking_controller` | Checks the module hierarchy and identifies the top module |
+| `proc` | Converts procedural RTL blocks into internal logic |
+| `opt` | Performs logic optimization |
+| `check` | Checks for structural problems in the design |
+| `stat` | Displays statistics about the synthesized logic |
+
+### Synthesis Flow
+
+The basic synthesis sequence follows these steps:
+
+1. Read the RTL source code.
+2. Check the design hierarchy.
+3. Convert procedural blocks into internal logic.
+4. Optimize the logic representation.
+5. Check the design for structural issues.
+6. Display synthesis statistics.
+
+### Synthesis Structure
+
+The parking controller RTL describes the following types of logic:
+
+- **Sequential logic:** Registers for `slot_count` and `gate_open`.
+- **Combinational logic:** Status comparisons for `warning`, `full`, and `empty`.
+- **Arithmetic logic:** Increment and decrement operations on `slot_count`.
+- **Control logic:** Conditions that accept or reject entry and exit requests.
+
+The actual cell count and mapped gate structure depend on the synthesis commands, optimization settings, and target technology library.
+
+### Technology Mapping
+
+The commands above perform basic RTL synthesis and logic inspection. They do not, by themselves, perform complete SKY130 standard-cell technology mapping.
+
+For ASIC implementation, the logic must be mapped to cells from the target standard-cell library using an appropriate synthesis configuration. In this project, the SKY130 HD library is used in the configured OpenLane flow.
+
+### Synthesis Results and Reports
+
+After running the commands, review the output from `check` and `stat`.
+
+| Result | What to inspect |
+|---|---|
+| Hierarchy | Confirm that `parking_controller` is recognized as the top module |
+| Structural check | Review any reported problems |
+| Logic statistics | Record the cell types and counts reported by Yosys |
+| Technology mapping | Confirm the target library and mapped netlist when using the ASIC flow |
+
+Record the actual results from your terminal rather than inserting assumed cell counts.
+
+### Conclusion
+
+Yosys provides an important step between RTL development and physical design. It helps inspect the logic inferred from Verilog and provides statistics that can be used to understand the hardware implementation.
+
+The synthesized design can then proceed through the configured ASIC implementation flow for technology mapping, floorplanning, placement, clock-tree synthesis, routing, and timing analysis.
+
+## Synthesized model:
+
+<img width="1917" height="1078" alt="Screenshot 2026-10-21 132155" src="https://github.com/user-attachments/assets/2f085bb2-c1f9-4924-bc5d-607937a64ea5" />
+
+<img width="1861" height="861" alt="Screenshot 2026-10-21 131559" src="https://github.com/user-attachments/assets/e4c564cb-5354-4598-929f-2c6b0275aec0" />
+
+## Statistics:
+
+
+<img width="1852" height="880" alt="Screenshot 2026-10-21 142030" src="https://github.com/user-attachments/assets/e4561c27-0202-492b-bc85-8131877e46d6" />
+
+## 10. Gate-Level Simulation (GLS)
+
+### Introduction
+
+Gate-Level Simulation (GLS) is the process of simulating a synthesized gate-level netlist to verify the behavior of the synthesized design.
+
+In this project, GLS is used to check whether the synthesized `parking_controller` design behaves consistently with the original RTL design under the same testbench stimulus.
+
+Unlike RTL simulation, which operates on behavioral Verilog descriptions, gate-level simulation operates on the synthesized netlist containing logic cells or gate-level representations.
+
+### Objectives
+
+- Verify the functionality of the synthesized netlist.
+- Check the behavior of occupancy counting and gate-control logic.
+- Verify full, empty, and warning status signals.
+- Check entry and exit boundary conditions.
+- Identify potential differences between RTL and synthesized netlist behavior.
+
+### Files Required
+
+The gate-level simulation requires the following files:
+
+| File | Purpose |
+|---|---|
+| `parking_controller.v` | Original RTL design, used for reference |
+| `tb_parking_controller.v` | Testbench providing clock, reset, entry, and exit inputs |
+| `synth_netlist.v` | Synthesized gate-level netlist generated by the synthesis flow |
+| SKY130 standard-cell library models, when required | Provide functional models for mapped standard cells |
+
+The actual netlist filename depends on the synthesis flow and output configuration.
+
+### Gate-Level Simulation Flow
+
+The GLS process follows these steps:
+
+1. Synthesize the RTL design.
+2. Obtain the synthesized gate-level netlist.
+3. Prepare the testbench and required cell models.
+4. Compile the netlist and testbench.
+5. Run the simulation.
+6. Inspect the output signals and waveform.
+7. Compare the observed behavior against the RTL simulation.
+
+### Simulation Commands
+
+If the synthesized netlist is a self-contained Verilog file named `synth_netlist.v`, the following commands illustrate the basic flow:
+
+```bash
+iverilog -g2012 -s tb_parking_controller \
+  -o gls.vvp \
+  synth_netlist.v \
+  tb/tb_parking_controller.v
+```
+
+Run the compiled simulation:
+
+```bash
+vvp gls.vvp
+```
+
+Open the waveform if the testbench generates `parking_rtl.vcd`:
+
+```bash
+gtkwave parking_rtl.vcd
+```
+
+
+
+### Functional Checks
+
+| Test Case | Expected Behavior |
+|---|---|
+| Reset | Occupancy becomes zero and gate closes |
+| Valid entry | Occupancy increases by one |
+| Entry when full | Occupancy remains four |
+| Valid exit | Occupancy decreases by one |
+| Exit when empty | Occupancy remains zero |
+| Warning status | High at occupancy three or four |
+| Full status | High at occupancy four |
+| Empty status | High at occupancy zero |
+
+The actual results must be confirmed by running the simulation and inspecting the output or waveform.
+
+### Timing-Aware Gate-Level Simulation
+
+A gate-level netlist can be simulated with or without timing information.
+
+- **Functional GLS:** Checks logical behavior without detailed cell timing delays.
+- **Timing-aware GLS:** Uses appropriate timing-annotated netlists and delay information, commonly through SDF annotation, to examine timing-related behavior.
+
+Timing-aware GLS requires the correct netlist, cell timing models, SDF file, and simulator setup. It is distinct from Static Timing Analysis (STA), which checks timing constraints analytically.
+
+### Conclusion
+
+Gate-Level Simulation provides an additional verification step after RTL synthesis. It helps confirm that the synthesized hardware representation preserves the intended parking-controller functionality.
+
+## GLS Simulation Waveform:
+
+<img width="885" height="142" alt="Screenshot 2026-10-21 152321" src="https://github.com/user-attachments/assets/1f795084-a153-4813-8d4d-298acf2dc53b" />
+
+<img width="1191" height="1078" alt="Screenshot 2026-10-21 135851" src="https://github.com/user-attachments/assets/813a276e-1da8-4c36-a5ad-2ac15faaad63" />
+
+## RTL and Gate-Level Simulation Waveform Comparison
+
+### Introduction
+
+RTL simulation and Gate-Level Simulation (GLS) are used to verify the functionality of the parking controller at different stages of the ASIC design flow.
+
+RTL simulation verifies the original Verilog design, while GLS verifies the synthesized gate-level netlist. Both simulations should demonstrate equivalent logical behavior when the same input sequences are applied.
+
+### RTL Simulation vs. Gate-Level Simulation
+
+| Parameter | RTL Simulation | Gate-Level Simulation (GLS) |
+|---|---|---|
+| Design representation | Behavioral Verilog RTL | Synthesized gate-level netlist |
+| Purpose | Verify the intended design functionality | Verify the functionality of the synthesized design |
+| Simulation inputs | Clock, reset, entry, and exit | Same testbench input sequences |
+| Occupancy counter | Updates according to the RTL logic | Expected to follow the same logical behavior |
+| Warning, full, and empty signals | Generated from the occupancy count | Expected to match the RTL behavior |
+| Gate-open signal | Indicates accepted entry or exit requests | Expected to follow the same logical behavior |
+| Timing behavior | Generally uses RTL simulation semantics | May include cell delays, depending on the simulation setup |
+
+### Waveform Behavior
+
+The following behaviors should be consistent between RTL simulation and GLS:
+
+- Reset initializes the occupancy count to zero and closes the gate.
+- Valid vehicle entries increase the occupancy count up to four.
+- Additional entry requests are rejected when the parking area is full.
+- Valid vehicle exits decrease the occupancy count.
+- Additional exit requests are rejected when the parking area is empty.
+- The warning signal is high when three or four slots are occupied.
+- The full signal is high when all four slots are occupied.
+- The empty signal is high when no slots are occupied.
+- The gate-open signal becomes high when an entry or exit request is accepted.
+
+### Timing Differences
+
+In functional GLS without modeled cell delays, RTL and GLS should exhibit equivalent logical behavior.
+
+In timing-aware GLS, transitions may occur at different times because of standard-cell propagation delays and other modeled timing effects. Therefore, the waveforms may not be visually identical even when the logical behavior is correct.
+
+###  Waveform Comparison
+
+To compare the waveforms:
+
+1. Apply the same testbench stimulus to the RTL and synthesized netlist.
+2. Open the respective waveform files in GTKWave.
+3. Compare the occupancy count and status signals.
+4. Check whether entry and exit boundary conditions behave as expected.
+5. Investigate any unexpected logical differences.
+
+### Conclusion
+
+RTL simulation and Gate-Level Simulation provide complementary verification stages in the ASIC design flow. RTL simulation verifies the intended functionality, while GLS checks whether the synthesized netlist preserves that functionality.
+
+
+
+
+
+## Technology Mapping Using Yosys
+
+### What Is Technology Mapping
+
+Technology mapping is the process of converting a generic synthesized logic network into cells available in a specific standard-cell library.
+
+In this project, Yosys is used to synthesize the `parking_controller` RTL, and the SKY130 HD standard-cell library provides the target cells for ASIC implementation.
+
+Examples of standard cells include:
+- AND, OR, and NOT gates
+- Multiplexers
+- Flip-flops
+- Buffers
+
+### Technology Mapping Flow
+
+The technology-mapping process follows these steps:
+
+1. Read the Verilog RTL file.
+2. Check the design hierarchy.
+3. Convert procedural logic into an internal representation.
+4. Optimize the synthesized logic.
+5. Map the logic to cells in the SKY130 HD library.
+6. Generate the mapped gate-level netlist.
+7. Inspect the mapped netlist and cell statistics.
+
+### Yosys Commands
+
+The following commands illustrate technology mapping using the SKY130 HD standard-cell library.
+
+```bash
+yosys
+```
+
+Inside the Yosys prompt:
+
+```tcl
+read_verilog rtl/parking_controller.v
+hierarchy -check -top parking_controller
+synth -top parking_controller
+dfflibmap -liberty /path/to/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty /path/to/sky130_fd_sc_hd__tt_025C_1v80.lib
+clean
+stat -liberty /path/to/sky130_fd_sc_hd__tt_025C_1v80.lib
+write_verilog -noattr reports/parking_controller_mapped.v
+```
+
+**Important:** Replace `/path/to/sky130_fd_sc_hd__tt_025C_1v80.lib` with the actual path to the SKY130 HD Liberty file on your system. Ensure the `reports` directory exists before writing the output netlist.
+
+### Mapping Results
+
+After technology mapping, inspect the Yosys statistics and generated netlist to identify the standard cells used to implement the controller.
+
+Record the following results after running the commands:
+
+| Parameter | Result |
+|---|---|
+| Target library | SKY130 HD |
+| Top module | `parking_controller` |
+| Mapped standard-cell count | To be verified |
+| Flip-flop count | To be verified |
+| Combinational cell count | To be verified |
+| Mapped netlist | `reports/parking_controller_mapped.v` |
+
+### Technology Mapping vs. Physical Design
+
+Technology mapping produces a standard-cell netlist. Physical design then places these cells, builds the clock tree, routes the connections, and performs physical verification and timing analysis.
+
+The OpenLane flow can perform technology mapping as part of its synthesis stage. The standalone Yosys commands above are provided to help inspect the mapping process independently.
+
+
+# Figures:
+
+<img width="885" height="142" alt="Screenshot 2026-10-21 152321" src="https://github.com/user-attachments/assets/0e104eda-c8a3-48a4-8f77-067d0773a124" />
+
+
+<img width="1853" height="656" alt="Screenshot 2026-10-21 140606" src="https://github.com/user-attachments/assets/2a4891de-49d4-494c-9280-0a0107d9cae6" />
+
+
+<img width="891" height="370" alt="Screenshot 2026-10-21 152601" src="https://github.com/user-attachments/assets/354c43f0-944b-47a7-8fa5-c90d56eb21e3" />
+
+
+<img width="887" height="126" alt="Screenshot 2026-10-21 142217" src="https://github.com/user-attachments/assets/dc1e5900-1606-4567-b095-25494a98ada7" />
