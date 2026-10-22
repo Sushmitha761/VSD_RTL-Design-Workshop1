@@ -2,9 +2,9 @@
 # 🚗 Four-Slot Smart Parking Controller ASIC
 
 <p align="center">
-  <img src="https://img.shields.io/badge/ASIC-Design-blueviolet?style=for-the-badge&logo=semiconductor" alt="ASIC Design"/>
-  <img src="https://img.shields.io/badge/Verilog-HDL-blue?style=for-the-badge" alt="Verilog HDL"/>
-  <img src="https://img.shields.io/badge/Technology-SKY130%20HD-orange?style=for-the-badge" alt="SKY130 HD"/>
+  <img src="https://img.shields.io/badge/ASIC-Digital_Design-blueviolet?style=for-the-badge" alt="ASIC Digital Design"/>
+  <img src="https://img.shields.io/badge/HDL-Verilog-blue?style=for-the-badge" alt="Verilog HDL"/>
+  <img src="https://img.shields.io/badge/Technology-SKY130_HD-orange?style=for-the-badge" alt="SKY130 HD"/>
   <img src="https://img.shields.io/badge/STA-Multi--Corner-success?style=for-the-badge" alt="Multi-Corner STA"/>
 </p>
 
@@ -13,123 +13,271 @@
 </p>
 
 <p align="center">
-  A small-scale digital parking controller taken through an ASIC implementation workflow using open-source EDA tools and the SKY130 HD standard-cell library.
+  A digital parking controller implemented using Verilog HDL and explored through an open-source ASIC design flow.
 </p>
 
 ---
 
-## 💡 About the Project
+## 💡 1. Project Overview
 
-**What if a parking controller could be designed as a real digital hardware circuit?**
+The **Four-Slot Smart Parking Controller ASIC** is a Verilog-based digital hardware design that manages parking occupancy for a maximum of four vehicles. It processes vehicle entry and exit requests, tracks the number of occupied slots, and generates status and control signals based on the current parking state.
 
-The Four-Slot Smart Parking Controller is a Verilog-based digital system that manages parking occupancy for up to four vehicles. It processes vehicle entry and exit requests, maintains the slot count, and generates status signals based on the current parking state.
+This project explores the journey from Register Transfer Level (RTL) design to logic synthesis, standard-cell technology mapping, physical design, static timing analysis, and GDSII layout generation using the SKY130 High-Density (HD) standard-cell library.
 
-This project goes beyond writing RTL. It explores the journey from a hardware description to a technology-mapped netlist, physical implementation, timing reports, and GDSII layout.
+The primary objective is to understand how a small digital controller can be designed, verified, synthesized, physically implemented, and evaluated using open-source Electronic Design Automation (EDA) tools.
 
-> 🎯 **Project Focus:** Small digital ASIC design, SKY130 HD implementation, and multi-corner static timing analysis.
+> 🎯 **Project Focus:** Digital RTL design, ASIC physical implementation, and multi-corner static timing analysis.
 
-## ✨ Key Features
+## ✨ 2. Key Features
 
 | Feature | Description |
 |:--|:--|
-| 🚘 Four-slot capacity | Tracks occupancy for a parking area with four spaces |
+| 🚘 Four-slot capacity | Manages occupancy for a parking area with four spaces |
 | 🔄 Entry/exit control | Processes vehicle entry and exit requests |
 | 🔢 Occupancy tracking | Reports the current occupied-slot count |
-| 🚦 Status generation | Provides full, empty, gate-control, and warning outputs |
-| 🧪 RTL verification | Uses Verilog testbenches and simulation waveforms |
-| ⚙️ Logic synthesis | Synthesizes the design and maps it to SKY130 HD cells |
+| 🚦 Status generation | Produces full, empty, gate-control, and warning signals |
+| 🧪 RTL verification | Uses testbenches and simulation waveforms |
+| ⚙️ Logic synthesis | Synthesizes the design using Yosys |
+| 🧩 Technology mapping | Targets SKY130 HD standard cells |
 | 🏗️ Physical implementation | Covers floorplanning, placement, CTS, and routing |
-| ⏱️ Multi-corner STA | Evaluates setup and minimum-path timing at TT, SS, and FF corners |
-| 🧩 Layout generation | Produces a GDSII layout through the ASIC flow |
+| ⏱️ Multi-corner STA | Evaluates timing under TT, SS, and FF conditions |
+| 💾 Layout generation | Produces a GDSII layout through the ASIC flow |
 
-## 🏛️ System Architecture
+## 🧩 3. System Block Diagram
 
 ```mermaid
-flowchart TD
-    A["Vehicle Entry Request"] --> D["Parking Controller RTL"]
-    B["Vehicle Exit Request"] --> D
-    C["Clock and Reset"] --> D
-    D --> E["Occupancy Counter"]
-    D --> F["Status and Control Logic"]
-    E --> G["Slot Count"]
-    F --> H["Full / Empty"]
-    F --> I["Gate Control / Warning"]
-    style D fill:#6C5CE7,color:#FFFFFF,stroke:#4834D4
-    style E fill:#0984E3,color:#FFFFFF,stroke:#0652DD
-    style F fill:#00B894,color:#FFFFFF,stroke:#00896A
+flowchart TB
+    subgraph INPUTS["INPUT INTERFACE"]
+        CLK["Clock"]
+        RST["Reset"]
+        ENTRY["Vehicle Entry Request"]
+        EXIT["Vehicle Exit Request"]
+    end
+
+    subgraph CORE["PARKING CONTROLLER"]
+        CTRL["Verilog RTL Controller"]
+        COUNT["Occupancy Counter"]
+        CHECK["Capacity and Status Logic"]
+    end
+
+    subgraph OUTPUTS["OUTPUT INTERFACE"]
+        SLOT["Slot Count"]
+        FULL["Full Status"]
+        EMPTY["Empty Status"]
+        GATE["Gate Control"]
+        WARN["Warning Signal"]
+    end
+
+    CLK --> CTRL
+    RST --> CTRL
+    ENTRY --> CTRL
+    EXIT --> CTRL
+    CTRL --> COUNT
+    COUNT --> CHECK
+    COUNT --> SLOT
+    CHECK --> FULL
+    CHECK --> EMPTY
+    CHECK --> GATE
+    CHECK --> WARN
+
+    style INPUTS fill:#EAF2FF,stroke:#2874A6,color:#17202A
+    style CORE fill:#F0E6FF,stroke:#764ABC,color:#17202A
+    style OUTPUTS fill:#E8F8F5,stroke:#148F77,color:#17202A
+    style CTRL fill:#764ABC,stroke:#512E5F,color:#FFFFFF
+    style COUNT fill:#2874A6,stroke:#1B4F72,color:#FFFFFF
+    style CHECK fill:#148F77,stroke:#0E6655,color:#FFFFFF
 ```
 
-The architecture represents the digital control logic. External sensors, a physical gate motor, and a real parking installation are not included in the current RTL design.
+### Block Diagram Explanation
 
-## 🔧 Design Specifications
+- **Input Interface:** Receives clock, reset, entry, and exit signals.
+- **RTL Controller:** Coordinates the digital parking-control operations.
+- **Occupancy Counter:** Tracks the occupied parking slots.
+- **Capacity and Status Logic:** Determines parking status and control outputs.
+- **Output Interface:** Provides slot count, full, empty, gate-control, and warning signals.
+
+The diagram represents the intended logical organization of the controller. The actual implementation details should be verified against the RTL source code.
+
+## 📋 4. Design Specifications
 
 <table>
   <tr><th align="left">Parameter</th><th align="left">Details</th></tr>
   <tr><td>Design name</td><td><code>parking_controller</code></td></tr>
-  <tr><td>Design category</td><td>Digital control / ASIC implementation</td></tr>
-  <tr><td>HDL</td><td>Verilog</td></tr>
-  <tr><td>Parking capacity</td><td>4 vehicles</td></tr>
+  <tr><td>Design type</td><td>Digital parking control logic</td></tr>
+  <tr><td>Hardware description language</td><td>Verilog HDL</td></tr>
+  <tr><td>Maximum parking capacity</td><td>4 vehicles</td></tr>
   <tr><td>Inputs</td><td><code>clk</code>, <code>reset</code>, <code>entry</code>, <code>exit</code></td></tr>
   <tr><td>Outputs</td><td><code>gate_open</code>, <code>full</code>, <code>empty</code>, <code>slot_count</code>, <code>warning</code></td></tr>
   <tr><td>Standard-cell library</td><td>SKY130 HD</td></tr>
-  <tr><td>Clock constraint</td><td>10 ns (100 MHz target)</td></tr>
+  <tr><td>Clock period constraint</td><td>10 ns (100 MHz target)</td></tr>
   <tr><td>Clock uncertainty</td><td>0.2 ns</td></tr>
-  <tr><td>Implementation flow</td><td>OpenLane</td></tr>
-  <tr><td>Timing analysis</td><td>OpenSTA</td></tr>
+  <tr><td>ASIC implementation flow</td><td>OpenLane</td></tr>
+  <tr><td>Static timing analysis</td><td>OpenSTA</td></tr>
+  <tr><td>Layout output format</td><td>GDSII</td></tr>
 </table>
 
-## 🛠️ EDA Tools & Technologies
+## 🧠 5. Algorithm
+
+The controller follows a clocked digital control algorithm.
+
+### Step-by-Step Procedure
+
+1. Start the controller.
+2. Wait for the active clock edge.
+3. Check whether reset is asserted.
+4. If reset is asserted, initialize the occupancy state according to the RTL reset logic.
+5. Otherwise, read the entry and exit requests.
+6. Process an accepted entry request when parking capacity is available.
+7. Process an accepted exit request when at least one vehicle is present.
+8. Update the occupancy state according to the implemented control logic.
+9. Generate the full and empty status signals based on occupancy.
+10. Generate gate-control and warning outputs according to the RTL conditions.
+11. Repeat the process during subsequent clock cycles.
+
+### Algorithm Pseudocode
+
+```text
+START
+
+Initialize the controller using reset
+
+REPEAT on every active clock edge:
+
+    IF reset is asserted:
+        Initialize occupancy state
+    ELSE:
+        Read entry and exit requests
+        Process requests according to RTL control logic
+        Update occupancy within supported capacity
+
+    Update:
+        slot_count
+        full
+        empty
+        gate_open
+        warning
+
+UNTIL operation stops
+
+END
+```
+
+**Note:** Simultaneous entry and exit requests must be handled according to the priority implemented in the actual RTL. The pseudocode describes the general algorithm and does not assume an unverified priority rule.
+
+## 🔄 6. Parking Controller Flowchart
+
+```mermaid
+flowchart TD
+    A(["START"]) --> B["Initialize Controller"]
+    B --> C{"Reset Asserted?"}
+
+    C -- Yes --> D["Reset Occupancy State"]
+    D --> H["Update Status Outputs"]
+
+    C -- No --> E["Read Entry and Exit Requests"]
+    E --> F{"Entry Request Accepted?"}
+
+    F -- Yes --> G{"Capacity Available?"}
+    G -- Yes --> I["Increment Occupancy"]
+    G -- No --> J["Maintain Occupancy"]
+
+    F -- No --> K{"Exit Request Accepted?"}
+    K -- Yes --> L{"Vehicle Present?"}
+    L -- Yes --> M["Decrement Occupancy"]
+    L -- No --> N["Maintain Occupancy"]
+
+    I --> H
+    J --> H
+    M --> H
+    N --> H
+
+    H --> O["Update Full, Empty, Gate and Warning Signals"]
+    O --> P(["Wait for Next Clock Cycle"])
+    P --> C
+
+    style A fill:#00B894,stroke:#00896A,color:#FFFFFF
+    style B fill:#2874A6,stroke:#1B4F72,color:#FFFFFF
+    style C fill:#F9CA24,stroke:#B7950B,color:#17202A
+    style F fill:#F9CA24,stroke:#B7950B,color:#17202A
+    style G fill:#F9CA24,stroke:#B7950B,color:#17202A
+    style L fill:#F9CA24,stroke:#B7950B,color:#17202A
+    style H fill:#764ABC,stroke:#512E5F,color:#FFFFFF
+    style O fill:#148F77,stroke:#0E6655,color:#FFFFFF
+    style P fill:#2874A6,stroke:#1B4F72,color:#FFFFFF
+```
+
+The flowchart illustrates the general entry/exit processing sequence. Before final submission, confirm that the decision order, reset behavior, and output-update conditions match the actual RTL implementation.
+
+## 🛠️ 7. EDA Tools and Technologies
 
 <p>
-  <img src="https://img.shields.io/badge/RTL-Verilog-00599C?style=flat-square" alt="Verilog"/>
-  <img src="https://img.shields.io/badge/Simulation-Icarus_Verilog-4B275F?style=flat-square" alt="Icarus Verilog"/>
-  <img src="https://img.shields.io/badge/Waveforms-GTKWave-2E8B57?style=flat-square" alt="GTKWave"/>
-  <img src="https://img.shields.io/badge/Synthesis-Yosys-CC5500?style=flat-square" alt="Yosys"/>
-  <img src="https://img.shields.io/badge/Physical_Design-OpenLane-0077B6?style=flat-square" alt="OpenLane"/>
-  <img src="https://img.shields.io/badge/Timing-OpenSTA-6A5ACD?style=flat-square" alt="OpenSTA"/>
-  <img src="https://img.shields.io/badge/PDK-SKY130_HD-FF8C00?style=flat-square" alt="SKY130 HD"/>
+  <img src="https://img.shields.io/badge/Verilog-HDL-blue?style=flat-square" alt="Verilog"/>
+  <img src="https://img.shields.io/badge/Icarus_Verilog-Simulation-purple?style=flat-square" alt="Icarus Verilog"/>
+  <img src="https://img.shields.io/badge/GTKWave-Waveforms-green?style=flat-square" alt="GTKWave"/>
+  <img src="https://img.shields.io/badge/Yosys-Synthesis-orange?style=flat-square" alt="Yosys"/>
+  <img src="https://img.shields.io/badge/OpenLane-ASIC_Flow-blue?style=flat-square" alt="OpenLane"/>
+  <img src="https://img.shields.io/badge/OpenSTA-Timing_Analysis-red?style=flat-square" alt="OpenSTA"/>
+  <img src="https://img.shields.io/badge/SKY130_HD-PDK-darkgreen?style=flat-square" alt="SKY130 HD"/>
 </p>
 
-| Tool | Purpose |
+| Tool / Technology | Purpose |
 |:--|:--|
-| Icarus Verilog | RTL and testbench simulation |
-| GTKWave | Waveform inspection |
+| Verilog HDL | RTL design |
+| Icarus Verilog | Functional simulation |
+| GTKWave | Waveform visualization |
 | Yosys | Logic synthesis and technology mapping |
 | OpenLane | Automated ASIC physical-design flow |
 | OpenSTA | Static timing analysis |
+| SKY130 HD PDK | Standard-cell library and process design kit |
 | Magic / layout viewers | Layout inspection and physical verification, where applicable |
 
-## 🔁 ASIC Implementation Workflow
+## 🏗️ 8. ASIC Implementation Workflow
 
 ```mermaid
 flowchart LR
     A["📝 RTL Design"] --> B["🧪 Simulation"]
     B --> C["⚙️ Synthesis"]
-    C --> D["🧱 Floorplan"]
+    C --> D["🧱 Floorplanning"]
     D --> E["📍 Placement"]
-    E --> F["⏱️ CTS"]
+    E --> F["⏱️ Clock Tree Synthesis"]
     F --> G["🛣️ Routing"]
-    G --> H["📊 Multi-Corner STA"]
-    H --> I["💾 GDSII"]
+    G --> H["📊 Static Timing Analysis"]
+    H --> I["💾 GDSII Layout"]
+
     style A fill:#0984E3,color:#FFFFFF
     style C fill:#6C5CE7,color:#FFFFFF
     style H fill:#00B894,color:#FFFFFF
     style I fill:#E17055,color:#FFFFFF
 ```
 
-## ⏱️ Multi-Corner Static Timing Analysis
+### Implementation Stages
 
-Timing analysis helps determine whether the design meets its timing constraints under different process, voltage, and temperature conditions.
+1. **RTL Design:** Develop the controller using Verilog HDL.
+2. **Functional Verification:** Test the design using simulation and testbenches.
+3. **Logic Synthesis:** Convert RTL into a synthesized gate-level representation.
+4. **Technology Mapping:** Map logic to SKY130 HD standard cells.
+5. **Floorplanning:** Define the initial physical organization of the design.
+6. **Placement:** Position standard cells within the floorplan.
+7. **Clock Tree Synthesis (CTS):** Build the clock distribution network.
+8. **Routing:** Connect cells through physical interconnects.
+9. **Static Timing Analysis:** Evaluate setup and hold timing.
+10. **GDSII Generation:** Generate the layout output through the implementation flow.
 
-| Corner | Operating condition | Purpose |
+## ⏱️ 9. Multi-Corner Static Timing Analysis
+
+Static timing analysis evaluates whether the implemented circuit satisfies the timing constraints under different process, voltage, and temperature (PVT) conditions.
+
+### Operating Corners
+
+| Corner | Operating Condition | Analysis Purpose |
 |:--|:--|:--|
-| 🟢 TT | 25°C, 1.80 V | Typical operating condition |
+| 🟢 TT | 25°C, 1.80 V | Typical operating conditions |
 | 🔵 SS | 100°C, 1.60 V | Slow-process timing evaluation |
-| 🟠 FF | −40°C, 1.95 V | Fast-process timing and minimum-path evaluation |
+| 🟠 FF | −40°C, 1.95 V | Fast-process and minimum-path evaluation |
 
-### 📊 Verified Post-Route Timing Summary
+### 📊 Post-Route Timing Summary
 
-The following values are taken from the detailed project STA logs. The hold-related column reports the smallest observed minimum-path-related slack, including relevant reset timing checks; it should not be confused with register-to-register hold slack alone.
+The following values are taken from the detailed project STA logs.
 
 | Metric | TT | SS | FF |
 |:--|--:|--:|--:|
@@ -137,76 +285,81 @@ The following values are taken from the detailed project STA logs. The hold-rela
 | Worst minimum-path-related slack | +0.374 ns | +0.407 ns | +0.150 ns |
 | Total negative slack (TNS) | 0.00 ns | 0.00 ns | 0.00 ns |
 
-**Timing observations**
+### Timing Observations
 
-- The SS corner has the lowest reported setup slack among these three corners.
-- The FF corner has the smallest reported minimum-path-related slack.
-- TNS is reported as zero for all three corners in the analyzed reports.
-- Final conclusions should be checked against timing coverage, constraints, and tool warnings.
+- **Setup:** The SS corner has the lowest reported setup slack among the three analyzed corners.
+- **Minimum-path timing:** The FF corner has the smallest reported minimum-path-related slack.
+- **TNS:** The analyzed reports show zero total negative slack at all three corners.
+- **Further review:** Timing coverage, constraints, path types, and tool warnings should be reviewed before drawing sign-off conclusions.
 
-> ⚠️ These are project-reported timing results, not a claim of silicon validation. Liberty warnings and timing coverage should be reviewed before treating the analysis as sign-off quality.
+> ⚠️ **Important:** The minimum-path-related slack column represents the smallest observed minimum-path-related timing check, including relevant reset timing checks. It should not be interpreted as register-to-register hold slack alone. These are tool-reported results, not silicon validation or a claim of fabrication readiness.
 
-## 📂 Repository Structure
+### Timing Metrics Explained
 
-```text
-Four-Slot-Smart-Parking-ASIC/
-│
-├── README.md
-├── rtl/
-│   └── parking_controller.v
-├── tb/
-│   ├── tb_parking_controller.v
-│   └── tb_parking_gls.v
-├── constraints/
-│   └── parking_controller.sdc
-├── sta/
-│   ├── parking_controller_postroute_sta.tcl
-│   ├── parking_controller_postroute_ss.tcl
-│   └── parking_controller_postroute_ff.tcl
-├── reports/
-│   ├── multicorner_sta_verified_summary.txt
-│   ├── postroute_tt_sta.log
-│   ├── postroute_ss_sta.log
-│   ├── postroute_ff_sta.log
-│   └── graphs/
-└── physical_design/
-    └── images/
-```
+- **Setup Slack:** Indicates the margin available for data to arrive before the required setup time.
+- **Hold Slack:** Indicates the margin available to satisfy hold-time requirements.
+- **Worst Slack:** The smallest slack for the timing-check category being reported.
+- **TNS:** Total negative slack across violating paths; zero TNS means no negative slack was reported for the included checks.
 
-*The structure above describes the intended documentation layout. Add only files that exist in the repository, and update filenames to match the actual uploaded files.*
+*This is the intended documentation structure. Upload the actual files and adjust filenames to match the contents of the repository.*
 
-## 📈 Project Deliverables
+## 📦 Project Deliverables
 
 - Verilog RTL source code.
-- Functional and gate-level testbenches.
-- Simulation waveforms and verification results.
-- Synthesized netlist and synthesis reports.
-- Physical-design stage reports and layout screenshots.
-- Multi-corner STA scripts, logs, and graphs.
+- Functional and gate-level simulation testbenches.
+- Simulation waveforms and verification logs.
+- Synthesized gate-level netlist.
+- Physical-design reports and stage screenshots.
+- Multi-corner STA scripts, logs, summaries, and graphs.
 - GDSII layout and applicable physical verification reports.
 
-## 🚀 Future Enhancements
+## 🚀 10. Future Enhancements
 
-- Interface with real parking sensors.
-- Add a display for available parking spaces.
-- Integrate a gate-driver interface and external control hardware.
-- Add fault handling and improved request validation.
-- Explore power, performance, and area (PPA) optimization.
+The current project focuses on the digital control logic. The following enhancements could extend it toward a practical smart parking system.
 
-## 🎓 Skills Demonstrated
+- **🚘 Real-Time Vehicle Detection:** Integrate external sensors to detect vehicle entry and exit.
+- **📟 Slot Availability Display:** Add an LCD or seven-segment display to show parking availability.
+- **🚪 Automated Gate Interface:** Connect an appropriate external gate-driver interface.
+- **🔔 Alert Mechanism:** Add audible or visual alerts when the parking area is full.
+- **🛡️ Improved Safety Logic:** Introduce fault detection, invalid-request handling, and robust reset behavior.
+- **⚡ PPA Optimization:** Explore power, performance, and area improvements.
+- **📊 Enhanced Timing Analysis:** Investigate critical timing paths, timing coverage, and additional PVT conditions.
+- **🧪 Extended Verification:** Add boundary-condition tests, assertions, and more comprehensive test scenarios.
 
-`Verilog RTL` · `Functional Verification` · `Logic Synthesis` · `SKY130 HD` · `OpenLane` · `OpenSTA` · `Static Timing Analysis` · `PVT Corner Analysis` · `ASIC Physical Design` · `GDSII`
+These are proposed future enhancements and are not features claimed for the current RTL implementation.
 
-## 🏁 Conclusion
+## 🎓 11. Skills Demonstrated
 
-The Four-Slot Smart Parking Controller ASIC demonstrates a practical digital-design workflow from Verilog RTL to physical implementation. It combines functional verification, standard-cell synthesis, physical-design stages, and multi-corner timing evaluation in a compact hardware project.
+This project provides hands-on exposure to digital design and ASIC implementation concepts.
 
-The project provides hands-on experience with the tools and reports used to understand how a digital design behaves before fabrication.
+| Skill Area | Knowledge Demonstrated |
+|:--|:--|
+| 💻 RTL Design | Verilog modules and sequential control logic |
+| 🧪 Functional Verification | Testbench development and simulation |
+| 📈 Waveform Analysis | Signal inspection using GTKWave |
+| ⚙️ Logic Synthesis | Synthesis using Yosys |
+| 🧩 Technology Mapping | SKY130 HD standard-cell mapping |
+| 🏗️ Physical Design | Floorplanning, placement, CTS, and routing |
+| ⏱️ Static Timing Analysis | Setup timing, minimum-path timing, slack, and TNS |
+| 🌡️ PVT Analysis | Comparing TT, SS, and FF operating corners |
+| 📐 Physical Verification | Reviewing available DRC and LVS reports |
+| 💾 Layout Generation | Working with the GDSII format |
+| 📝 Technical Documentation | Organizing source files, scripts, reports, and results |
+
+## 🏁 12. Conclusion
+
+The **Four-Slot Smart Parking Controller ASIC** demonstrates a practical digital hardware design workflow using Verilog HDL and open-source EDA tools.
+
+The project connects RTL development and functional verification with logic synthesis, SKY130 HD technology mapping, physical-design stages, and multi-corner static timing analysis. It also provides experience in interpreting timing reports, reviewing implementation results, and documenting a digital design from RTL toward physical layout.
+
+The project establishes a foundation for further exploration of ASIC design, timing optimization, verification, and hardware integration.
+
+> 💡 **Key Takeaway:** A digital hardware design must be functionally verified, synthesized, physically implemented, and carefully evaluated before it can be considered ready for fabrication.
 
 ---
 
 <p align="center">
-  <b>Designed with Verilog HDL | Implemented with Open-Source ASIC Tools</b>
+  <b>🚗 Four-Slot Smart Parking Controller ASIC</b>
   <br/>
-  <sub>Four-Slot Smart Parking Controller ASIC · SKY130 HD</sub>
+  <i>Designed with Verilog HDL · Implemented using Open-Source ASIC Tools · Evaluated with Multi-Corner STA</i>
 </p>
