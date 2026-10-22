@@ -643,7 +643,572 @@ The project can be analyzed at different PVT corners using the corresponding SKY
 The exact voltage and temperature depend on the selected Liberty file. Each corner must use a compatible library and appropriate timing configuration.
 
 
+## -------------------------- ##
 
 
+## RTL Design — Four-Slot Smart Parking Occupancy and Gate Controller ASIC
 
+## 1. Introduction
+
+Register Transfer Level (RTL) design is an important stage in digital IC development. It describes the behavior of digital hardware using a Hardware Description Language (HDL), such as Verilog.
+
+In this project, Verilog HDL is used to implement a Four-Slot Smart Parking Occupancy and Gate Controller. The design manages parking occupancy, processes vehicle entry and exit requests, and generates status and gate-control signals.
+
+The RTL is designed to be synthesizable and suitable for functional verification, logic synthesis, and subsequent ASIC physical-design implementation using the SKY130 HD standard-cell platform.
+
+## 2. Design Objective
+
+The primary objective is to develop a compact digital controller that manages a parking area with a maximum capacity of four vehicles.
+
+The controller is designed to:
+- Maintain the number of occupied parking slots.
+- Accept valid vehicle entry requests when space is available.
+- Accept valid vehicle exit requests when at least one vehicle is parked.
+- Generate an early-warning signal when three or more slots are occupied.
+- Indicate when the parking area is full or empty.
+- Generate a gate-control signal for valid entry and exit operations.
+
+## 3. RTL Module Description
+
+**Module name:** `parking_controller`
+
+**Hardware description language:** Verilog HDL
+
+The design uses a 3-bit occupancy register, clocked sequential logic, arithmetic operations, and combinational comparison logic.
+
+### Input Signals
+
+| Signal | Description |
+|---|---|
+| `clk` | Clock input for sequential operations |
+| `reset` | Asynchronous active-high reset |
+| `entry` | Vehicle entry request |
+| `exit` | Vehicle exit request |
+
+### Output Signals
+
+| Signal | Description |
+|---|---|
+| `slot_count[2:0]` | Current number of occupied parking slots |
+| `warning` | High when occupancy reaches three or more |
+| `full` | High when all four slots are occupied |
+| `empty` | High when no vehicles are parked |
+| `gate_open` | Gate-control output |
+
+## 4. RTL Architecture
+
+The controller consists of the following functional blocks:
+
+1. **Occupancy register:** Stores the number of occupied slots.
+2. **Increment and decrement logic:** Updates occupancy after valid entry and exit requests.
+3. **Comparator logic:** Generates warning, full, and empty status signals.
+4. **Control logic:** Checks entry and exit conditions and controls the gate output.
+5. **Reset logic:** Initializes the occupancy count and gate-control output.
+
+## 5. Occupancy Counter Operation
+
+The design uses a 3-bit register to represent parking occupancy.
+
+| Occupancy | Binary value | Status |
+|---:|:---:|---|
+| 0 | `000` | Empty |
+| 1 | `001` | Space available |
+| 2 | `010` | Space available |
+| 3 | `011` | Warning active |
+| 4 | `100` | Full and warning active |
+
+Three bits are sufficient to represent all required occupancy values from zero through four.
+
+## 6. Entry and Exit Control
+
+### Vehicle Entry
+
+When `entry = 1`, `exit = 0`, and `slot_count < 4`, the controller increments the occupancy count and sets `gate_open` to `1`.
+
+If all four slots are occupied, an additional entry request does not increase the count.
+
+### Vehicle Exit
+
+When `exit = 1`, `entry = 0`, and `slot_count > 0`, the controller decrements the occupancy count and sets `gate_open` to `1`.
+
+If the parking area is already empty, an exit request does not decrease the count below zero.
+
+### Simultaneous Requests
+
+When both `entry` and `exit` are asserted, neither request is accepted by the current control logic, and the occupancy count remains unchanged.
+
+## 7. Reset and Sequential Logic
+
+The design uses the following clocked process:
+
+```verilog
+always @(posedge clk or posedge reset)
+```
+
+The asynchronous, active-high reset initializes:
+- `slot_count = 0`
+- `gate_open = 0`
+
+During normal operation, the occupancy register and gate-control output are updated according to the clock and input conditions.
+
+## 8. Functional Verification
+
+The RTL is verified using a Verilog testbench.
+
+The testbench applies clock and reset signals and exercises:
+- Vehicle entry requests.
+- Filling all four parking slots.
+- An additional entry request when the parking area is full.
+- A vehicle exit request.
+- Repeated exit requests near the empty boundary.
+
+Icarus Verilog is used to compile and simulate the design. GTKWave can be used to inspect the generated `parking_rtl.vcd` waveform.
+
+## 9. Synthesis and ASIC Implementation
+
+After functional verification, the RTL can be synthesized using Yosys and mapped to the SKY130 HD standard-cell library.
+
+The design is then processed through the configured OpenLane/OpenROAD physical-design flow. OpenSTA is used to analyze timing using the relevant constraints, libraries, and parasitic data.
+
+## RTL Design Code:
+
+```verilog
+module parking_controller (
+    input  wire       clk,
+    input  wire       reset,
+    input  wire       entry,
+    input  wire       exit,
+    output reg  [2:0] slot_count,
+    output wire       warning,
+    output wire       full,
+    output wire       empty,
+    output reg        gate_open
+);
+
+    // Early warning when 3 or more slots are occupied
+    assign warning = (slot_count >= 3);
+
+    // Parking status indicators
+    assign full  = (slot_count == 4);
+    assign empty = (slot_count == 0);
+
+    // Occupancy counter and gate-control logic
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            slot_count <= 0;
+            gate_open  <= 0;
+        end else begin
+            gate_open <= 0;
+
+            // Accept vehicle entry if parking is not full
+            if (entry && !exit && (slot_count < 4)) begin
+                slot_count <= slot_count + 1;
+                gate_open  <= 1;
+            end
+
+            // Accept vehicle exit if parking is not empty
+            else if (exit && !entry && (slot_count > 0)) begin
+                slot_count <= slot_count - 1;
+                gate_open  <= 1;
+            end
+        end
+    end
+
+endmodule
+```
+## TestBench Code:
+
+```verilog
+`timescale 1ns/1ps
+
+module tb_parking_controller;
+
+    reg clk;
+    reg reset;
+    reg entry;
+    reg exit;
+
+    wire [2:0] slot_count;
+    wire warning;
+    wire full;
+    wire empty;
+    wire gate_open;
+
+    // Instantiate the parking controller
+    parking_controller dut (
+        .clk(clk),
+        .reset(reset),
+        .entry(entry),
+        .exit(exit),
+        .slot_count(slot_count),
+        .warning(warning),
+        .full(full),
+        .empty(empty),
+        .gate_open(gate_open)
+    );
+
+    // Generate 10 ns clock period
+    always #5 clk = ~clk;
+
+    initial begin
+        // Generate waveform file
+        $dumpfile("parking_rtl.vcd");
+        $dumpvars(0, tb_parking_controller);
+
+        // Initialize signals
+        clk = 0;
+        reset = 1;
+        entry = 0;
+        exit = 0;
+
+        // Apply reset
+        #10;
+        reset = 0;
+
+        // Test vehicle entries: occupancy 0 to 4
+        repeat (4) begin
+            @(negedge clk);
+            entry = 1;
+
+            @(negedge clk);
+            $display(
+                "Count=%0d Warning=%b Full=%b Empty=%b Gate=%b",
+                slot_count, warning, full, empty, gate_open
+            );
+            entry = 0;
+        end
+
+        // Test entry when parking is full
+        @(negedge clk);
+        entry = 1;
+
+        @(negedge clk);
+        $display(
+            "After extra entry: Count=%0d Full=%b",
+            slot_count, full
+        );
+        entry = 0;
+
+        // Test vehicle exit
+        @(negedge clk);
+        exit = 1;
+
+        @(negedge clk);
+        $display(
+            "After exit: Count=%0d Warning=%b Full=%b",
+            slot_count, warning, full
+        );
+        exit = 0;
+
+        // Test exit when parking is empty
+        repeat (3) begin
+            @(negedge clk);
+            exit = 1;
+
+            @(negedge clk);
+            exit = 0;
+        end
+
+        $display(
+            "Final Count=%0d Empty=%b",
+            slot_count, empty
+        );
+
+        #10;
+        $finish;
+    end
+
+endmodule
+```
+
+## Explanation :
+
+he Four-Slot Smart Parking Occupancy and Gate Controller is a digital hardware design implemented using Verilog HDL. It monitors parking occupancy, controls entry and exit requests, and generates status signals to indicate whether the parking area is empty, nearly full, or completely full.
+
+The design supports a maximum of four vehicles. It uses sequential logic to update the occupancy count and combinational logic to generate parking status indicators.
+
+he Four-Slot Smart Parking Occupancy and Gate Controller is a digital hardware design implemented using Verilog HDL. It monitors parking occupancy, controls entry and exit requests, and generates status signals to indicate whether the parking area is empty, nearly full, or completely full.
+
+The design supports a maximum of four vehicles. It uses sequential logic to update the occupancy count and combinational logic to generate parking status indicators.
+
+This project demonstrates the RTL design and functional verification stages of a basic ASIC design flow.
+
+2. Design Objectives
+
+Track the number of occupied parking slots.
+
+Accept vehicle entry requests when parking space is available.
+
+Accept vehicle exit requests when at least one vehicle is parked.
+
+Prevent occupancy from exceeding four vehicles.
+
+Prevent occupancy from decreasing below zero.
+
+Generate an early warning when three or more slots are occupied.
+
+Generate full and empty status signals.
+
+Control the gate-open indication for accepted entry and exit requests.
+
+Verify the functionality using a Verilog testbench and waveform simulation.
+
+## 3.RTL Design Overview
+Top module: parking_controller
+
+Hardware description language: Verilog HDL
+
+The RTL design contains sequential and combinational logic.
+
+3.1 Input Signals
+
+Signal
+
+Width
+
+Description
+
+clk
+
+1 bit
+
+Clock signal for sequential operation
+
+reset
+
+1 bit
+
+Active-high asynchronous reset
+
+entry
+
+1 bit
+
+Vehicle entry request
+
+exit
+
+1 bit
+
+Vehicle exit request
+
+3.2 Output Signals
+
+Signal
+
+Width
+
+Description
+
+slot_count
+
+3 bits
+
+Number of occupied slots, from 0 to 4
+
+warning
+
+1 bit
+
+High when three or more slots are occupied
+
+full
+
+1 bit
+
+High when all four slots are occupied
+
+empty
+
+1 bit
+
+High when no slots are occupied
+
+gate_open
+
+1 bit
+
+High for an accepted entry or exit operation
+
+4. RTL Design Architecture
+
+The design consists of the following functional blocks:
+
+4.1 Occupancy Counter
+
+The slot_count register stores the current number of occupied parking slots.
+
+It increments by one for a valid entry request.
+
+It decrements by one for a valid exit request.
+
+It resets to zero when reset is asserted.
+
+Its valid operating range is zero to four.
+
+Although the register is three bits wide, the control logic restricts the occupancy count to the range required for four parking slots.
+
+4.2 Entry Control Logic
+
+When entry = 1, exit = 0, and slot_count < 4, the design increments the occupancy count and sets gate_open to high.
+
+When the parking area is full, additional entry requests are rejected.
+
+4.3 Exit Control Logic
+
+When exit = 1, entry = 0, and slot_count > 0, the design decrements the occupancy count and sets gate_open to high.
+
+When the parking area is empty, additional exit requests are rejected.
+
+4.4 Parking Status Logic
+
+The design generates three status indicators:
+
+Warning: Activated when three or four slots are occupied.
+
+Full: Activated when the occupancy count reaches four.
+
+Empty: Activated when the occupancy count is zero.
+
+These signals are derived from the current occupancy count using combinational logic.
+
+4.5 Gate Control Logic
+
+The gate_open output is cleared by default on each active clock edge during normal operation. It becomes high when a valid entry or exit operation is accepted.
+
+This output is a digital gate-control indication. Driving a real gate motor requires additional driver circuitry and suitable control hardware.
+
+5. RTL Code Explanation
+
+The main RTL file is rtl/parking_controller.v.
+
+5.1 Module Declaration
+
+The module declaration defines the inputs and outputs of the parking controller. The slot_count register is three bits wide, allowing it to represent values from zero to seven, while the design logic limits valid occupancy to zero through four.
+
+5.2 Combinational Assignments
+
+The assign statements continuously derive warning, full, and empty from slot_count.
+
+This avoids the need for separate registers for these status outputs.
+
+5.3 Sequential Logic
+
+The always @(posedge clk or posedge reset) block describes the sequential behavior of the design.
+
+The asynchronous active-high reset clears the occupancy counter and closes the gate indication immediately when reset is asserted. Otherwise, the counter and gate-control register update in response to the clock and input requests.
+
+5.4 Nonblocking Assignments
+
+The <= operator is used for register assignments. Nonblocking assignments are appropriate for modeling clocked sequential logic in Verilog.
+
+6. Testbench Overview
+
+The testbench file is testbench/tb_parking_controller.v.
+
+Testbench module: tb_parking_controller
+
+The testbench verifies the parking controller by applying input sequences and observing the output signals. It instantiates the design under test and generates a clock, reset, entry requests, and exit requests.
+
+The testbench does not represent physical parking hardware. It is a simulation environment used to verify the digital RTL.
+
+7. Testbench Code Explanation
+
+7.1 Timescale Directive
+
+The directive `timescale 1ns/1ps specifies a simulation time unit of one nanosecond and a time precision of one picosecond.
+
+7.2 Signal Declaration
+
+The testbench declares clk, reset, entry, and exit as registers because the testbench drives these signals.
+
+The outputs of the design are declared as wires because they are driven by the instantiated module.
+
+7.3 Design Instantiation
+
+The parking_controller module is instantiated as dut, meaning Design Under Test.
+
+The instance connects the testbench signals to the corresponding RTL inputs and outputs.
+
+7.4 Clock Generation
+
+The statement always #5 clk = ~clk; toggles the clock every five nanoseconds, producing a clock period of ten nanoseconds.
+
+7.5 Waveform Generation
+
+The $dumpfile and $dumpvars system tasks generate a VCD waveform file named parking_rtl.vcd.
+
+This file can be opened in GTKWave to inspect the clock, reset, entry, exit, occupancy count, warning, full, empty, and gate-open signals over simulation time.
+
+7.6 Reset Test
+
+The testbench initially asserts reset and initializes the input signals. After ten nanoseconds, reset is deasserted so that normal operation can begin.
+
+7.7 Vehicle Entry Test
+
+The testbench applies four entry requests to increase occupancy from zero to four. It displays the occupancy and status outputs for inspection.
+
+7.8 Entry When Full
+
+After the occupancy reaches four, the testbench applies another entry request. The expected behavior is that the occupancy remains four and the full indicator remains high.
+
+7.9 Vehicle Exit Test
+
+The testbench applies an exit request. The expected behavior is that occupancy decreases from four to three, the full indicator becomes low, and the warning indicator remains high.
+
+7.10 Exit When Empty
+
+The testbench applies additional exit requests. The expected behavior is that the occupancy count never becomes negative and remains zero once the parking area is empty.
+
+7.11 Simulation Completion
+
+The $display statements print selected output values to the simulator console. The $finish statement terminates the simulation.
+
+The testbench currently uses printed output rather than automatic assertions, so the results must be inspected to confirm the expected behavior.
+
+## Functional Verification Plan
+
+Test case
+
+Expected behavior
+
+Reset
+
+Occupancy becomes zero and gate closes
+
+Valid entry
+
+Occupancy increases by one
+
+Entry until full
+
+Occupancy reaches four
+
+Entry while full
+
+Occupancy remains four
+
+Valid exit
+
+Occupancy decreases by one
+
+Exit while empty
+
+Occupancy remains zero
+
+Warning threshold
+
+Warning is high at occupancy three or four
+
+Full indication
+
+Full is high only at occupancy four
+
+Empty indication
+
+Empty is high only at occupancy zero
+
+Simultaneous entry and exit
+
+Neither request is accepted; occupancy holds
 
