@@ -1,10 +1,6 @@
 # 🚗 Four-Slot Smart Parking Occupancy and Gate Controller ASIC
+<img width="1456" height="816" alt="image" src="https://github.com/user-attachments/assets/0b605fa7-92c7-44af-b23f-8e2f2e51951c" />
 
-<p align="center">
-  <img src="physical_design/images/routing.png" alt="Smart Parking ASIC Physical Design" width="700">
-</p>
-
-<p align="center">
   <b>A Verilog-Based Digital Controller Implemented Using the SKY130 ASIC Design Flow</b>
 </p>
 
