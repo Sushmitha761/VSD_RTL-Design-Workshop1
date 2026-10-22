@@ -1,4 +1,4 @@
-# 🚗 Four-Slot Smart Parking Controller ASIC
+# 🚗  Four-Slot Smart Parking Occupancy and Gate Controller ASIC
 
 <p align="center">
   <img src="https://img.shields.io/badge/ASIC-Digital_Design-blueviolet?style=for-the-badge" alt="ASIC Digital Design"/>
