@@ -62,7 +62,7 @@ The project demonstrates practical digital-design concepts, including counters, 
 
 The four-slot controller can serve as a reference architecture for designing larger-capacity systems. Increasing the capacity would require appropriate counter sizing, updated status comparisons, and additional verification.
 
-## 4. Benefits
+##  Benefits
 
 - Tracks parking occupancy digitally.
 - Prevents the occupancy count from exceeding the configured capacity.
@@ -253,67 +253,29 @@ This output is a digital control signal. A physical gate motor would require add
 
 The RTL is synthesized using Yosys and mapped to the SKY130 HD standard-cell library. The ASIC flow then uses OpenLane and OpenROAD for physical-design stages, with OpenSTA used for static timing analysis.
 
-## 5.Tools, Languages and Linux Commands Used
+## 5.Tools, Languages and Linux Commands Used:
 
-## 1. Programming Languages
+ ## 1. Programming Languages
 
-Language
-
-Purpose
-
-Verilog HDL
-
-RTL design of the parking controller
-
-Verilog Testbench
-
-Functional verification of the RTL
-
-Tcl
-
-Automation and configuration of synthesis, physical design, and timing analysis
-
-Linux Shell / Bash
-
-Executing commands and managing project files
+| Language | Purpose |
+|---|---|
+| **Verilog HDL** | RTL design of the parking controller |
+| **Verilog Testbench** | Functional verification of the RTL |
+| **Tcl** | Automation and configuration of synthesis, physical design, and timing analysis |
+| **Linux Shell / Bash** | Executing commands and managing project files |
 
 ## 2. Tools Used in the Project
 
-Tool
-
-Purpose
-
-Icarus Verilog
-
-RTL and testbench simulation
-
-GTKWave
-
-Viewing simulation waveforms
-
-Yosys
-
-RTL synthesis and logic optimization
-
-OpenLane
-
-ASIC implementation flow
-
-OpenROAD
-
-Floorplanning, placement, clock-tree synthesis, and routing
-
-OpenSTA
-
-Static timing analysis
-
-Magic
-
-Layout inspection and physical-design visualization
-
-SKY130 HD PDK
-
-Standard-cell library and technology files
+| Tool | Purpose |
+|---|---|
+| **Icarus Verilog** | RTL and testbench simulation |
+| **GTKWave** | Viewing simulation waveforms |
+| **Yosys** | RTL synthesis and logic optimization |
+| **OpenLane** | ASIC implementation flow |
+| **OpenROAD** | Floorplanning, placement, clock-tree synthesis, and routing |
+| **OpenSTA** | Static timing analysis |
+| **Magic** | Layout inspection and physical-design visualization |
+| **SKY130 HD PDK** | Standard-cell library and technology files |
 
 ## 3. Linux Commands Used
 
@@ -321,232 +283,268 @@ The following commands help navigate directories, inspect RTL files, run simulat
 
 ## 3.1 Directory Navigation
 
+
+### Commands
+
+```bash
 pwd
 ls
 ls -lh
 cd ~/Desktop/four_slot_smart_parking
+```
 
-pwd — displays the current directory.
+### Command Explanation
 
-ls — lists files and directories.
-
-ls -lh — displays file sizes in a readable format.
-
-cd — changes the working directory.
+| Command | Purpose |
+|---|---|
+| `pwd` | Displays the current working directory |
+| `ls` | Lists files and directories |
+| `ls -lh` | Displays file and directory sizes in a human-readable format |
+| `cd ~/Desktop/four_slot_smart_parking` | Changes the working directory to the parking project folder |
 
 ## 3.2 Inspecting Project Files
 
+### Commands
+
+```bash
 find . -maxdepth 3 -type f
 cat rtl/parking_controller.v
 cat constraints/parking_controller.sdc
+```
 
-find — locates project files.
+### Command Explanation
 
-cat — displays RTL source and timing constraints.
-
-constraints/parking_controller.sdc contains design timing constraints.
+| Command | Purpose |
+|---|---|
+| `find` | Locates project files within the specified directory depth |
+| `cat` | Displays the contents of RTL source and timing-constraint files |
+| `parking_controller.sdc` | Contains timing constraints for the design, such as clock and input/output delays |
 
 ## 3.3 Creating and Organizing Directories
 
+### Commands
+
+```bash
 mkdir -p reports
 mkdir -p synthesis
 mkdir -p physical_design/images
 mkdir -p sta
+```
 
-mkdir -p — creates directories, including parent directories when necessary.
+### Command Explanation
 
-These commands organize reports, synthesis outputs, physical-design images, and timing-analysis files.
+| Command | Purpose |
+|---|---|
+| `mkdir -p reports` | Creates a directory for reports |
+| `mkdir -p synthesis` | Creates a directory for synthesis outputs |
+| `mkdir -p physical_design/images` | Creates directories for physical-design documentation and images |
+| `mkdir -p sta` | Creates a directory for static timing analysis files |
+
+The `-p` option creates parent directories when necessary and does not report an error if the directory already exists.
 
 ## 3.4 RTL Simulation Using Icarus Verilog
 
-From the project directory, compile the RTL and testbench:
+### Compile the RTL and Testbench
 
+Run these commands from the project root directory:
+
+```bash
 iverilog -g2012 -o simulation.vvp \
   rtl/parking_controller.v \
   tb/tb_parking_controller.v
+```
 
-Run the simulation:
+### Run the Simulation
 
+```bash
 vvp simulation.vvp
+```
 
-View the waveform if the testbench generates a VCD file:
+### View the Waveform
 
-gtkwave parking_controller.vcd
+```bash
+gtkwave parking_rtl.vcd
+```
 
-The exact waveform filename depends on the $dumpfile statement in the testbench.
+**Note:** The waveform filename must match the filename specified in the testbench's `$dumpfile` statement. In the current testbench, the filename is `parking_rtl.vcd`.
+
+### Command Explanation
+
+| Command | Purpose |
+|---|---|
+| `iverilog` | Compiles the Verilog RTL and testbench |
+| `-g2012` | Enables SystemVerilog 2012 language support |
+| `-o simulation.vvp` | Specifies the compiled simulation output file |
+| `vvp` | Executes the compiled simulation |
+| `gtkwave` | Opens the VCD waveform for signal inspection |
 
 ## 3.5 RTL Synthesis Using Yosys
 
-A basic synthesis example is:
+### Start Yosys
 
+```bash
 yosys
+```
 
-Inside the Yosys prompt:
+### Commands Inside the Yosys Prompt
 
+```tcl
 read_verilog rtl/parking_controller.v
 hierarchy -check -top parking_controller
 proc
 opt
 check
 stat
+```
 
-read_verilog — reads the RTL source.
+### Command Explanation
 
-hierarchy — checks the top-level design hierarchy.
+| Command | Purpose |
+|---|---|
+| `read_verilog` | Reads the RTL source file |
+| `hierarchy -check -top parking_controller` | Checks the design hierarchy and identifies the top module |
+| `proc` | Converts procedural RTL into internal logic |
+| `opt` | Performs logic optimization |
+| `check` | Checks for structural problems in the synthesized design |
+| `stat` | Displays synthesis statistics, including cell counts |
 
-proc — converts procedural RTL into internal logic.
+This sequence performs basic RTL synthesis and logic inspection. Technology mapping to SKY130 requires the appropriate technology library and synthesis configuration.
 
-opt — performs logic optimization.
+### Exit Yosys
 
-check — checks for structural problems.
-
-stat — displays synthesis statistics.
-
-This is an illustrative RTL synthesis sequence. Technology mapping to SKY130 requires the appropriate library and synthesis configuration.
-
-Exit Yosys:
-
+```tcl
 exit
+```
 
 ## 3.6 OpenLane Physical Design
 
-# RTL Language: Verilog HDL
-# Technology: SKY130 HD
-# Physical Design Flow: OpenLane v0.21
-# Physical Design Engine: OpenROAD
+### Technology and Tools
 
-Navigate to the OpenLane installation:
+| Parameter | Description |
+|---|---|
+| RTL Language | Verilog HDL |
+| Technology | SKY130 HD |
+| Physical Design Flow | OpenLane v0.21 |
+| Physical Design Engine | OpenROAD |
 
+### Navigate to the OpenLane Installation
+
+```bash
 cd ~/Desktop/work/tools/openlane_working_dir/openlane
+```
 
-Inspect the available design directories:
+### Inspect Available Designs
 
+```bash
 ls designs
+```
 
-A typical OpenLane flow invocation is:
+### Run the Smart Parking Design
 
+```bash
 ./flow.tcl -design smart_parking
+```
 
-The design name must match the actual OpenLane configuration directory. Your earlier project run used smart_parking; the separate project workspace is four_slot_smart_parking.
+**Note:** The design name must match the actual OpenLane design configuration directory. The earlier OpenLane project used `smart_parking`; `four_slot_smart_parking` is the separate project workspace.
 
+OpenLane automates multiple ASIC implementation stages, including synthesis, floorplanning, placement, clock-tree synthesis, routing, and physical-design checks, depending on the configuration.
 
-OpenLane automates multiple ASIC implementation stages, including synthesis, floorplanning, placement, clock-tree synthesis, routing, and design checks, depending on the configuration and flow version.
+## 3.7 OpenLane Interactive Mode
 
-## Physical Design Stages and Commands
+### Start Interactive Mode
 
-OpenLane supports interactive execution of individual stages. These Tcl commands are entered inside the OpenLane interactive shell, not directly at the normal Linux terminal. See the OpenLane interactive-mode documentation.
+From the OpenLane installation directory, run:
 
-## Start Interactive Mode
-
+```bash
 ./flow.tcl -interactive
+```
 
-Inside the OpenLane Tcl shell:
+### Commands Inside the OpenLane Tcl Shell
 
+```tcl
 package require openlane
 prep -design smart_parking
+```
 
-Use the appropriate existing run tag or configuration if you need to resume or inspect a particular run.
+Use the appropriate configuration and existing run tag when inspecting or resuming a previous run.
 
-## Synthesis
+## 3.8 Physical Design Stages and Commands
 
+The following commands are intended for the OpenLane interactive Tcl shell, not the normal Linux terminal. Availability depends on the installed flow version and configuration.
+
+### Synthesis
+
+```tcl
 run_synthesis
+```
 
-Purpose: Converts RTL into a synthesized gate-level netlist and maps logic to the target standard-cell library.
+**Purpose:** Converts RTL into a synthesized gate-level netlist and maps the logic to the target standard-cell library.
 
-## Floorplanning and Power Planning
+### Floorplanning and Power Planning
 
+```tcl
 run_floorplan
+```
 
-Purpose: Establishes the core area, placement rows, pin locations, and power-distribution setup according to the design configuration.
+**Purpose:** Establishes the floorplan, placement rows, pin locations, and power-distribution setup according to the design configuration.
 
-## Placement
+### Placement
 
+```tcl
 run_placement
+```
 
-Purpose: Places standard cells within the floorplan and performs placement-related optimization.
+**Purpose:** Places standard cells within the floorplan and performs placement-related optimization.
 
-## Clock Tree Synthesis (CTS)
+### Clock Tree Synthesis (CTS)
 
+```tcl
 run_cts
+```
 
-Purpose: Builds the clock distribution network for sequential cells.
+**Purpose:** Builds the clock distribution network for sequential cells.
 
-## Routing
+### Routing
 
+```tcl
 run_routing
+```
 
-Purpose: Connects the placed standard cells through the routing layers while observing design rules and routing constraints.
+**Purpose:** Connects the placed standard cells through routing layers while observing design rules and routing constraints.
 
-## Physical Verification and Layout Generation
+### Physical Verification and Layout Operations
 
-Depending on the configuration, OpenLane provides commands such as:
-
+```tcl
 run_magic
 run_magic_drc
 run_lvs
 run_antenna_check
+```
 
-Purpose:
+| Command | Purpose |
+|---|---|
+| `run_magic` | Performs Magic-related layout operations in the configured flow |
+| `run_magic_drc` | Runs design-rule checking using Magic |
+| `run_lvs` | Checks layout-versus-schematic consistency |
+| `run_antenna_check` | Checks for antenna-rule violations |
 
-run_magic — performs Magic-related layout operations in the configured flow.
+The availability and exact behavior of these commands depend on the OpenLane version and design configuration.
 
-run_magic_drc — runs a design-rule check using Magic.
+## 3.9 Physical Design Flow Summary
 
-run_lvs — checks layout-versus-schematic consistency.
+| Stage | Command | Purpose |
+|---|---|---|
+| Synthesis | `run_synthesis` | Generates the mapped netlist |
+| Floorplanning | `run_floorplan` | Defines the physical floorplan |
+| Placement | `run_placement` | Places standard cells |
+| Clock Tree Synthesis | `run_cts` | Builds the clock network |
+| Routing | `run_routing` | Routes signal connections |
+| Design Rule Checking | `run_magic_drc` | Checks layout design rules |
+| Layout Versus Schematic | `run_lvs` | Compares layout and schematic connectivity |
 
-run_antenna_check — checks for antenna-rule violations.
+**Documentation note:** These commands describe the flow and how the stages are used. Include only actual reports, screenshots, and results from stages you have executed in the project.
 
-The commands above are available in the documented OpenLane interactive flow, but configuration settings can disable particular stages.
 
-## Physical Design Flow Summary
-
-Stage
-
-Command
-
-Purpose
-
-Synthesis
-
-run_synthesis
-
-Generate the mapped netlist
-
-Floorplanning
-
-run_floorplan
-
-Define the physical floorplan
-
-Placement
-
-run_placement
-
-Place standard cells
-
-CTS
-
-run_cts
-
-Build the clock network
-
-Routing
-
-run_routing
-
-Route signal connections
-
-DRC
-
-run_magic_drc
-
-Check layout design rules
-
-LVS
-
-run_lvs
-
-Compare layout and schematic connectivity.
 
 
 # Static Timing Analysis (STA)
