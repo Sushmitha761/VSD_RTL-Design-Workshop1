@@ -1199,6 +1199,8 @@ After running the simulation, inspect the console output and GTKWave waveform to
 
 <img width="1857" height="363" alt="Screenshot 2026-10-21 131138" src="https://github.com/user-attachments/assets/96d67dfa-22cf-4b33-8c3e-6f0c80d20e25" />
 
+<img width="993" height="887" alt="Screenshot 2026-10-22 103550" src="https://github.com/user-attachments/assets/3f813c5e-7d90-4b65-b48e-1f81371a3894" />
+
 
 <img width="1917" height="1077" alt="Screenshot 2026-10-21 140101" src="https://github.com/user-attachments/assets/1f8d9ca6-336a-43c3-9f87-19c3648c5fc0" />
 
@@ -1533,7 +1535,10 @@ stat -liberty /path/to/sky130_fd_sc_hd__tt_025C_1v80.lib
 write_verilog -noattr reports/parking_controller_mapped.v
 ```
 
-**Important:** Replace `/path/to/sky130_fd_sc_hd__tt_025C_1v80.lib` with the actual path to the SKY130 HD Liberty file on your system. Ensure the `reports` directory exists before writing the output netlist.
+<img width="1919" height="1079" alt="Screenshot 2026-10-22 230319" src="https://github.com/user-attachments/assets/9c6e7488-320b-4a60-aedc-699e6c30b7e8" />
+
+
+
 
 ### Mapping Results
 
@@ -1590,23 +1595,23 @@ The main stages of the physical design flow are:
 
 
 
-Synthesis
+#### Synthesis
 Generating gate-level netlist (yosys).
 Performing cell mapping (abc).
 Performing pre-layout STA (OpenSTA).
-Floorplanning
-Defining the core area for the macro as well as the cell sites and the tracks (init_fp).
+#### Floorplanning
+Defining the core area for the macro as well as the cell sites and the tracks .
 Placing the macro input and output ports (ioplacer).
 Generating the power distribution network (pdn).
-Placement
-Performing global placement (RePLace).
-Perfroming detailed placement to legalize the globally placed components (OpenDP).
-Clock Tree Synthesis (CTS)
+#### Placement
+Performing global placement .
+Perfroming detailed placement to legalize the globally placed components .
+#### Clock Tree Synthesis (CTS)
 Synthesizing the clock tree (TritonCTS).
-Routing
+#### Routing
 Performing global routing to generate a guide file for the detailed router (FastRoute).
 Performing detailed routing (TritonRoute)
-GDSII Generation
+#### GDSII Generation
 Streaming out the final GDSII layout file from the routed def (Magic).
 
 
@@ -1632,7 +1637,8 @@ The generated reports can be used to evaluate:
 - Design rule violations
 - Final layout generation status
 
-### Verification and Results
+<img width="1919" height="1079" alt="Screenshot 2026-10-22 230058" src="https://github.com/user-attachments/assets/dd6a4bcc-0dee-497f-958b-ab25874dd085" />
 
-Document the actual results from the completed OpenLane run. Include screenshots or reports for the completed stages and state any failed or incomplete stages accurately.
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/464b7cfa-4f5b-4fbe-8a71-4ebaef1fb4bc" />
+
 
