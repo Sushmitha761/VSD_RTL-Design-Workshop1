@@ -8,7 +8,7 @@ The design demonstrates how a real-world parking management function can be impl
 
 This project provides practical experience in digital logic design, RTL coding, functional verification, logic synthesis, physical design, and static timing analysis.
 
-## Project Description
+## 2. Project Description
 
 The proposed system is designed to manage a parking area containing four parking slots. It maintains a digital count of occupied slots and updates this count based on vehicle entry and exit requests.
 
@@ -18,7 +18,7 @@ The design is written in Verilog HDL and verified using a testbench that applies
 
 The project uses the SKY130 HD standard-cell library and tools such as Icarus Verilog, GTKWave, Yosys, OpenLane, OpenROAD, and OpenSTA for simulation, waveform inspection, synthesis, physical design, and timing analysis.
 
-### Main Features
+### 2.1 Main Features
 
 - Four-slot parking occupancy tracking.
 - Vehicle entry and exit request processing.
@@ -28,52 +28,70 @@ The project uses the SKY130 HD standard-cell library and tools such as Icarus Ve
 - ASIC synthesis and physical-design implementation.
 - Static timing analysis across selected process, voltage, and temperature (PVT) corners.
 
-### Project Scope
+### 2.2 Project Scope
 
 This project implements the **digital parking controller**, not a complete physical parking installation. Real vehicle sensors, a gate motor, and an external display or monitoring system would require additional hardware and interface integration.
 
-## 2. Real-World Applications
+## 3. Real-World Applications
 
-2.1 Small Residential Parking Areas
+### 3.1 Small Residential Parking Areas
 
 The controller can be adapted for small apartment parking areas with a limited number of parking spaces. It tracks occupied slots and indicates when the configured parking capacity is reached.
 
-2.2 Office and Campus Parking
+### 3.2 Office and Campus Parking
 
 Small offices, laboratories, and campus parking areas can use similar occupancy-control logic to monitor the number of vehicles inside a designated parking zone.
 
-2.3 Parking Gate Automation
+### 3.3 Parking Gate Automation
 
-The gate_open output can act as a digital command signal for an external gate-control interface. A suitable motor driver, safety sensors, and gate mechanism would be required for physical gate operation.
+The `gate_open` output can act as a digital command signal for an external gate-control interface. A suitable motor driver, safety sensors, and gate mechanism would be required for physical gate operation.
 
-2.4 Parking Occupancy Indicators
+### 3.4 Parking Occupancy Indicators
 
-The full, empty, and warning outputs can be connected to external indicator circuits or a monitoring controller to display parking availability.
+The `full`, `empty`, and `warning` outputs can be connected to external indicator circuits or a monitoring controller to display parking availability.
 
-2.5 Embedded Systems and IoT Integration
+### 3.5 Embedded Systems and IoT Integration
 
 The controller can be integrated with a microcontroller or communication interface to share occupancy information with a monitoring system. Communication and networking functionality are not implemented in the current RTL.
 
-2.6 ASIC and VLSI Design Education
+### 3.6 ASIC and VLSI Design Education
 
 The project demonstrates practical digital-design concepts, including counters, registers, comparators, combinational control logic, and sequential circuits. It also provides experience with simulation, synthesis, physical design, and static timing analysis.
 
-2.7 Scalable Parking Management Systems
+### 3.7 Scalable Parking Management Systems
 
 The four-slot controller can serve as a reference architecture for designing larger-capacity systems. Increasing the capacity would require appropriate counter sizing, updated status comparisons, and additional verification.
 
-##  Benefits
+## 4. Benefits
 
-. Tracks parking occupancy digitally.
-. Prevents the occupancy count from exceeding the configured capacity
+- Tracks parking occupancy digitally.
+- Prevents the occupancy count from exceeding the configured capacity.
+- Generates full, empty, and early-warning status signals.
+- Provides a gate-control output for external hardware integration.
+- Demonstrates an end-to-end ASIC design workflow.
+- Offers a foundation for future expansion and system integration.
 
-Generates full, empty, and early-warning status signals.
+## 5. Limitations
 
-Provides a gate-control output for external hardware integration.
+- The current design supports a maximum of four vehicles.
+- Physical vehicle sensors and gate motors are not included in the RTL.
+- Display, communication, and IoT functionality require additional integration.
+- The controller depends on valid entry and exit requests to maintain an accurate occupancy count.
 
-Demonstrates an end-to-end ASIC design workflow.
+## 6. Future Enhancements
 
-Offers a foundation for future expansion and system integration.
+- Extend the design to support more parking slots.
+- Add sensor-interface logic for automatic vehicle detection.
+- Integrate a display for real-time parking availability.
+- Add communication interfaces for remote occupancy monitoring.
+- Introduce safety checks and additional gate-control conditions.
+- Perform further verification and physical-design optimization.
+
+## 7. Conclusion
+
+The Four-Slot Smart Parking Occupancy and Gate Controller ASIC demonstrates the implementation of a practical parking-control function using Verilog HDL. It combines sequential logic, occupancy counting, status generation, and gate-control logic in a compact digital design.
+
+The project also demonstrates an ASIC implementation workflow involving functional verification, synthesis, physical design, and static timing analysis using the SKY130 HD platform and open-source VLSI tools. It serves as a useful foundation for learning RTL-to-GDSII implementation and for developing more advanced parking-management controllers.
 
 
 
