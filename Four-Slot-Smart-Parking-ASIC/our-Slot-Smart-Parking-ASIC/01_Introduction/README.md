@@ -1,4 +1,4 @@
-# 🚗 Four-Slot Smart Parking Occupancy and Gate Controller ASIC
+<img width="891" height="760" alt="image" src="https://github.com/user-attachments/assets/2d2cc305-31bd-4330-9567-a60df317db15" /># 🚗 Four-Slot Smart Parking Occupancy and Gate Controller ASIC
 <img width="1456" height="816" alt="image" src="https://github.com/user-attachments/assets/0b605fa7-92c7-44af-b23f-8e2f2e51951c" />
 
 <p align="center">
@@ -154,7 +154,7 @@ flowchart LR
   <img src="https://placehold.co/800x300/e8f3ff/163b65?text=Smart+Parking+System" alt="Smart Parking System Concept" width="800">
 </p>
 
-## 1. Why I Chose This Project
+## Why I Chose This Project
 
 I chose the **Four-Slot Smart Parking Occupancy and Gate Controller ASIC** because I wanted to work on a real-world problem while gaining practical experience in VLSI design and ASIC implementation.
 
@@ -162,7 +162,13 @@ Parking management can become difficult when the availability of parking spaces 
 
 I also selected this project because it allows me to explore the complete digital ASIC workflow, from Verilog RTL design and functional verification to synthesis, physical design, and static timing analysis using the SKY130 HD standard-cell library.
 
-## 2. What Makes This Project Valuable?
+<img width="600" height="500" alt="image" src="https://github.com/user-attachments/assets/0c0a1b9c-7d4f-4827-9c10-0dd893bedd9c" />
+
+<img width="661" height="616" alt="image" src="https://github.com/user-attachments/assets/0b7ce337-7688-4226-af4d-0aac66cd21d8" />
+
+
+
+## What Makes This Project Valuable?
 
 | Area | What I Learn |
 |---|---|
@@ -174,46 +180,54 @@ I also selected this project because it allows me to explore the complete digita
 | ⏱️ Timing analysis | Evaluating timing across TT, SS, and FF corners |
 | 🎯 Career development | Building practical skills relevant to entry-level VLSI roles |
 
-## 3. Project Design and Implementation
 
-The controller accepts clock, reset, entry, and exit signals. It tracks the occupancy count and generates outputs such as `slot_count`, `full`, `empty`, and `gate_open`, according to the implemented RTL.
-
-```mermaid
-flowchart TD
-    A[Clock and Reset] --> C[Parking Controller RTL]
-    B[Entry and Exit Requests] --> C
-    C --> D[Occupancy Tracking]
-    D --> E[Status and Gate Logic]
-    E --> F[Parking Status Outputs]
-
-    style C fill:#dbeafe,stroke:#2563eb,color:#111827
-    style D fill:#dcfce7,stroke:#16a34a,color:#111827
-    style E fill:#fef3c7,stroke:#d97706,color:#111827
-```
-
-## 4. Why This Project Is Suitable for VLSI Learning
-
-This project provides a practical opportunity to understand how a digital design moves through an ASIC implementation flow.
-
-```mermaid
-flowchart LR
-    A[Verilog RTL] --> B[Functional Simulation]
-    B --> C[Logic Synthesis]
-    C --> D[SKY130 HD Mapping]
-    D --> E[Physical Design]
-    E --> F[Static Timing Analysis]
-    F --> G[GDSII Layout]
-
-    style A fill:#dbeafe,stroke:#2563eb,color:#111827
-    style E fill:#dcfce7,stroke:#16a34a,color:#111827
-    style G fill:#fef3c7,stroke:#d97706,color:#111827
-```
-
-## 5. My Main Goal
+##  My Main Goal
 
 My goal is to develop a functional digital controller, verify its behaviour, understand the ASIC implementation stages, and evaluate its timing performance. Through this project, I aim to strengthen my understanding of RTL design and physical design while building a project that I can explain confidently during technical interviews.
 
-**Note:** This project implements the digital controller. Physical parking sensors, a gate motor, and external monitoring hardware require additional integration unless implemented separately.
+
+
+## 6. Project Outcome
+
+The Four-Slot Smart Parking Occupancy and Gate Controller ASIC demonstrates the design and implementation of a digital parking controller using Verilog HDL and the SKY130 HD standard-cell library.
+
+The project outcomes include:
+
+- **Occupancy Management:** Tracks parking occupancy across four slots.
+- **Entry and Exit Control:** Processes vehicle entry and exit requests according to the implemented RTL logic.
+- **Status Generation:** Produces occupancy count, full, empty, and gate-control outputs.
+- **Functional Verification:** Tests controller behaviour using simulation and a Verilog testbench.
+- **Logic Synthesis:** Converts the RTL design into a technology-mapped standard-cell netlist.
+- **Physical Design:** Demonstrates ASIC implementation stages, including floorplanning, placement, clock-tree synthesis, and routing.
+- **Multi-Corner Timing Analysis:** Evaluates timing under TT, SS, and FF process corners using SKY130 timing libraries.
+- **ASIC Layout Generation:** Produces a GDSII layout as part of the physical-design flow.
+
+
+
+
+## Problem Solved
+
+### 🔴 Before: Parking Availability Is Unclear
+![Parking availability problem](https://placehold.co/800x350/fce7e7/991b1b?text=Problem%3A+Unclear+Parking+Availability)
+
+Manual parking management can make it difficult to identify available spaces and manage vehicle entry efficiently.
+
+### 🟢 After: Digital Parking Occupancy Control
+![Smart parking solution](https://placehold.co/800x350/dcfce7/166534?text=Solution%3A+Four-Slot+Occupancy+Controller)
+
+The Verilog-based controller tracks occupancy across four parking slots and generates status outputs, helping demonstrate a structured digital approach to parking management.
+
+### ⚙️ Engineering Outcome
+![ASIC implementation outcome](physical_design/images/routing.png)
+
+The design is simulated, synthesized, and evaluated through the SKY130 ASIC flow, including physical design and static timing analysis.
+
+
+ 
+
+### Final Result
+
+The project demonstrates an end-to-end digital ASIC design workflow, from RTL development and functional verification to physical design and static timing analysis. It provides practical experience in digital design and VLSI implementation that can be explained and demonstrated during technical interviews.
 
 
 
