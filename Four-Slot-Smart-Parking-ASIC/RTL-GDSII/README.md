@@ -1318,7 +1318,7 @@ The synthesized design can then proceed through the configured ASIC implementati
 
 <img width="1852" height="880" alt="Screenshot 2026-10-21 142030" src="https://github.com/user-attachments/assets/e4561c27-0202-492b-bc85-8131877e46d6" />
 
-## 10. Gate-Level Simulation (GLS)
+##  Gate-Level Simulation (GLS)
 
 ### Introduction
 
@@ -1470,15 +1470,23 @@ To compare the waveforms:
 4. Check whether entry and exit boundary conditions behave as expected.
 5. Investigate any unexpected logical differences.
 
+
+
+
+
+
+
 ### Conclusion
 
 RTL simulation and Gate-Level Simulation provide complementary verification stages in the ASIC design flow. RTL simulation verifies the intended functionality, while GLS checks whether the synthesized netlist preserves that functionality.
 
+## Observation
 
-
+Pre level simulation and post level simulation waverforms are matched.
 
 
 ## Technology Mapping Using Yosys
+
 
 ### What Is Technology Mapping
 
@@ -1561,3 +1569,70 @@ The OpenLane flow can perform technology mapping as part of its synthesis stage.
 
 
 <img width="887" height="126" alt="Screenshot 2026-10-21 142217" src="https://github.com/user-attachments/assets/dc1e5900-1606-4567-b095-25494a98ada7" />
+
+
+## Physical Design from Netlist to GDSII
+
+Physical design is process of transforming netlist into layout which is manufacture-able [GDS]. Physical design process is often referred as PnR (Place and Route). Main steps in physical design are placement of all logical cells, clock tree synthesis & routing. During this process of physical design timing, power, design & technology constraints have to be met. Further design might require being optimized w.r.t power, performance and area.
+
+Physical design converts the synthesized gate-level netlist into a physical layout suitable for ASIC implementation. OpenLane automates several stages of the RTL-to-GDSII flow using tools such as OpenROAD, Magic, and other supporting utilities.
+
+###  Physical Design Flow
+
+The main stages of the physical design flow are:
+
+1. **Floorplanning:** Defines the core and die area and prepares the design for physical implementation.
+2. **Placement:** Places standard cells within the floorplan.
+3. **Clock Tree Synthesis (CTS):** Builds a clock distribution network for sequential elements.
+4. **Routing:** Creates electrical connections between placed cells.
+5. **Design Rule Check (DRC):** Checks whether the layout follows the applicable physical design rules.
+6. **GDSII Generation:** Produces the layout database used for ASIC fabrication handoff.
+
+
+
+Synthesis
+Generating gate-level netlist (yosys).
+Performing cell mapping (abc).
+Performing pre-layout STA (OpenSTA).
+Floorplanning
+Defining the core area for the macro as well as the cell sites and the tracks (init_fp).
+Placing the macro input and output ports (ioplacer).
+Generating the power distribution network (pdn).
+Placement
+Performing global placement (RePLace).
+Perfroming detailed placement to legalize the globally placed components (OpenDP).
+Clock Tree Synthesis (CTS)
+Synthesizing the clock tree (TritonCTS).
+Routing
+Performing global routing to generate a guide file for the detailed router (FastRoute).
+Performing detailed routing (TritonRoute)
+GDSII Generation
+Streaming out the final GDSII layout file from the routed def (Magic).
+
+
+
+###  OpenLane Command
+
+The OpenLane flow can be started using:
+
+```bash
+cd ~/Desktop/work/tools/openlane_working_dir/openlane
+./flow.tcl -design smart_parking
+```
+
+The design name must match the configured OpenLane design directory.
+
+### Physical Design Reports
+
+The generated reports can be used to evaluate:
+
+- Standard-cell placement and utilization
+- Clock tree and routing results
+- Timing performance
+- Design rule violations
+- Final layout generation status
+
+### Verification and Results
+
+Document the actual results from the completed OpenLane run. Include screenshots or reports for the completed stages and state any failed or incomplete stages accurately.
+
