@@ -1,4 +1,4 @@
-<img width="1917" height="1078" alt="Screenshot 2026-10-21 125706" src="https://github.com/user-attachments/assets/a2b3209e-f3e1-43cf-aace-df599ccf2aec" /><img width="1917" height="1078" alt="Screenshot 2026-10-21 125706" src="https://github.com/user-attachments/assets/d5e7fb4a-240a-46ae-ac8d-dd2c394a6e72" /># Four-Slot Smart Parking Occupancy and Gate Controller ASIC
+
 
 ## 1. Introduction
 
