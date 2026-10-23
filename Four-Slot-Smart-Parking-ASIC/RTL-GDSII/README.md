@@ -1896,11 +1896,35 @@ Placement:
 
 Shows standard cells positioned in rows inside the core.
 
+## command
+```
+run_placement
+```
+
+<img width="1866" height="572" alt="Screenshot 2026-10-21 171749" src="https://github.com/user-attachments/assets/c73e5681-f6a4-41d8-afdf-af81feef2ba5" />
+<img width="1823" height="591" alt="Screenshot 2026-10-21 171804" src="https://github.com/user-attachments/assets/497266cf-069e-4454-8d54-10ed5bb57e47" />
+
+<img width="1757" height="737" alt="Screenshot 2026-10-21 171835" src="https://github.com/user-attachments/assets/bb5f0e7f-cd10-4c61-9b50-890b0344efcb" />
+
+<img width="1852" height="737" alt="Screenshot 2026-10-21 171913" src="https://github.com/user-attachments/assets/221c0e2d-65a6-4d5f-a478-a7cceaf2f6c2" />
+<img width="1852" height="826" alt="Screenshot 2026-10-21 171941" src="https://github.com/user-attachments/assets/9851aa5a-7f56-463a-8e0f-d9ac9cca9cf7" />
+
+
+
 <img width="1917" height="1078" alt="Screenshot 2026-10-23 092254" src="https://github.com/user-attachments/assets/1372ca5e-bdb3-4294-bc1c-85f79f13ac44" />
 
-<img width="1917" height="1078" alt="Screenshot 2026-10-21 175607" src="https://github.com/user-attachments/assets/8af17c5d-0b7b-4f8f-a509-cf0d73410ee1" />
+### Magic layout view:
+<img width="1917" height="1078" alt="Screenshot 2026-10-23 104755" src="https://github.com/user-attachments/assets/a84b6da3-9502-4a50-b7e9-1437be5cf942" />
 
-<img width="1768" height="747" alt="Screenshot 2026-10-21 182335" src="https://github.com/user-attachments/assets/030aa8e2-99ac-4d8f-8918-648c5c53c4f0" />
+<img width="1917" height="1078" alt="Screenshot 2026-10-23 104735" src="https://github.com/user-attachments/assets/3ee3c7c0-313b-4806-a480-8c96bfacad9a" />
+
+```
+select top cell
+expand
+view
+zomm
+```
+<img width="1917" height="1077" alt="Screenshot 2026-10-23 105247" src="https://github.com/user-attachments/assets/9a27dc9c-e88b-447f-ab4e-e53e96388f1a" />
 
 
 ## CTS
@@ -1910,6 +1934,18 @@ Shows standard cells positioned in rows inside the core.
 CTS:
 
 Adds clock buffers and clock-tree connections to distribute the clock.
+### Magic layout view
+#### command
+<img width="1852" height="277" alt="Screenshot 2026-10-23 105616" src="https://github.com/user-attachments/assets/e754e922-aaca-4f42-8450-7096b21adfa0" />
+#### layout
+
+
+```
+select top cell
+expand
+view
+zomm
+```
 
 
 ## Routing:
@@ -1919,3 +1955,16 @@ Adds clock buffers and clock-tree connections to distribute the clock.
 Routing:
 
 Shows signal wires and metal interconnects between cells.
+
+
+#### command
+
+#### layout
+
+
+![Uploading Screenshot 2026-10-23 105813.png…]()
+
+```
+expand
+zoom
+```
