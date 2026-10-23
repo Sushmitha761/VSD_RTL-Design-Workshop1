@@ -1840,6 +1840,12 @@ Defines the chip/core area, rows, pins and power-planning preparation.
 
 <img width="1851" height="627" alt="Screenshot 2026-10-21 171652" src="https://github.com/user-attachments/assets/e8e530ba-a743-4e49-991d-c84d6b7cc880" />
 
+```
+openroad
+read_lef $::env(PDK_ROOT)/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef
+read_def ~/Desktop/work/tools/openlane_working_dir/openlane/designs/smart_parking/runs/21-10_11-34/results/floorplan/parking_controller.floorplan.def
+```
+
 <img width="1852" height="966" alt="Screenshot 2026-10-23 092204" src="https://github.com/user-attachments/assets/16a503f8-0cf4-42ce-bdfc-c5ebab7c1fe4" />
 
 <img width="1917" height="1073" alt="Screenshot 2026-10-23 092229" src="https://github.com/user-attachments/assets/7442ff47-1a4e-49be-be91-625e4a865a12" />
@@ -1905,6 +1911,13 @@ run_placement
 
 <img width="1866" height="572" alt="Screenshot 2026-10-21 171749" src="https://github.com/user-attachments/assets/c73e5681-f6a4-41d8-afdf-af81feef2ba5" />
 <img width="1823" height="591" alt="Screenshot 2026-10-21 171804" src="https://github.com/user-attachments/assets/497266cf-069e-4454-8d54-10ed5bb57e47" />
+
+```
+cd ~/Desktop/work/tools/openlane_working_dir/openlane/designs/smart_parking/runs/21-10_11-34
+openroad
+read_lef /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef
+read_def /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/smart_parking/runs/21-10_11-34/results/placement/parking_controller.placement.def
+```
 
 <img width="1757" height="737" alt="Screenshot 2026-10-21 171835" src="https://github.com/user-attachments/assets/bb5f0e7f-cd10-4c61-9b50-890b0344efcb" />
 
@@ -2019,14 +2032,15 @@ The individual report files are empty in this run; the values above were extract
 <img width="1857" height="852" alt="Screenshot 2026-10-21 172133" src="https://github.com/user-attachments/assets/2cbade7f-9eac-4265-8c29-a11fa4b5a75d" />
 
 
-
+read_lef /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/smart_parking/runs/21-10_11-34/results/cts/parking_controller.cts.lef
 
 
 <img width="630" height="406" alt="image" src="https://github.com/user-attachments/assets/6c96336d-9c01-4545-b857-dc426b408f6a" />
 
-CTS:
+CTS
 
 Adds clock buffers and clock-tree connections to distribute the clock.
+
 ### Magic layout view
 #### command
 <img width="1852" height="277" alt="Screenshot 2026-10-23 105616" src="https://github.com/user-attachments/assets/e754e922-aaca-4f42-8450-7096b21adfa0" />
