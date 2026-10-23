@@ -1912,12 +1912,7 @@ run_placement
 <img width="1866" height="572" alt="Screenshot 2026-10-21 171749" src="https://github.com/user-attachments/assets/c73e5681-f6a4-41d8-afdf-af81feef2ba5" />
 <img width="1823" height="591" alt="Screenshot 2026-10-21 171804" src="https://github.com/user-attachments/assets/497266cf-069e-4454-8d54-10ed5bb57e47" />
 
-```
-cd ~/Desktop/work/tools/openlane_working_dir/openlane/designs/smart_parking/runs/21-10_11-34
-openroad
-read_lef /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef
-read_def /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/smart_parking/runs/21-10_11-34/results/placement/parking_controller.placement.def
-```
+
 
 <img width="1757" height="737" alt="Screenshot 2026-10-21 171835" src="https://github.com/user-attachments/assets/bb5f0e7f-cd10-4c61-9b50-890b0344efcb" />
 
@@ -1925,6 +1920,12 @@ read_def /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/
 <img width="1852" height="826" alt="Screenshot 2026-10-21 171941" src="https://github.com/user-attachments/assets/9851aa5a-7f56-463a-8e0f-d9ac9cca9cf7" />
 
 
+```
+cd ~/Desktop/work/tools/openlane_working_dir/openlane/designs/smart_parking/runs/21-10_11-34
+openroad
+read_lef /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef
+read_def /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/smart_parking/runs/21-10_11-34/results/placement/parking_controller.placement.def
+```
 
 <img width="1917" height="1078" alt="Screenshot 2026-10-23 092254" src="https://github.com/user-attachments/assets/1372ca5e-bdb3-4294-bc1c-85f79f13ac44" />
 
@@ -2031,9 +2032,7 @@ The individual report files are empty in this run; the values above were extract
 
 <img width="1857" height="852" alt="Screenshot 2026-10-21 172133" src="https://github.com/user-attachments/assets/2cbade7f-9eac-4265-8c29-a11fa4b5a75d" />
 
-
-read_lef /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/smart_parking/runs/21-10_11-34/results/cts/parking_controller.cts.lef
-
+## CTS
 
 <img width="630" height="406" alt="image" src="https://github.com/user-attachments/assets/6c96336d-9c01-4545-b857-dc426b408f6a" />
 
