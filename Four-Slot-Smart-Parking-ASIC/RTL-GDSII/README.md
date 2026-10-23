@@ -1474,12 +1474,10 @@ To compare the waveforms:
 
 ## Waveforms
 
-<img width="1857" height="363" alt="Screenshot 2026-10-21 131138" src="https://github.com/user-attachments/assets/0d359b3b-78c7-4971-803c-e0ad26f63189" />
+<img width="1906" height="1063" alt="Screenshot 2026-10-23 100121" src="https://github.com/user-attachments/assets/f19a670f-e958-4ee1-b06c-bf195e38d8b8" />
 
-   
 
-<img width="720" height="1280" alt="WhatsApp Image 2026-10-22 at 9 04 14 PM" src="https://github.com/user-attachments/assets/d0515fd0-e278-419a-8dbe-d849083ab244" />
-
+<img width="1917" height="1078" alt="Screenshot 2026-10-23 100256" src="https://github.com/user-attachments/assets/636baa12-16aa-4d3f-bc73-06469aa969db" />
 
 
 
@@ -1492,6 +1490,7 @@ RTL simulation and Gate-Level Simulation provide complementary verification stag
 ## Observation
 
 Pre level simulation and post level simulation waverforms are matched.
+
 
 
 ## Technology Mapping Using Yosys
@@ -1832,7 +1831,88 @@ Floorplanning established the die and core dimensions for the smart parking cont
 ```
 run_floorplan
 ```
+<img width="551" height="415" alt="image" src="https://github.com/user-attachments/assets/c1ffda99-072a-4177-bf2b-ec1e90ff1ca0" />
+
+Floorplan:
+
+Defines the chip/core area, rows, pins and power-planning preparation.
+
+
 <img width="1848" height="746" alt="Screenshot 2026-10-21 171629" src="https://github.com/user-attachments/assets/4e278d31-f459-4741-9433-ee59f28a9198" />
 
 <img width="1851" height="627" alt="Screenshot 2026-10-21 171652" src="https://github.com/user-attachments/assets/e8e530ba-a743-4e49-991d-c84d6b7cc880" />
 
+
+
+## Placement
+
+### Overview
+
+Placement is the physical-design stage in which standard cells are assigned physical locations within the core region defined during floorplanning.
+
+For the Four-Slot Smart Parking Occupancy and Gate Controller, placement was performed using the OpenLane flow with the SKY130 HD standard-cell library.
+
+### Objectives
+
+The main objectives of placement are:
+
+- Assign locations to standard cells inside the core.
+- Optimize placement to help meet timing requirements.
+- Reduce interconnect length where possible.
+- Improve signal connectivity and prepare the design for clock-tree synthesis and routing.
+
+### Placement Results
+
+The OpenLane placement logs for run `21-10_11-34` report a design area of approximately 775.7 µm².
+
+| Parameter | Result |
+|---|---:|
+| Design top module | `parking_controller` |
+| Standard-cell library | SKY130 HD |
+| Reported placement design area | 775.7 µm² |
+| Core width | 28.52 µm |
+| Core height | 27.20 µm |
+
+**Note:** The reported placement design area matches the calculated core area closely. It should not be interpreted as the synthesized standard-cell area, which is reported separately as 246.4864 µm².
+
+### Verification
+
+The placement result was checked using the following OpenLane reports:
+
+- `logs/placement/8-resizer.log`
+- `logs/placement/11-opendp.log`
+- `results/placement/parking_controller.placement.def`
+
+### Outcome
+
+Placement established physical locations for the design's standard-cell instances and prepared the controller for the subsequent clock-tree synthesis and routing stages.
+
+<img width="640" height="448" alt="image" src="https://github.com/user-attachments/assets/8a20b253-4a9b-428d-8a4d-a14ecfd35f9e" />
+
+Placement:
+
+Shows standard cells positioned in rows inside the core.
+
+<img width="1917" height="1078" alt="Screenshot 2026-10-23 092254" src="https://github.com/user-attachments/assets/1372ca5e-bdb3-4294-bc1c-85f79f13ac44" />
+
+<img width="1917" height="1078" alt="Screenshot 2026-10-21 175607" src="https://github.com/user-attachments/assets/8af17c5d-0b7b-4f8f-a509-cf0d73410ee1" />
+
+<img width="1768" height="747" alt="Screenshot 2026-10-21 182335" src="https://github.com/user-attachments/assets/030aa8e2-99ac-4d8f-8918-648c5c53c4f0" />
+
+
+## CTS
+
+<img width="630" height="406" alt="image" src="https://github.com/user-attachments/assets/6c96336d-9c01-4545-b857-dc426b408f6a" />
+
+CTS:
+
+Adds clock buffers and clock-tree connections to distribute the clock.
+
+
+## Routing:
+
+<img width="626" height="497" alt="image" src="https://github.com/user-attachments/assets/9b0a181f-4cf2-422e-a567-264aa137cbe2" />
+
+Routing:
+
+Shows signal wires and metal interconnects between cells.
