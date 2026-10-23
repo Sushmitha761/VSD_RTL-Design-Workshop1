@@ -2099,13 +2099,6 @@ This project uses the OpenLane physical-design flow with the SKY130A technology 
 5. Generate the routed DEF and associated reports.
 6. Review routing completion, congestion, and design-rule-check results.
 
-## Routing Layout
-
-Add the actual routing-stage layout image below after exporting it from the physical-design tool.
-
-![Routing-stage layout](routing_layout.png)
-
-
 
 
 ## Verification and Analysis
@@ -2156,3 +2149,83 @@ Shows signal wires and metal interconnects between cells.
 expand
 zoom
 ```
+
+# Routing Congestion and Antenna Analysis
+
+
+**Four-Slot Smart Parking Occupancy and Gate Controller ASIC**
+
+- **Technology:** SKY130A
+- **Standard-cell library:** SkyWater SKY130 HD
+- **Physical design flow:** OpenLane
+- **Detailed router:** TritonRoute
+- **OpenLane run:** `21-10_11-34`
+
+## Global Routing Congestion Analysis
+
+Global routing estimates routing paths and checks whether the available routing capacity is sufficient.
+
+| Metric | Result |
+|---|---:|
+| Horizontal routing capacity | 826 |
+| Vertical routing capacity | 724 |
+| Total routing capacity | 1550 |
+| Final routing usage | 91 |
+| Maximum horizontal overflow | 0 |
+| Maximum vertical overflow | 0 |
+| Maximum overflow | 0 |
+| Final overflow | 0 |
+
+**Result:** The global-routing log reports zero overflow, indicating no routing-capacity overflow in the reported global-routing solution.
+
+<img width="881" height="813" alt="Screenshot 2026-10-23 144705" src="https://github.com/user-attachments/assets/f617d7ab-318c-4a7f-b4fe-4e2068589058" />
+
+## Detailed Routing Analysis
+
+Detailed routing assigns actual routing tracks and connects the design nets.
+
+| Metric | Result |
+|---|---:|
+| Total wire length | 663 µm |
+| Metal 1 wire length | 316 µm |
+| Metal 2 wire length | 326 µm |
+| Metal 3 wire length | 20 µm |
+| Total vias | 226 |
+| Violations in final reported routing iterations | 0 |
+
+**Result:** The TritonRoute log shows that detailed routing completed and reported zero violations in the final routing iterations.
+
+<img width="891" height="892" alt="Screenshot 2026-10-23 144626" src="https://github.com/user-attachments/assets/349e8254-f0f5-4585-8e8b-203ba3997309" />
+
+## Antenna Analysis
+
+Antenna analysis checks for potential fabrication-related antenna-rule violations.
+
+| Metric | Result |
+|---|---:|
+| Pins violated | 0 |
+| Nets violated | 0 |
+| Unspecial nets reported | 43 |
+| Antenna violations reported during global routing | 0 |
+
+**Result:** The available antenna report shows zero pin violations and zero net violations.
+
+<img width="897" height="887" alt="Screenshot 2026-10-23 144648" src="https://github.com/user-attachments/assets/d651ff2c-7658-492b-9764-8175a6d201c2" />
+
+##  Conclusion
+
+The available reports show zero global-routing overflow, zero violations in the final reported detailed-routing iterations, and zero reported antenna pin/net violations.
+
+These results document the routing stage of the ASIC physical-design flow. They should be considered together with final DRC, LVS, and timing reports before claiming complete physical verification.
+
+##  Evidence Sources
+
+The following files are available in the OpenLane run directory:
+
+- `logs/routing/18-fastroute.log` — global-routing capacity and overflow
+- `logs/routing/21-tritonRoute.log` — detailed-routing results
+- `reports/routing/41-antenna.rpt` — antenna report
+- `logs/routing/40-or_antenna.log` — antenna analysis log
+
+
+
