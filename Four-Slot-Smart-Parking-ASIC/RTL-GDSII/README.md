@@ -1,4 +1,4 @@
-<img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/93bb990c-20f4-4fe4-9623-633d6739b291" />
+
 
 ## 1. Introduction
 
@@ -1753,11 +1753,7 @@ To Invoke synthesis type run_synthesis.This runs the synthesis where yosys trans
 <img width="1853" height="437" alt="Screenshot 2026-10-21 171537" src="https://github.com/user-attachments/assets/1c42c48e-4631-4a74-8058-725e9de4fbb4" />
 
 
-<img width="1852" height="966" alt="Screenshot 2026-10-23 092204" src="https://github.com/user-attachments/assets/16a503f8-0cf4-42ce-bdfc-c5ebab7c1fe4" />
 
-
-
-<img width="1917" height="1073" alt="Screenshot 2026-10-23 092229" src="https://github.com/user-attachments/assets/7442ff47-1a4e-49be-be91-625e4a865a12" />
 
 ## Floorplan
 
@@ -1842,6 +1838,13 @@ Defines the chip/core area, rows, pins and power-planning preparation.
 
 <img width="1851" height="627" alt="Screenshot 2026-10-21 171652" src="https://github.com/user-attachments/assets/e8e530ba-a743-4e49-991d-c84d6b7cc880" />
 
+<img width="1852" height="966" alt="Screenshot 2026-10-23 092204" src="https://github.com/user-attachments/assets/16a503f8-0cf4-42ce-bdfc-c5ebab7c1fe4" />
+
+<img width="1917" height="1073" alt="Screenshot 2026-10-23 092229" src="https://github.com/user-attachments/assets/7442ff47-1a4e-49be-be91-625e4a865a12" />
+
+<img width="1917" height="1078" alt="Screenshot 2026-10-21 175607" src="https://github.com/user-attachments/assets/11272ac5-2cea-4e0a-9a90-380d0949c4a9" />
+
+<img width="1768" height="747" alt="Screenshot 2026-10-21 182335" src="https://github.com/user-attachments/assets/74fe84ab-b384-422a-abb5-077f269859db" />
 
 
 ## Placement
