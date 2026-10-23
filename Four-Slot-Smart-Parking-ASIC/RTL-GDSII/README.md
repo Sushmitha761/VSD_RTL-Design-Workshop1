@@ -2039,6 +2039,9 @@ The individual report files are empty in this run; the values above were extract
 CTS
 
 Adds clock buffers and clock-tree connections to distribute the clock.
+#### OpenRoad GUI
+
+<img width="1917" height="1078" alt="Screenshot 2026-10-23 092304" src="https://github.com/user-attachments/assets/4cd010dd-55ab-43e9-aa6f-c8dc26ac0697" />
 
 ### Magic layout view
 #### command
@@ -2059,11 +2062,79 @@ zomm
 
 ## Routing:
 
+
+
+## Project Overview
+
+Routing is a physical-design stage in which electrical connections are implemented between standard cells and other design components using metal interconnects and vias.
+
+This project uses the OpenLane physical-design flow with the SKY130A technology platform to implement routing for a Four-Slot Smart Parking Controller.
+
+## Design Information
+
+| Parameter | Details |
+|---|---|
+| Project | Four-Slot Smart Parking Controller |
+| Top module | `parking_controller` |
+| Technology | SKY130A |
+| Standard-cell library | `sky130_fd_sc_hd` |
+| Physical-design flow | OpenLane / OpenROAD |
+| Routing output | `parking_controller.def` |
+| Run directory | `runs/21-10_11-34` |
+
+## Routing Objectives
+
+- Connect the placed standard cells according to the design netlist.
+- Implement signal interconnections using available routing layers.
+- Generate the routed physical-design database.
+- Inspect routing utilization and congestion indicators.
+- Review routing reports for violations and completion status.
+
+## Routing Methodology
+
+1. Load the placed design and technology information.
+2. Generate routing guides for signal nets.
+3. Perform detailed routing according to the technology's routing rules.
+4. Repair routing-related issues where supported by the flow.
+5. Generate the routed DEF and associated reports.
+6. Review routing completion, congestion, and design-rule-check results.
+
+## Routing Layout
+
+Add the actual routing-stage layout image below after exporting it from the physical-design tool.
+
+![Routing-stage layout](routing_layout.png)
+
+
+
+
+## Verification and Analysis
+
+The following checks should be performed using the generated reports:
+
+- Routing completion and unrouted-net status
+- Routing congestion and overflow
+- Detailed-routing violations
+- Post-route timing analysis
+- Final design-rule checks
+
+Only values confirmed by the actual reports should be included in the final results table.
+
+## Conclusion
+
+The routing stage implements the physical interconnections required by the Four-Slot Smart Parking Controller. The routed database and corresponding reports provide evidence for evaluating connectivity, routing quality, and readiness for subsequent physical-design verification.
+
+
 <img width="626" height="497" alt="image" src="https://github.com/user-attachments/assets/9b0a181f-4cf2-422e-a567-264aa137cbe2" />
 
 Routing:
 
 Shows signal wires and metal interconnects between cells.
+
+#### OpenRoad GUI using lef and def image for routing
+
+<img width="1917" height="1078" alt="Screenshot 2026-10-23 092422" src="https://github.com/user-attachments/assets/150d73c7-776e-41f0-978d-7e53bfd058b5" />
+
 <img width="1837" height="531" alt="Screenshot 2026-10-21 172306" src="https://github.com/user-attachments/assets/eeb32212-f529-4bb7-80ff-811fc31103d3" />
 
 <img width="1866" height="858" alt="Screenshot 2026-10-21 172534" src="https://github.com/user-attachments/assets/66c846b2-fb4a-4f14-a2da-cea9a7c54fd6" />
