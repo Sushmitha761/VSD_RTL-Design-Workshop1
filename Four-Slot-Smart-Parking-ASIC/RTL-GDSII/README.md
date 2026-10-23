@@ -1,4 +1,4 @@
-
+<img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/93bb990c-20f4-4fe4-9623-633d6739b291" />
 
 ## 1. Introduction
 
@@ -1696,7 +1696,7 @@ exit
 
 <img width="1917" height="1078" alt="Screenshot 2026-10-21 171216" src="https://github.com/user-attachments/assets/ce58ca4b-cc74-4688-9fea-7633b2077a53" />
 
-### Synthesis
+## Synthesis
 
 Synthesis converts the Verilog RTL description of the Four-Slot Smart Parking Controller into a gate-level logic representation for ASIC implementation.
 
@@ -1743,14 +1743,96 @@ run_synthesis
 <img width="1837" height="565" alt="Screenshot 2026-10-21 171416" src="https://github.com/user-attachments/assets/fa648ee6-795b-49c7-b7cf-f501851fc5b5" />
 
 Calcuation of Flop Ratio:
-
+```
 Flop ratio = Number of D Flip flops 
            ______________________
            Total Number of cells
-
+```
 To Invoke synthesis type run_synthesis.This runs the synthesis where yosys translates RTL into circuit using generic components and abc maps the circuit to Standard Cells.
 
 
 <img width="1853" height="437" alt="Screenshot 2026-10-21 171537" src="https://github.com/user-attachments/assets/1c42c48e-4631-4a74-8058-725e9de4fbb4" />
 
+
+<img width="1852" height="966" alt="Screenshot 2026-10-23 092204" src="https://github.com/user-attachments/assets/16a503f8-0cf4-42ce-bdfc-c5ebab7c1fe4" />
+
+
+
+<img width="1917" height="1073" alt="Screenshot 2026-10-23 092229" src="https://github.com/user-attachments/assets/7442ff47-1a4e-49be-be91-625e4a865a12" />
+
+## Floorplan
+
+
+### Overview
+
+Floorplanning is an important stage in the ASIC physical design flow. It defines the chip's die boundary and the core region where standard cells and other physical structures are placed.
+
+For the Four-Slot Smart Parking Occupancy and Gate Controller, floorplanning was performed using the OpenLane flow with the SKY130 HD standard-cell library.
+
+### Objectives
+
+The main objectives of floorplanning are:
+
+- Define the die and core dimensions.
+- Establish the region available for standard-cell placement.
+- Prepare the design for power distribution and subsequent physical-design stages.
+- Provide the initial physical layout for placement, clock-tree synthesis, and routing.
+
+### Floorplanning Results
+
+The following dimensions were obtained from the OpenLane run `21-10_11-34`.
+
+| Parameter | Value |
+|---|---:|
+| Design top module | `parking_controller` |
+| Standard-cell library | SKY130 HD |
+| Die width | 39.705 µm |
+| Die height | 50.425 µm |
+| Calculated die area | 2,002.13 µm² |
+| Core width | 28.52 µm |
+| Core height | 27.20 µm |
+| Calculated core area | 775.744 µm² |
+
+### Area Calculations
+
+The die area is calculated by multiplying the die width by the die height.
+
+Die area:
+
+`39.705 µm × 50.425 µm = 2,002.13 µm²`
+
+The core area is calculated by multiplying the core width by the core height.
+
+Core area:
+
+`28.52 µm × 27.20 µm = 775.744 µm²`
+
+### Die Area vs. Core Area
+
+- **Die area:** The total area enclosed by the chip's die boundary.
+- **Core area:** The region inside the die allocated for the core design and associated physical structures.
+
+The core is smaller than the die because the die boundary also includes the surrounding region outside the core.
+
+### Verification
+
+The dimensions were verified using the OpenLane floorplan log and the final routed DEF file.
+
+Files used for verification:
+
+- `logs/floorplan/3-verilog2def.openroad.log`
+- `results/routing/parking_controller.def`
+
+### Outcome
+
+Floorplanning established the die and core dimensions for the smart parking controller ASIC. These boundaries provide the physical-design framework for the subsequent placement, clock-tree synthesis, and routing stages.
+
+### command
+
+```
+run_floorplan
+```
+<img width="1848" height="746" alt="Screenshot 2026-10-21 171629" src="https://github.com/user-attachments/assets/4e278d31-f459-4741-9433-ee59f28a9198" />
+
+<img width="1851" height="627" alt="Screenshot 2026-10-21 171652" src="https://github.com/user-attachments/assets/e8e530ba-a743-4e49-991d-c84d6b7cc880" />
 
