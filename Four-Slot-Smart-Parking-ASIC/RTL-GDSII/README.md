@@ -2301,6 +2301,17 @@ klayout runs/21-10_11-34/results/klayout/parking_controller.gds
 <img width="1916" height="1078" alt="Screenshot 2026-10-21 185611" src="https://github.com/user-attachments/assets/0db02cdc-c447-4ab5-8de0-b6ab4a0c1f61" />
 
 
+
+## Transistor-Level Circuit Simulation Using ngspice
+
+<img width="1917" height="1078" alt="Screenshot 2026-10-22 123459" src="https://github.com/user-attachments/assets/3083974b-07ff-4e56-b4fd-d216d85927d8" />
+
+<img width="915" height="661" alt="Screenshot 2026-10-22 132656" src="https://github.com/user-attachments/assets/0bd7020b-9198-4128-89a1-f5eb349b1e2b" />
+
+<img width="1367" height="890" alt="Screenshot 2026-10-22 123437" src="https://github.com/user-attachments/assets/b220158e-462e-4e26-bcbc-ba9ef0fcb9db" />
+
+
+
 ## OverallFlow RTL-GDSII
 
 
@@ -2308,3 +2319,4 @@ klayout runs/21-10_11-34/results/klayout/parking_controller.gds
 
 
 <img width="500" height="374" alt="image" src="https://github.com/user-attachments/assets/d86bcaa1-cf89-45e7-9608-56f875dcf339" />
+
