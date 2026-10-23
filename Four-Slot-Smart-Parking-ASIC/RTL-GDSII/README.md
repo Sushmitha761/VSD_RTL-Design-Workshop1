@@ -1817,6 +1817,8 @@ Files used for verification:
 
 - `logs/floorplan/3-verilog2def.openroad.log`
 - `results/routing/parking_controller.def`
+- <img width="895" height="87" alt="Screenshot 2026-10-21 172837" src="https://github.com/user-attachments/assets/ed8d53cc-75b1-4659-886a-2f1b5d14b630" />
+
 
 ### Outcome
 
@@ -1927,7 +1929,98 @@ zomm
 <img width="1917" height="1077" alt="Screenshot 2026-10-23 105247" src="https://github.com/user-attachments/assets/9a27dc9c-e88b-447f-ab4e-e53e96388f1a" />
 
 
-## CTS
+## Clock Tree Synthesis (CTS) 
+
+
+## Overview
+
+Clock Tree Synthesis (CTS) is a physical-design stage that distributes the clock signal to sequential elements in a digital circuit. It inserts clock buffers to manage clock distribution and reduce differences in clock arrival times, known as clock skew.
+
+This project implements CTS for the Four-Slot Smart Parking Controller using the SKY130A standard-cell platform and the OpenLane flow.
+
+## Design Information
+
+- **Design:** `parking_controller`
+- **Clock net:** `clk`
+- **Technology:** SKY130A
+- **Standard-cell library:** `sky130_fd_sc_hd`
+- **Tool flow:** OpenLane / OpenROAD
+- **Clock period constraint:** 10 ns
+- **CTS run:** `21-10_11-34`
+
+##  CTS Objectives
+
+- Distribute the clock to the sequential elements.
+- Insert clock buffers where required.
+- Examine clock latency and skew.
+- Review timing reports after CTS.
+- Prepare the design for subsequent physical-design stages.
+
+## Implementation Methodology
+
+1. Read the placed design and technology/library information.
+2. Identify the `clk` clock net and its sinks.
+3. Run TritonCTS to construct the clock tree.
+4. Insert clock buffers and create clock subnets.
+5. Legalize the design after CTS.
+6. Review the CTS log and timing reports.
+
+## CTS Results
+
+| Metric | Result |
+|---|---:|
+| Clock sinks | 4 |
+| Sinks covered | 4 |
+| Outlier sinks | 0 |
+| Clock buffers created | 3 |
+| Clock nets created | 3 |
+| Maximum clock-tree level | 1 |
+| Clock latency at `_42_/CLK` | 0.28 ns |
+| Clock latency at `_44_/CLK` | 0.18 ns |
+| Reported clock skew | 0.10 ns |
+| Reported WNS | 0.00 ns |
+| Reported TNS | 0.00 ns |
+| Design area after CTS | 775.7 µm² |
+
+*Source: `runs/21-10_11-34/logs/cts/13-cts.log`.*
+
+**Timing-report note:** The CTS log contains `No paths found` before the WNS/TNS summary. These values are recorded as reported by the CTS stage and should not be interpreted as proof that all timing paths have been verified.
+
+## Observations
+
+- TritonCTS identified four clock sinks on the `clk` net.
+- All four sinks were covered by the generated clock tree.
+- Three clock buffers were created.
+- The log reports a clock skew of 0.10 ns between the displayed clock endpoints.
+- The CTS log contains operating-condition warnings for the loaded timing libraries. These should be investigated before treating the timing analysis as final.
+
+## Conclusion
+
+CTS was executed for the Four-Slot Smart Parking Controller. The log reports four covered clock sinks, three inserted clock buffers, and 0.10 ns of clock skew for the displayed endpoints.
+
+Further timing validation using the appropriate timing libraries and complete post-CTS or post-route timing reports is required before claiming that the complete design meets its timing constraints.
+
+## Evidence
+
+- CTS log: `runs/21-10_11-34/logs/cts/13-cts.log`
+- CTS clock-skew report: `runs/21-10_11-34/reports/cts/13-cts_clock_skew.rpt`
+- CTS WNS report: `runs/21-10_11-34/reports/cts/13-cts_wns.rpt`
+- CTS TNS report: `runs/21-10_11-34/reports/cts/13-cts_tns.rpt`
+
+The individual report files are empty in this run; the values above were extracted from the CTS log.
+
+<img width="1857" height="737" alt="Screenshot 2026-10-21 172004" src="https://github.com/user-attachments/assets/60ac2c1b-09e4-4b90-aee2-e02add5cb67d" />
+
+<img width="1853" height="878" alt="Screenshot 2026-10-21 172030" src="https://github.com/user-attachments/assets/66d3a72e-e3c9-4c37-840b-41e98fd318a1" />
+<img width="1851" height="772" alt="Screenshot 2026-10-21 172102" src="https://github.com/user-attachments/assets/3514d04f-ddd7-4ec8-8af9-963f124f4ae0" />
+
+<img width="1850" height="871" alt="Screenshot 2026-10-21 172119" src="https://github.com/user-attachments/assets/7bc86809-5277-486d-9749-674c80bf2cd6" />
+
+<img width="1857" height="852" alt="Screenshot 2026-10-21 172133" src="https://github.com/user-attachments/assets/2cbade7f-9eac-4265-8c29-a11fa4b5a75d" />
+
+
+
+
 
 <img width="630" height="406" alt="image" src="https://github.com/user-attachments/assets/6c96336d-9c01-4545-b857-dc426b408f6a" />
 
@@ -1938,6 +2031,9 @@ Adds clock buffers and clock-tree connections to distribute the clock.
 #### command
 <img width="1852" height="277" alt="Screenshot 2026-10-23 105616" src="https://github.com/user-attachments/assets/e754e922-aaca-4f42-8450-7096b21adfa0" />
 #### layout
+<img width="1917" height="1070" alt="Screenshot 2026-10-23 105550" src="https://github.com/user-attachments/assets/ce966d9d-04c8-4658-80ad-747938cb168e" />
+
+<img width="1917" height="1078" alt="Screenshot 2026-10-23 105511" src="https://github.com/user-attachments/assets/8966cf05-4a4d-4c58-bd74-2e8ebf89c575" />
 
 
 ```
@@ -1955,14 +2051,22 @@ zomm
 Routing:
 
 Shows signal wires and metal interconnects between cells.
+<img width="1837" height="531" alt="Screenshot 2026-10-21 172306" src="https://github.com/user-attachments/assets/eeb32212-f529-4bb7-80ff-811fc31103d3" />
+
+<img width="1866" height="858" alt="Screenshot 2026-10-21 172534" src="https://github.com/user-attachments/assets/66c846b2-fb4a-4f14-a2da-cea9a7c54fd6" />
+
 
 
 #### command
 
+<img width="730" height="245" alt="Screenshot 2026-10-23 105831" src="https://github.com/user-attachments/assets/fda9d837-68d6-4724-8bee-cbd51d11fbc9" />
+
 #### layout
 
+<img width="1917" height="1078" alt="Screenshot 2026-10-23 105813" src="https://github.com/user-attachments/assets/5cc6e389-74fe-4ce5-83f2-2e26fb7a56c5" />
 
-![Uploading Screenshot 2026-10-23 105813.png…]()
+
+
 
 ```
 expand
