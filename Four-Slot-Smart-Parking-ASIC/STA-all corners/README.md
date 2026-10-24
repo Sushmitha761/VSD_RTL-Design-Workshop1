@@ -404,5 +404,8 @@ The completed report should include the final OpenSTA reports, verified WNS/TNS 
 <img width="1352" height="913" alt="Screenshot 2026-10-24 093642" src="https://github.com/user-attachments/assets/74ab2fdc-278c-41c1-8f02-23b521b59c6f" />
 <img width="1357" height="903" alt="Screenshot 2026-10-24 093653" src="https://github.com/user-attachments/assets/1d180220-053b-4980-b78d-df13aafba215" />
 
+## Final Layout Image
+
+<img width="1916" height="1078" alt="Screenshot 2026-10-21 185611" src="https://github.com/user-attachments/assets/38eca2ef-eec7-4df6-8efc-589f0e09c9c4" />
 
 
