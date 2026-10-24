@@ -396,3 +396,15 @@ The project establishes a foundation for further exploration of ASIC design, tim
   <br/>
   <i>Designed with Verilog HDL · Implemented using Open-Source ASIC Tools · Evaluated with Multi-Corner STA</i>
 </p>
+
+
+## Project Presentation Video
+
+**Project:** Four-Slot Smart Parking Occupancy and Gate Controller ASIC
+
+This video explains the complete ASIC design flow, including Verilog RTL design, functional simulation, synthesis, Static Timing Analysis (STA), physical design, and GDSII layout generation.
+
+[Watch the Project Presentation Video](https://drive.google.com/file/d/1-zpxsK1sX7pm_xe9ZUlhqnk0GbH_cepf/view?usp=drive_link)
+
+
+
