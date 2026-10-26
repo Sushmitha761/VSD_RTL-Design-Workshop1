@@ -1,0 +1,35 @@
+FOUR-SLOT SMART PARKING OCCUPANCY AND GATE CONTROLLER ASIC
+POST-ROUTE MULTI-CORNER STA SUMMARY
+
+Timing analysis corners:
+1. TT: 25 C, 1.80 V
+2. SS: 100 C, 1.60 V
+3. FF: -40 C, 1.95 V
+
+Verified results from detailed STA logs:
+
+Corner    Worst Setup Slack (ns)    Worst Hold Slack (ns)    TNS (ns)
+TT        +7.619                    +0.374                   0.000
+SS        +6.247                    +0.407                   0.000
+FF        +8.084                    +0.150                   0.000
+
+Interpretation:
+- All three corners show positive reported worst setup and hold slack.
+- TNS is reported as 0.000 ns for all three corners.
+- Lowest setup slack: SS corner, +6.247 ns.
+- Lowest hold slack: FF corner, +0.150 ns.
+
+Generated graphs:
+reports/verified_mcsta_graphs/setup_slack.png
+reports/verified_mcsta_graphs/hold_slack.png
+reports/verified_mcsta_graphs/tns.png
+
+Important limitation:
+The OpenLane report 24-opensta_spef.rpt contains "No paths found,"
+while separate summary files contain WNS/TNS values of 0.00.
+Therefore, those OpenLane summary values must not be presented as
+independently verified signoff results until the report discrepancy
+is investigated.
+
+These results summarize the custom post-route multi-corner STA rerun.
+They do not, by themselves, establish complete timing signoff.

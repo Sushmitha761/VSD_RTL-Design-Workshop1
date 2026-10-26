@@ -1,0 +1,24 @@
+FOUR-SLOT SMART PARKING CONTROLLER
+POST-ROUTE MULTI-CORNER STA — DETAILED LOG VALUES
+
+Technology: SKY130 HD
+Clock period: 10 ns (100 MHz)
+Clock uncertainty: 0.2 ns
+
+Corner                 TT          SS          FF
+Conditions             25C/1.80V   100C/1.60V  -40C/1.95V
+Worst setup slack      +7.619 ns   +6.247 ns   +8.084 ns
+Worst hold slack       +0.374 ns   +0.407 ns   +0.150 ns
+TNS                    0.00 ns     0.00 ns     0.00 ns
+
+Observations:
+- SS has the lowest reported setup slack.
+- FF has the lowest reported hold slack.
+- All three logs report positive setup and hold slack.
+- All three logs report TNS = 0.00 ns.
+
+Caveats:
+- Preliminary results, not a claim of complete timing signoff.
+- Investigate Liberty and netlist warnings.
+- Verify timing coverage and constraints.
+- TT detailed values differ from the previous summary; use this detailed-log table consistently.
