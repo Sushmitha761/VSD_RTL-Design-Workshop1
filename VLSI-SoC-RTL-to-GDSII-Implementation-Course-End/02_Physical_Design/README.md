@@ -76,7 +76,7 @@ The following values are the currently reported results. Verify them against the
 
 ## 8. Tools and Commands
 
-### Check installed tools
+### Check Installed Tools
 
 ```bash
 iverilog -V
@@ -84,84 +84,3 @@ yosys -V
 openroad -version
 sta -version
 magic --version
-```
-
-### Navigate to the Sequence Detector directory
-
-```bash
-cd ~/Desktop/sequence_detector_101011
-pwd
-ls -la
-find . -maxdepth 3 -type f | sort
-```
-
-### Start OpenLane interactively
-
-```bash
-cd ~/Desktop/work/tools/openlane_working_dir/openlane
-./flow.tcl -interactive
-```
-
-After checking the design configuration, source files, PDK, and constraints, the applicable interactive stages include:
-
-```text
-run_synthesis
-run_floorplan
-run_placement
-run_cts
-run_routing
-```
-
-### OpenSTA timing analysis
-
-Run this only after confirming that the script references the correct netlist, libraries, and constraints.
-
-```bash
-cd ~/Desktop/sequence_detector_101011
-mkdir -p reports
-sta -exit sta.tcl 2>&1 | tee reports/sta.log
-```
-
-### Inspect timing reports
-
-```bash
-grep -Ei "slack|tns|arrival time|required time" reports/sta.log
-```
-
-### Find physical-design artifacts
-
-```bash
-find . -type f \( -name "*.spef" -o -name "*.sdf" -o -name "*.def" -o -name "*.gds" \)
-```
-
-### Launch Magic
-
-```bash
-magic -T ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech
-```
-
-Verify the technology-file path in your local installation before running the command.
-
-## 9. STA Artifacts
-
-The `STA/` directory contains:
-
-- `sta.tcl` — Tcl script used for timing analysis.
-- `sta.log` — Saved output from an STA run.
-
-Keep the script and log together. Where available, also preserve the exact netlist, SDC constraints, libraries, and corner details so the analysis can be reproduced.
-
-## 10. Conclusion and Future Work
-
-This documentation records the ASIC Physical Design methodology and the available STA results for the Sequence Detector using the SKY130HD standard-cell library and OpenSTA.
-
-Future work includes verifying the complete physical-design flow, analyzing placement and routing congestion, generating parasitic extraction data, and performing post-route STA. Timing closure should be claimed only when supported by the corresponding reports.
-
-## 11. Submission Checklist
-
-- Include RTL source and testbench files in `01_RTL_Documentation/`.
-- Include synthesis netlists and reports where available.
-- Keep `STA/sta.tcl` and `STA/sta.log` in `02_Physical_Design/STA/`.
-- Add genuine screenshots of completed flow stages and timing reports.
-- Verify all reported timing values against the actual log.
-- Do not claim routing, extraction, or post-route timing closure without supporting artifacts.

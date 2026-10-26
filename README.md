@@ -4,4 +4,14 @@ The section explains the purpose and structure of a design file, which contains 
 
 The major tools used during the workshop are also introduced. Icarus Verilog is an open-source Verilog simulator used to compile the design and testbench and perform functional simulations. GTKWave is a waveform viewer used to visualize simulation results and analyze the changes in input, output, clock, reset, and internal signals with respect to time. Yosys is an open-source RTL synthesis tool used to convert the Verilog RTL design into a synthesized hardware representation and analyze the resulting logic implementation.
 
-The Workshop also explains the complete Simulation-to-Synthesis Flow, beginning with RTL design and testbench creation, followed by compilation, simulation, waveform analysis, functional verification, and synthesis. The practical workflow demonstrates how a design is written, tested, simulated, verified, synthesized, and analyzed using the respective tools. Finally, the section explains how to understand the simulation output, waveform output, and synthesis output obtained during the design process. Together, these concepts and tools provide a strong foundation for understanding and performing the RTL design, simulation, verification, and synthesis experiments covered in the workshop.
+The Workshop also explains the complete Simulation-to-Synthesis Flow, beginning with RTL design and testbench creation, followed by compilation, simulation, waveform analysis, functional verification, and synthesis. The practical workflow demonstrates how a design is written, tested, simulated, verified, synthesized, and analyzed using the respective tools. Finally, the section explains how to understand the simulation output, waveform output, and synthesis output obtained during the design process. Together, these concepts and tools provide a strong foundation for understanding and performing the RTL design, simulation, verification, and synthesis experiments covered in the workshop
+## Workshop Presentation Video
+
+My VSD RTL Design Workshop presentation video is available here:
+
+[Watch the Workshop Video]## Workshop Presentation Video
+
+My VSD RTL Design Workshop presentation video is available here:
+
+[Watch the Workshop Video](
+https://drive.google.com/file/d/1oPBa9qAt7skPloFXHlwnC1JqogLxK6lB/view?usp=sharing
